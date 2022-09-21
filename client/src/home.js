@@ -33,11 +33,11 @@ const Home = (props) => {
       >
         <MapContainer
           style={{ height: "93.5vh" }}
-          center={[35, -100]}
-          zoom={4}
+          center={[38, -100]}
+          zoom={5}
           scrollWheelZoom={false}
         >
-          <h1 style={{ textAlign: "center" }}>H.R. 3863</h1>
+          <h1 style={{ textAlign: "center", fontSize:"50px", fontFamily:"Patrick Hand SC"}}>Select a State</h1>
           <GeoJSON style={state_style} data={USMap.features} />
         </MapContainer>
       </div>
