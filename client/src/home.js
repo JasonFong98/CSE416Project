@@ -26,8 +26,8 @@ const Home = (props) => {
     layer.on({
       click: (event) => {
         event.target.setStyle({
-          color: "red",
-          fillColor: "red",
+          color: "darkgreen",
+          fillColor: "darkgreen",
           opacity: "2.0",
         });
       },
@@ -54,8 +54,8 @@ const Home = (props) => {
         });
 
         event.target.setStyle({
-          color: "red",
-          fillColor: "red",
+          color: "darkgreen",
+          fillColor: "darkgreen",
           opacity: "2.0",
         });
 
