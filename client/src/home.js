@@ -15,7 +15,7 @@ const Home = (props) => {
   const onEachState = (state, layer) => {
     console.log(state.properties.name);
     if (state.properties.name === "Florida") {
-      
+
     }
     layer.bindPopup(state.properties.name);
     layer.on({
@@ -31,6 +31,7 @@ const Home = (props) => {
           color: "green",
           fillColor: "lightgreen",
         });
+        layer.closePopup();
       },
       mouseover: (event) => {
         event.target.setStyle({
