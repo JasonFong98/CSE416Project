@@ -65,8 +65,13 @@ const Home = (props) => {
           zoom={5}
           scrollWheelZoom={false}
         >
+<<<<<<< HEAD
           <h1 style={{ textAlign: "center" }}>H.R. 3863</h1>
           <GeoJSON style={state_style} data={USMap.features} onEachFeature={onEachState}/>
+=======
+          <h1 style={{ textAlign: "center", fontSize:"50px", fontFamily:"Patrick Hand SC"}}>Select a State</h1>
+          <GeoJSON style={state_style} data={USMap.features} />
+>>>>>>> a95fed9fb7adcd38e5ee7b45378c3cd353a7a5ac
         </MapContainer>
       </div>
     </div>
