@@ -7,6 +7,7 @@ import "./home.css";
 import USMap from "./geojson_data/us-states.json";
 
 const Home = (props) => {
+  let chosen_states=["Florida","Ohio","North Carolina"]
   let state_style = {
     weight: 0.8,
     fillColor: "lightgreen",
@@ -14,8 +15,12 @@ const Home = (props) => {
   };
   const onEachState = (state, layer) => {
     console.log(state.properties.name);
-    if (state.properties.name === "Florida") {
-
+    if (chosen_states.includes(state.properties.name)) {
+      layer.setStyle({
+        color: "yellow",
+        fillColor: "yellow",
+        fillOpacity:"0.8",
+      });
     }
     layer.bindPopup(state.properties.name);
     layer.on({
@@ -27,18 +32,33 @@ const Home = (props) => {
         });
       },
       mouseout: (event) => {
-        event.target.setStyle({
-          color: "green",
-          fillColor: "lightgreen",
-        });
+        if (chosen_states.includes(state.properties.name) ) {
+          event.target.setStyle({
+            color: "yellow",
+            fillColor: "yellow",
+            fillOpacity: "4.0",
+          });
+        } else {
+          event.target.setStyle({
+            color: "green",
+            fillColor: "lightgreen",
+          });
+        }
         layer.closePopup();
       },
       mouseover: (event) => {
+        event.target.setStyle({
+          color: "yellow",
+          fillColor: "yellow",
+          opacity: "2.0",
+        });
+
         event.target.setStyle({
           color: "red",
           fillColor: "red",
           opacity: "2.0",
         });
+
         layer.openPopup();
       },
     });
@@ -76,7 +96,11 @@ const Home = (props) => {
           >
             Select a State
           </h1>
-          <GeoJSON onEachFeature={onEachState} style={state_style} data={USMap.features} />
+          <GeoJSON
+            onEachFeature={onEachState}
+            style={state_style}
+            data={USMap.features}
+          />
         </MapContainer>
       </div>
     </div>
