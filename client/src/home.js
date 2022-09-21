@@ -19,7 +19,7 @@ const Home = (props) => {
       </Navbar>
       <h1 style={{ textAlign: "center" }}>H.R. 3863</h1>
       <div style={{width:"50%", height:"70%", position:"relative", left:"30%"}}>
-        <MapContainer style={{height:"60vh"}} center={[45,-85]} zoom={4} scrollWheelZoom={false}>
+        <MapContainer style={{height:"60vh"}} center={[0,-85]} zoom={4} scrollWheelZoom={false} dragging="disable">
             <GeoJSON data={USMap.features}/>
         </MapContainer>
       </div>
