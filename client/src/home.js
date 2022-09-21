@@ -8,9 +8,6 @@ const Home = (props) => {
       <Navbar bg="dark" variant="dark" expand="lg">
         <Container fluid>
           <Navbar.Brand href="/"><h1 style={{fontSize:30, paddingLeft:"75%"}}>Home</h1></Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-          </Navbar.Collapse>
         </Container>
       </Navbar>
     </div>
