@@ -12,35 +12,36 @@ const Home = (props) => {
     fillColor: "lightgreen",
     color: "green",
   };
-  const onEachState=(state,layer)=>{
+  const onEachState = (state, layer) => {
     console.log(state.properties.name);
-    if(state.properties.name==="Florida"){
-
+    if (state.properties.name === "Florida") {
+      
     }
     layer.bindPopup(state.properties.name);
     layer.on({
-      click:(event)=>{
+      click: (event) => {
         event.target.setStyle({
-          color:'red',
-          fillColor:'red',
-          opacity:'2.0',
-        })
-      },mouseout:(event)=>{
+          color: "red",
+          fillColor: "red",
+          opacity: "2.0",
+        });
+      },
+      mouseout: (event) => {
         event.target.setStyle({
-          color:'green',
-          fillColor:'lightgreen'
-        })
-      },mouseover:(event)=>{
+          color: "green",
+          fillColor: "lightgreen",
+        });
+      },
+      mouseover: (event) => {
         event.target.setStyle({
-          color:'red',
-          fillColor:'red',
-          opacity:'2.0',
-        }
-        )
+          color: "red",
+          fillColor: "red",
+          opacity: "2.0",
+        });
         layer.openPopup();
-      }
-    })
-  }
+      },
+    });
+  };
 
   return (
     <div>
@@ -65,13 +66,16 @@ const Home = (props) => {
           zoom={5}
           scrollWheelZoom={false}
         >
-<<<<<<< HEAD
-          <h1 style={{ textAlign: "center" }}>H.R. 3863</h1>
-          <GeoJSON style={state_style} data={USMap.features} onEachFeature={onEachState}/>
-=======
-          <h1 style={{ textAlign: "center", fontSize:"50px", fontFamily:"Patrick Hand SC"}}>Select a State</h1>
-          <GeoJSON style={state_style} data={USMap.features} />
->>>>>>> a95fed9fb7adcd38e5ee7b45378c3cd353a7a5ac
+          <h1
+            style={{
+              textAlign: "center",
+              fontSize: "50px",
+              fontFamily: "Patrick Hand SC",
+            }}
+          >
+            Select a State
+          </h1>
+          <GeoJSON onEachFeature={onEachState} style={state_style} data={USMap.features} />
         </MapContainer>
       </div>
     </div>
