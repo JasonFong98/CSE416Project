@@ -3,10 +3,8 @@ import { Container, Navbar } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { MapContainer, GeoJSON } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-
-import USMap from "./geojson_data/us-states.json";
-
 import "./home.css";
+import USMap from "./geojson_data/us-states.json";
 
 const Home = (props) => {
   let state_style = {
@@ -14,6 +12,36 @@ const Home = (props) => {
     fillColor: "lightgreen",
     color: "green",
   };
+  const onEachState=(state,layer)=>{
+    console.log(state.properties.name);
+    if(state.properties.name==="Florida"){
+
+    }
+    layer.bindPopup(state.properties.name);
+    layer.on({
+      click:(event)=>{
+        event.target.setStyle({
+          color:'red',
+          fillColor:'red',
+          opacity:'2.0',
+        })
+      },mouseout:(event)=>{
+        event.target.setStyle({
+          color:'green',
+          fillColor:'lightgreen'
+        })
+      },mouseover:(event)=>{
+        event.target.setStyle({
+          color:'red',
+          fillColor:'red',
+          opacity:'2.0',
+        }
+        )
+        layer.openPopup();
+      }
+    })
+  }
+
   return (
     <div>
       <Navbar bg="dark" variant="dark" expand="lg">
@@ -33,12 +61,12 @@ const Home = (props) => {
       >
         <MapContainer
           style={{ height: "93.5vh" }}
-          center={[35, -100]}
-          zoom={4}
+          center={[38, -100]}
+          zoom={5}
           scrollWheelZoom={false}
         >
           <h1 style={{ textAlign: "center" }}>H.R. 3863</h1>
-          <GeoJSON style={state_style} data={USMap.features} />
+          <GeoJSON style={state_style} data={USMap.features} onEachFeature={onEachState}/>
         </MapContainer>
       </div>
     </div>
