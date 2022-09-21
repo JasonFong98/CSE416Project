@@ -2,69 +2,12 @@ import React, {useState} from "react";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { MapContainer, GeoJSON } from "react-leaflet";
+import { MapContainer, GeoJSON,useMap } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import "./home.css";
 import USMap from "./geojson_data/us-states.json";
 
 const Home = (props) => {
-  let chosen_states = ["Florida", "Ohio", "North Carolina"];
-  let state_style = {
-    weight: 0.8,
-    fillColor: "lightgreen",
-    color: "green",
-  };
-  const onEachState = (state, layer) => {
-    console.log(state.properties.name);
-    if (chosen_states.includes(state.properties.name)) {
-      layer.setStyle({
-        color: "yellow",
-        fillColor: "yellow",
-        fillOpacity: "0.8",
-      });
-    }
-    layer.bindPopup(state.properties.name);
-    layer.on({
-      click: (event) => {
-        event.target.setStyle({
-          color: "darkgreen",
-          fillColor: "darkgreen",
-          opacity: "2.0",
-        });
-      },
-      mouseout: (event) => {
-        if (chosen_states.includes(state.properties.name)) {
-          event.target.setStyle({
-            color: "yellow",
-            fillColor: "yellow",
-            fillOpacity: "4.0",
-          });
-        } else {
-          event.target.setStyle({
-            color: "green",
-            fillColor: "lightgreen",
-          });
-        }
-        layer.closePopup();
-      },
-      mouseover: (event) => {
-        event.target.setStyle({
-          color: "yellow",
-          fillColor: "yellow",
-          opacity: "2.0",
-        });
-
-        event.target.setStyle({
-          color: "darkgreen",
-          fillColor: "darkgreen",
-          opacity: "2.0",
-        });
-
-        layer.openPopup();
-      },
-    });
-  };
-
   return (
     <div>
       <div
@@ -119,9 +62,9 @@ const Home = (props) => {
           style={{ height: "93.5vh" }}
           center={[40, -95]}
           zoom={4}
-          zoomSnap={4.5}
+          // zoomSnap={4.5}
           scrollWheelZoom={false}
-          zoomControl={false}
+          // zoomControl={false}
         >
           <h1
             style={{
@@ -135,15 +78,72 @@ const Home = (props) => {
           >
             Select a State
           </h1>
-          <GeoJSON
-            onEachFeature={onEachState}
-            style={state_style}
-            data={USMap.features}
-          />
+          <HomeMap/>
         </MapContainer>
       </div>
     </div>
   );
 };
+
+const HomeMap=()=>{
+  const map=useMap();
+  let chosen_states = ["Florida", "Ohio", "North Carolina"];
+  let state_style = {
+    weight: 0.8,
+    fillColor: "lightgreen",
+    color: "green",
+  };
+  const onEachState = (state, layer) => {
+    console.log(state.properties.name);
+    if (chosen_states.includes(state.properties.name)) {
+      layer.setStyle({
+        color: "yellow",
+        fillColor: "yellow",
+        fillOpacity: "0.8",
+      });
+    }
+    layer.bindPopup(state.properties.name);
+    layer.on({
+      click: (event) => {
+        map.fitBounds(event.target.getBounds())
+      },
+      mouseout: (event) => {
+        if (chosen_states.includes(state.properties.name)) {
+          event.target.setStyle({
+            color: "yellow",
+            fillColor: "yellow",
+            fillOpacity: "4.0",
+          });
+        } else {
+          event.target.setStyle({
+            color: "green",
+            fillColor: "lightgreen",
+          });
+        }
+        layer.closePopup();
+      },
+      mouseover: (event) => {
+        event.target.setStyle({
+          color: "yellow",
+          fillColor: "yellow",
+          opacity: "2.0",
+        });
+
+        event.target.setStyle({
+          color: "darkgreen",
+          fillColor: "darkgreen",
+          opacity: "2.0",
+        });
+
+        layer.openPopup();
+      },
+    });
+  };
+  return (<GeoJSON
+    onEachFeature={onEachState}
+    style={state_style}
+    data={USMap.features}
+  />);
+}
 
 export default Home;
