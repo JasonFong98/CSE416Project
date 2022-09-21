@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState,useRef,useEffect} from "react";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -6,6 +6,8 @@ import { MapContainer, GeoJSON,useMap } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import "./home.css";
 import USMap from "./geojson_data/us-states.json";
+import Florida from "./geojson_data/P000C0109.json";
+import Ohio from "./geojson_data/oh_cong_adopted_2022.json";
 
 const Home = (props) => {
   return (
@@ -86,6 +88,7 @@ const Home = (props) => {
 };
 
 const HomeMap=()=>{
+  const [features,setFeatures]=useState(USMap.features);
   const map=useMap();
   let chosen_states = ["Florida", "Ohio", "North Carolina"];
   let state_style = {
@@ -105,6 +108,13 @@ const HomeMap=()=>{
     layer.bindPopup(state.properties.name);
     layer.on({
       click: (event) => {
+        if (state.properties.name === "Florida") {
+          setFeatures(Florida.features);
+        }
+
+        if (state.properties.name === "Ohio") {
+            setFeatures(Ohio.features);
+        }
         map.fitBounds(event.target.getBounds())
       },
       mouseout: (event) => {
@@ -139,10 +149,18 @@ const HomeMap=()=>{
       },
     });
   };
+  const geoJsonLayer = useRef();
+
+  useEffect(() => {
+    if (geoJsonLayer.current) {
+      geoJsonLayer.current.clearLayers().addData(features);
+    }
+  }, [geoJsonLayer, features]);
   return (<GeoJSON
+    ref={geoJsonLayer}
     onEachFeature={onEachState}
     style={state_style}
-    data={USMap.features}
+    data={features}
   />);
 }
 
