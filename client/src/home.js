@@ -1,6 +1,8 @@
 import React from "react";
 import { Container,Nav,Navbar,NavDropdown } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
+import USAMap from "react-usa-map";
+import './home.css';
 
 const Home = (props) => {
   return (
@@ -13,6 +15,8 @@ const Home = (props) => {
           </Navbar.Collapse>
         </Container>
       </Navbar>
+
+      <USAMap/>
     </div>
   );
 };
