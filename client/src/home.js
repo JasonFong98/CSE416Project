@@ -66,7 +66,6 @@ const Home = (props) => {
           style={{ height: "93.5vh" }}
           center={[40, -95]}
           zoom={4}
-          zoomSnap={4.5}
           scrollWheelZoom={false}
           zoomControl={false}
         >
