@@ -13,7 +13,6 @@ const NorthCarolina = (props) => {
           backgroundColor: "#E8F4F8",
         }}><h1 style={{
           fontSize: "60px",
-          fontFamily: "Patrick Hand SC",
           letterSpacing: "1.5px",
         }}>North Carolina</h1></div>
       <div style={{

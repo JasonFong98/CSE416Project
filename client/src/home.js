@@ -77,12 +77,11 @@ const Home = (props) => {
               left: "34%",
               top: "15%",
               fontSize: "45px",
-              fontFamily: "Patrick Hand SC",
+              fontFamily: "Sans-Serif",
               letterSpacing: "1.5px",
             }}
           >
-
-            
+              Select a State
           </h1>
           <Map handleClick={handleClick} state={"home"}/>
         </MapContainer>
