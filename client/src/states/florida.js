@@ -3,6 +3,7 @@ import Map from "./../Map.js";
 import { MapContainer } from "react-leaflet";
 import CottageIcon from "@mui/icons-material/Cottage";
 import Button from "@mui/material/Button";
+import VerticalTabs from "./../verticalTabs";
 
 const Florida = (props) => {
   const handleHome = () => {
@@ -38,6 +39,7 @@ const Florida = (props) => {
         >
           Florida
         </h1>
+        <VerticalTabs/>
       </div>
       <div
         style={{
