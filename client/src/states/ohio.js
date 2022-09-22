@@ -71,10 +71,11 @@ const Ohio = (props) => {
 
           <ToggleButtonGroup
             orientation="vertical"
+            color="primary"
             value={view}
             exclusive
             onChange={handleChange}
-            style={{position:"absolute", right:"2%", top:"40%", boxShadow:"2px 2px 2px 0px"}}
+            style={{position:"absolute", right:"2%", top:"40%", boxShadow:"2px 2px 2px 0px", backgroundColor:"white"}}
           >
             <ToggleButton value="smd"><b>Single Member District</b></ToggleButton>
             <ToggleButton value="mmd"><b>Multi Member District</b></ToggleButton>
