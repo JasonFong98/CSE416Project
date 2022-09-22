@@ -85,7 +85,7 @@ export default function VerticalTabs() {
       <h4 style={{paddingTop:"10%"}}>Get voter registration and past election data to find out what percentage of the state is Democratic/Republican.<br></br> The number of Republican/Democratic seats should be proportional to the data</h4>
       </TabPanel>
       <TabPanel value={value} index={3}>
-        <img src={ohio_population} style={{maxWidth:'700px'}} />
+        <img src={ohio_population} style={{maxWidth:'600px'}} />
       </TabPanel>
       <TabPanel value={value} index={4}>
         <h4>MMD</h4>
