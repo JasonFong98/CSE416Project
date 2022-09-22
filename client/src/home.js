@@ -5,7 +5,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { MapContainer, GeoJSON, useMap } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import "./home.css";
-
 import Map from "./Map.js";
 
 const Home = (props) => {
@@ -67,7 +66,7 @@ const Home = (props) => {
           style={{ height: "93.5vh" }}
           center={[40, -95]}
           zoom={4}
-          // zoomSnap={4.5}
+          zoomSnap={4.5}
           scrollWheelZoom={false}
           zoomControl={false}
         >

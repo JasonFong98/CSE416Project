@@ -11,6 +11,11 @@ const App = (props) =>{
     const handleClick=(state)=>{
         setState(state);
     }
+
+    const handleHome = () =>{
+        setState("home");
+    }
+
     const [state, setState] = useState("home");
     const [map,setMap]=useState(null);
     let render;
@@ -19,11 +24,11 @@ const App = (props) =>{
                 <Home handleClick = {handleClick} state={state}/>
             </div> ;
     }else if(state === "Florida"){
-       render=<div><Florida/></div>;
+       render=<div><Florida handleHome={handleHome} /></div>;
     }else if(state === "Ohio"){
-        render=<div><Ohio /></div>;
+        render=<div><Ohio handleHome = {handleHome}/></div>;
     }else if(state === "North Carolina"){
-        render=<div><NorthCarolina /></div>;
+        render=<div><NorthCarolina handleHome = {handleHome} state={state}/></div>;
     }
     return(<div>
         {render}

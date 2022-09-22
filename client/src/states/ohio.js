@@ -1,8 +1,14 @@
 import React, { useState } from "react";
 import Map from "./../Map.js";
 import { MapContainer } from "react-leaflet";
+import CottageIcon from "@mui/icons-material/Cottage";
+import Button from "@mui/material/Button";
 
 const Ohio = (props) => {
+  const handleHome = () => {
+    props.handleHome("home");
+  };
+
   return (
     <div>
       <div
@@ -14,10 +20,21 @@ const Ohio = (props) => {
           backgroundColor: "#E8F4F8",
         }}
       >
+        <Button
+          onClick={handleHome}
+          variant="contained"
+          style={{ position: "relative", left: "1%" }}
+        >
+          <CottageIcon />
+        </Button>
         <h1
           style={{
-            fontSize: "60px",
-            letterSpacing: "1.5px",
+            position: "relative",
+            left: "2%",
+            top: "1%",
+            display: "inline-block",
+            fontSize: "35px",
+            letterSpacing: " 4px",
           }}
         >
           Ohio
@@ -34,9 +51,8 @@ const Ohio = (props) => {
       >
         <MapContainer
           style={{ height: "93.5vh" }}
-          center={[40.5, -83.5]}
+          center={[40.5, -82.5]}
           zoom={7}
-          zoomSnap={7.5}
           scrollWheelZoom={false}
           zoomControl={false}
         >
