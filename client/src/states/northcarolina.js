@@ -11,7 +11,11 @@ const NorthCarolina = (props) => {
           position: "fixed",
           left: 0,
           backgroundColor: "#E8F4F8",
-        }}></div>
+        }}><h1 style={{
+          fontSize: "60px",
+          fontFamily: "Patrick Hand SC",
+          letterSpacing: "1.5px",
+        }}>North Carolina</h1></div>
       <div style={{
           width: "55%",
           height: "100%",
@@ -19,23 +23,16 @@ const NorthCarolina = (props) => {
           position: "fixed",
           backgroundColor: "#E8F4F8",
         }}>
-        <h1 style={{
-              position: "relative",
-              left: "34%",
-              top: "15%",
-              fontSize: "45px",
-              fontFamily: "Patrick Hand SC",
-              letterSpacing: "1.5px",
-            }}>North Carolina</h1>
+        
         <MapContainer
           style={{ height: "93.5vh" }}
-          center={[28, -88]}
-          zoom={8}
+          center={[35, -80]}
+          zoom={7}
           // zoomSnap={4.5}
           scrollWheelZoom={false}
           zoomControl={false}
-        >
-          <Map state={"Florida"} />
+        >  
+          <Map state={"North Carolina"} />
         </MapContainer>
       </div>
     </div>
