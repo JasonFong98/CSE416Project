@@ -4,6 +4,7 @@ import Home from './home';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import App from './app.js';
 
 
 const root= ReactDOM.createRoot(
@@ -12,9 +13,9 @@ const root= ReactDOM.createRoot(
 
 root.render(
   <BrowserRouter>
-    <Home/>
+    <App/>
     <Routes>
-      <Route path="/" exact component={<Home/>}/>
+      <Route path="/" exact component={<App/>}/>
     </Routes>
   </BrowserRouter>
 );
