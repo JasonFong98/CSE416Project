@@ -28,7 +28,7 @@ const App = (props) =>{
     }else if(state === "Ohio"){
         render=<div><Ohio handleHome = {handleHome}/></div>;
     }else if(state === "North Carolina"){
-        render=<div><NorthCarolina handleHome = {handleHome} state={state}/></div>;
+        render=<div><NorthCarolina handleHome = {handleHome}/></div>;
     }
     return(<div>
         {render}
