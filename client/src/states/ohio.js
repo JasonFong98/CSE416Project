@@ -12,7 +12,7 @@ const Ohio = (props) => {
     props.handleHome("home");
   };
 
-  const [view, setView] = React.useState("list");
+  const [view, setView] = React.useState("smd");
 
   const handleChange = (event, nextView) => {
     setView(nextView);
@@ -77,7 +77,7 @@ const Ohio = (props) => {
             onChange={handleChange}
             style={{position:"absolute", right:"2%", top:"40%", boxShadow:"2px 2px 2px 0px", backgroundColor:"white"}}
           >
-            <ToggleButton value="smd"><b>Single Member District</b></ToggleButton>
+            <ToggleButton value="smd" ><b>Single Member District</b></ToggleButton>
             <ToggleButton value="mmd"><b>Multi Member District</b></ToggleButton>
           </ToggleButtonGroup>
         </MapContainer>
