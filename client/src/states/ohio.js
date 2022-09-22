@@ -4,17 +4,25 @@ import { MapContainer } from "react-leaflet";
 import CottageIcon from "@mui/icons-material/Cottage";
 import Button from "@mui/material/Button";
 import VerticalTabs from "./../verticalTabs";
+import ToggleButton from "@mui/material/ToggleButton";
+import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 
 const Ohio = (props) => {
   const handleHome = () => {
     props.handleHome("home");
   };
 
+  const [view, setView] = React.useState("list");
+
+  const handleChange = (event, nextView) => {
+    setView(nextView);
+  };
+
   return (
     <div>
       <div
         style={{
-          width: "45%",
+          width: "50%",
           height: "100%",
           position: "fixed",
           left: 0,
@@ -41,11 +49,11 @@ const Ohio = (props) => {
           Ohio
         </h1>
 
-          <VerticalTabs/>
+        <VerticalTabs />
       </div>
       <div
         style={{
-          width: "55%",
+          width: "50%",
           height: "100%",
           right: 0,
           position: "fixed",
@@ -60,6 +68,17 @@ const Ohio = (props) => {
           zoomControl={false}
         >
           <Map state={"Ohio"} />
+
+          <ToggleButtonGroup
+            orientation="vertical"
+            value={view}
+            exclusive
+            onChange={handleChange}
+            style={{position:"absolute", right:"2%", top:"40%", boxShadow:"2px 2px 2px 0px"}}
+          >
+            <ToggleButton value="smd"><b>Single Member District</b></ToggleButton>
+            <ToggleButton value="mmd"><b>Multi Member District</b></ToggleButton>
+          </ToggleButtonGroup>
         </MapContainer>
       </div>
     </div>

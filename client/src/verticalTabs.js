@@ -4,6 +4,12 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
+import box_whisker from './imgs/box-whisker.png'
+import ohio_split from './imgs/ohio-split.png'
+import ohio_population from './imgs/ohio-population.png'
+import compactness from './imgs/compactness-example.png'
+import compactness2 from './imgs/compactness-example2.png'
+import Table from './Table'
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -59,34 +65,35 @@ export default function VerticalTabs() {
         sx={{ borderRight: 1, borderColor: 'divider' }}
         
       >
-        <Tab  label="This is something about politics" {...a11yProps(0)} />
-        <Tab  label="Item Two" {...a11yProps(1)} />
-        <Tab  label="Item Three" {...a11yProps(2)} />
-        <Tab  label="Item Four" {...a11yProps(3)} />
-        <Tab  label="Item Five" {...a11yProps(4)} />
-        <Tab  label="Item Six" {...a11yProps(5)} />
-        <Tab  label="Item Seven" {...a11yProps(6)} />
+        <Tab  label="General Information" {...a11yProps(0)} />
+        <Tab  label="Racial Fairness" {...a11yProps(1)} />
+        <Tab  label="Political Fairness" {...a11yProps(2)} />
+        <Tab  label="Population Equality" {...a11yProps(3)} />
+        <Tab  label="Compactness Measure" {...a11yProps(4)} />
       </Tabs>
       <TabPanel  value={value} index={0}>
-        Item One
+        <Table/>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Item Two
+      <img src={box_whisker} />
+      <h4 style={{paddingTop: "10%"}}>SMD:<br></br>Number of Majority-Minority Districts: 2<br></br>Wasted Minority Votes: 20%</h4>
+      <br></br>
+      <h4>MMD:<br></br>Number of Majority-Minority Districts: 5<br></br>Wasted Minority Votes: 10%</h4>
       </TabPanel>
       <TabPanel value={value} index={2}>
-        Item Three
+      <img src={ohio_split} style={{width:'500px'}}/>
+      <h4 style={{paddingTop:"10%"}}>Get voter registration and past election data to find out what percentage of the state is Democratic/Republican.<br></br> The number of Republican/Democratic seats should be proportional to the data</h4>
       </TabPanel>
       <TabPanel value={value} index={3}>
-        Item Four
+        <img src={ohio_population} style={{maxWidth:'700px'}} />
       </TabPanel>
       <TabPanel value={value} index={4}>
-        Item Five
-      </TabPanel>
-      <TabPanel value={value} index={5}>
-        Item Six
-      </TabPanel>
-      <TabPanel value={value} index={6}>
-        Item Seven
+        <h4>MMD</h4>
+        <img src={compactness}/>
+        <br></br>
+        <br></br>
+        <h4>SMD</h4>
+        <img src={compactness2}/>
       </TabPanel>
     </Box>
   );
