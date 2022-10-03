@@ -1,3 +1,4 @@
+import axios from 'axios';
 import USMap from "./geojson_data/us-states.json";
 import Florida from "./geojson_data/P000C0109.json";
 import Ohio from "./geojson_data/oh_cong_adopted_2022.json";
@@ -9,12 +10,17 @@ import "leaflet/dist/leaflet.css";
 const Map=(props)=>{
     const dict={"home":USMap.features,"Florida":Florida.features,"Ohio":Ohio.features, "North Carolina":NorthCarolina.features};
     const keys=Object.keys(dict);
-    const [features,setFeatures]=useState(dict[props.state]);
+    //const [features,setFeatures]=useState(dict[props.state]);
     // }else if(props.state==="Florida"){
     //     setFeatures(Florida.features);
     // }else if(props.state==="Ohio"){
     //     setFeatures(Ohio.features);
     // }
+
+    axios.get(`http://localhost:8080/${props.state}`).then(res => {
+      const [features,setFeatures] = useState(res.data);
+    });
+
     const map=useMap();
     let state_style = {
       weight: 0.8,
