@@ -1,4 +1,4 @@
-import axios from 'axios';
+import api from "./apis";
 import USMap from "./geojson_data/us-states.json";
 import Florida from "./geojson_data/P000C0109.json";
 import Ohio from "./geojson_data/oh_cong_adopted_2022.json";
@@ -8,8 +8,8 @@ import { GeoJSON,useMap } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 
 const Map=(props)=>{
-    const dict={"home":USMap.features,"Florida":Florida.features,"Ohio":Ohio.features, "North Carolina":NorthCarolina.features};
-    const keys=Object.keys(dict);
+    // const dict={"home":USMap.features,"Florida":Florida.features,"Ohio":Ohio.features, "North Carolina":NorthCarolina.features};
+    // const keys=Object.keys(dict);
     //const [features,setFeatures]=useState(dict[props.state]);
     // }else if(props.state==="Florida"){
     //     setFeatures(Florida.features);
@@ -17,9 +17,9 @@ const Map=(props)=>{
     //     setFeatures(Ohio.features);
     // }
 
-    axios.get(`http://localhost:8080/${props.state}`).then(res => {
-      const [features,setFeatures] = useState(res.data);
-    });
+    const response = await api.getStateDistrictPlan(props.state);
+    const [features,setFeatures] = useState(response.data);
+   
 
     const map=useMap();
     let state_style = {
