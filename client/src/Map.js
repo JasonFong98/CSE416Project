@@ -8,8 +8,8 @@ import { GeoJSON,useMap } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 
 const Map=(props)=>{
-    // const dict={"home":USMap.features,"Florida":Florida.features,"Ohio":Ohio.features, "North Carolina":NorthCarolina.features};
-    // const keys=Object.keys(dict);
+    const dict={"home":USMap.features,"Florida":Florida.features,"Ohio":Ohio.features, "North Carolina":NorthCarolina.features};
+    const keys=Object.keys(dict);
     //const [features,setFeatures]=useState(dict[props.state]);
     // }else if(props.state==="Florida"){
     //     setFeatures(Florida.features);
@@ -17,9 +17,13 @@ const Map=(props)=>{
     //     setFeatures(Ohio.features);
     // }
 
-    const response = await api.getStateDistrictPlan(props.state);
-    const [features,setFeatures] = useState(response.data);
-   
+    async function updateState(state){
+      const response = await api.getStateDistrictPlan(state);
+      setFeatures(response.data);
+    }
+
+    const [features,setFeatures] = useState("home");
+    updateState(props.state);
 
     const map=useMap();
     let state_style = {
@@ -40,7 +44,8 @@ const Map=(props)=>{
       layer.on({
         click: (event) => {
           if(keys.includes(state.properties.name)){
-            setFeatures(dict[state.properties.name]);
+            updateState(state.properties.name);
+
             map.fitBounds(event.target.getBounds())
             props.handleClick(state.properties.name);
           }

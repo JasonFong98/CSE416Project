@@ -43,6 +43,14 @@ public class StateMap {
             }catch(IOException e){
                 System.out.print(e);
             }
+        }else if(state.equals("home")){
+            try{
+                File home_map=ResourceUtils.getFile("classpath:us-states.json");
+                Map<String,Object> map_data=mapper.readValue(home_map,new TypeReference<Map<String,Object>>(){});
+                return map_data;
+            }catch(IOException e){
+                System.out.print(e);
+            }
         }
         return null;
     }
