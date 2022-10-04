@@ -5,7 +5,7 @@ const api = axios.create({
 })
 
 
-export const getStateDistrictPlan = (name) => api.get(`${name}`);
+export const getStateDistrictPlan = async (name) => await api.get(`${name}`);
 
 
 const apis = {

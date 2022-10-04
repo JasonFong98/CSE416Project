@@ -16,14 +16,14 @@ const Map=(props)=>{
     // }else if(props.state==="Ohio"){
     //     setFeatures(Ohio.features);
     // }
+    
+    const [features,setFeatures] = useState(USMap.features);
 
     async function updateState(state){
       const response = await api.getStateDistrictPlan(state);
-      setFeatures(response.data);
+      const data=await response.data;
+      setFeatures(data);
     }
-
-    const [features,setFeatures] = useState("home");
-    updateState(props.state);
 
     const map=useMap();
     let state_style = {
@@ -89,6 +89,9 @@ const Map=(props)=>{
         geoJsonLayer.current.clearLayers().addData(features);
       }
     }, [geoJsonLayer, features]);
+    
+    console.log(features);
+
     return (<GeoJSON
       ref={geoJsonLayer}
       onEachFeature={onEachState}
