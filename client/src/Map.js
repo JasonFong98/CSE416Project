@@ -17,7 +17,7 @@ const Map=(props)=>{
     //     setFeatures(Ohio.features);
     // }
     
-    const [features,setFeatures] = useState(USMap.features);
+    const [features,setFeatures] = useState(dict[props.state]);
 
     async function updateState(state){
       const response = await api.getStateDistrictPlan(state);
