@@ -20,13 +20,12 @@ const Map=(props)=>{
 
 
     const [features,setFeatures] = useState(null);
-    console.log(features);
 
-    async function updateState(state){
-      const response = await api.getStateDistrictPlan(state);
-      const data=await response.data;
-      setFeatures(data);
-    }
+    // function updateState(state){
+    //   api.getStateDistrictPlan(state).then((res)=>{
+    //     setFeatures(res.data.features);
+    //   })
+    // }
 
     const map=useMap();
     let state_style = {
@@ -47,10 +46,9 @@ const Map=(props)=>{
       layer.on({
         click: (event) => {
           if(states.includes(state.properties.name)){
-            updateState(state.properties.name);
+            props.handleClick(state.properties.name);
 
             map.fitBounds(event.target.getBounds())
-            props.handleClick(state.properties.name);
           }
         },
         mouseout: (event) => {
@@ -92,6 +90,7 @@ const Map=(props)=>{
       if(features===null){
         api.getStateDistrictPlan(props.state).then((res)=>{
           geoJsonLayer.current.clearLayers().addData(res.data.features);
+          setFeatures(res.data.features);
         });
       }
       else if (geoJsonLayer.current) {
