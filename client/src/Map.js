@@ -17,7 +17,8 @@ const Map=(props)=>{
     //     setFeatures(Ohio.features);
     // }
     
-    const [features,setFeatures] = useState(dict[props.state]);
+    const [features,setFeatures] = useState(null);
+    console.log(features);
 
     async function updateState(state){
       const response = await api.getStateDistrictPlan(state);
@@ -85,12 +86,16 @@ const Map=(props)=>{
     const geoJsonLayer = useRef();
   
     useEffect(() => {
-      if (geoJsonLayer.current) {
+      console.log(features);
+      if(features===null){
+        api.getStateDistrictPlan(props.state).then((res)=>{
+          geoJsonLayer.current.clearLayers().addData(res.data.features);
+        });
+      }
+      else if (geoJsonLayer.current) {
         geoJsonLayer.current.clearLayers().addData(features);
       }
     }, [geoJsonLayer, features]);
-    
-    console.log(features);
 
     return (<GeoJSON
       ref={geoJsonLayer}
