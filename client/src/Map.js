@@ -8,15 +8,17 @@ import { GeoJSON,useMap } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 
 const Map=(props)=>{
-    const dict={"home":USMap.features,"Florida":Florida.features,"Ohio":Ohio.features, "North Carolina":NorthCarolina.features};
-    const keys=Object.keys(dict);
+    const states=["home","Florida","Ohio","North Carolina"];
+    // const dict={"home":USMap.features,"Florida":Florida.features,"Ohio":Ohio.features, "North Carolina":NorthCarolina.features};
+    // const keys=Object.keys(dict);
     //const [features,setFeatures]=useState(dict[props.state]);
     // }else if(props.state==="Florida"){
     //     setFeatures(Florida.features);
     // }else if(props.state==="Ohio"){
     //     setFeatures(Ohio.features);
     // }
-    
+
+
     const [features,setFeatures] = useState(null);
     console.log(features);
 
@@ -34,7 +36,7 @@ const Map=(props)=>{
     };
     const onEachState = (state, layer) => {
       console.log(state.properties.name);
-      if (keys.includes(state.properties.name)) {
+      if (states.includes(state.properties.name)) {
         layer.setStyle({
           color: "yellow",
           fillColor: "yellow",
@@ -44,7 +46,7 @@ const Map=(props)=>{
       layer.bindPopup(state.properties.name);
       layer.on({
         click: (event) => {
-          if(keys.includes(state.properties.name)){
+          if(states.includes(state.properties.name)){
             updateState(state.properties.name);
 
             map.fitBounds(event.target.getBounds())
@@ -52,7 +54,7 @@ const Map=(props)=>{
           }
         },
         mouseout: (event) => {
-          if (keys.includes(state.properties.name)) {
+          if (states.includes(state.properties.name)) {
             event.target.setStyle({
               color: "yellow",
               fillColor: "yellow",
