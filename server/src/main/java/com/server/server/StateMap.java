@@ -45,7 +45,7 @@ public class StateMap {
             }
         }else if(state.equals("home")){
             try{
-                File home_map=ResourceUtils.getFile("classpath:us-states.json");
+                File home_map=ResourceUtils.getFile("classpath:tl_2022_us_state.json");
                 Map<String,Object> map_data=mapper.readValue(home_map,new TypeReference<Map<String,Object>>(){});
                 return map_data;
             }catch(IOException e){
