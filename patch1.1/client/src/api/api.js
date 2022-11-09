@@ -5,7 +5,7 @@ const api = axios.create({
 });
 
 export const getUSMap = async () => await api.get("home");
-export const getStateMap = async (state) => await api.get(`${state}`);
+export const getStateMap = async (state) => await api.get(`/home/${state}`);
 
 const apis = { getUSMap, getStateMap };
 

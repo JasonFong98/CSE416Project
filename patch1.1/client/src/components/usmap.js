@@ -19,7 +19,7 @@ const USMap = () => {
 
   useEffect(() => {
     api.getUSMap().then((res) => {
-      geoJsonLayer.current.addData(res.data.features);
+      geoJsonLayer.current.addData(res.data);
     });
   }, []);
 
@@ -35,8 +35,11 @@ const USMap = () => {
     layer.on({
       click: (event) => {
         map.fitBounds(event.target.getBounds());
-        api.getStateMap(state.properties.NAME).then((res) => {
-          geoJsonLayer.current.addData(res.data.features);
+        api.getStateMap(state.properties.STUSPS).then((res) => {
+          console.log(res.data.stateEnsemble.currentDistrict);
+          geoJsonLayer.current.addData(
+            res.data.stateEnsemble.currentDistrict.features
+          );
         });
         navigate(`/home/${state.properties.NAME}`);
       },
