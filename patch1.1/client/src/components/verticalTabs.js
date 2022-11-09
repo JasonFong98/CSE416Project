@@ -31,6 +31,7 @@ function TabPanel(props) {
   );
 }
 
+
 TabPanel.propTypes = {
   children: PropTypes.node,
   index: PropTypes.number.isRequired,
@@ -67,7 +68,7 @@ export default function VerticalTabs() {
         variant="scrollable"
         value={value}
         onChange={handleChange}
-        aria-label="Vertical tabs example"
+        aria-label="Vertical tabs"
         sx={{ borderRight: 1, borderColor: "divider" }}
       >
         <Tab label="General Information" {...a11yProps(0)} />
@@ -98,7 +99,7 @@ export default function VerticalTabs() {
         <BarChart/>
         <h4 style={{ paddingTop: "10%" }}>
           Get voter registration and past election data to find out<br/> what
-          percentage of the state is Democratic/Republican.<br/> The number
+          percentage of the state is Democratic/Republican. The number
           of Republican/Democratic seats should be<br/> proportional to the data
         </h4>
       </TabPanel>
