@@ -11,7 +11,7 @@ const State = (props) => {
     <div>
       <div
         style={{
-          width: "50%",
+          width: "60%",
           height: "100%",
           position: "fixed",
           left: 0,
@@ -42,7 +42,7 @@ const State = (props) => {
       </div>
       <div
         style={{
-          width: "50%",
+          width: "40%",
           height: "100%",
           right: 0,
           position: "fixed",
