@@ -8,9 +8,16 @@ import MuiButton from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state';
+import { useNavigate } from "react-router-dom";
+import { popup } from "leaflet";
 
 
 const Home = () => {
+  const navigate = useNavigate();
+  const handleMenu = event => {
+    const stateName = event.currentTarget.textContent
+    navigate(`/home/${stateName}`);
+  }
   return (
     <div>
       <div
@@ -76,9 +83,9 @@ const Home = () => {
                   Select a state
               </MuiButton>
                 <Menu {...bindMenu(popupState)}>
-                  <MenuItem onClick={popupState.close}>Florida</MenuItem>
-                  <MenuItem onClick={popupState.close}>North Carolina</MenuItem>
-                  <MenuItem onClick={popupState.close}>Ohio</MenuItem>
+                  <MenuItem onClick={handleMenu}>Florida</MenuItem>
+                  <MenuItem onClick={handleMenu}>North Carolina</MenuItem>
+                  <MenuItem onClick={handleMenu}>Ohio</MenuItem>
                 </Menu>
               </React.Fragment>
             )}
