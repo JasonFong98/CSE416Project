@@ -115,7 +115,7 @@ export default function VerticalTabs() {
         <div
           style={{
             position: "absolute",
-            left: "69.5%",
+            left: "71%",
             top: "8%",
             width: "200px",
             padding: "5px",

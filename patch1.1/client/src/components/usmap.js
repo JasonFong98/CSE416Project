@@ -36,9 +36,9 @@ const USMap = () => {
       click: (event) => {
         map.fitBounds(event.target.getBounds());
         api.getStateMap(state.properties.STUSPS).then((res) => {
-          console.log(res.data.stateEnsemble.currentDistrict);
+          console.log(res.data.stateEnsemble.currentDistrictPlan.features);
           geoJsonLayer.current.addData(
-            res.data.stateEnsemble.currentDistrict.features
+            res.data.stateEnsemble.currentDistrictPlan.features
           );
         });
         navigate(`/home/${state.properties.NAME}`);
