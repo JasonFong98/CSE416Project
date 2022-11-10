@@ -26,7 +26,7 @@ function TabPanel(props) {
       {...other}
     >
       {value === index && (
-        <Box sx={{ paddingLeft: 10 }}>
+        <Box sx={{ paddingLeft: 6 }}>
           <Typography>{children}</Typography>
         </Box>
       )}
@@ -107,7 +107,6 @@ export default function VerticalTabs() {
         <div
           style={{
             position: "absolute",
-            left: "23%",
             top: "15%",
           }}
         >
