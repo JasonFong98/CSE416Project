@@ -25,9 +25,9 @@ const Home = () => {
         <Card
           style={{
             position: "relative",
-            width: "70%",
+            width: "75%",
             height: "60%",
-            left: "10%",
+            left: "25%",
             top: "20%",
           }}
         >

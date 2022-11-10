@@ -11,6 +11,7 @@ import Table from "./Table";
 import BoxAndWhiskers from "./graphs/boxAndWhiskers";
 import BarChart from "./graphs/barChart";
 
+
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -23,14 +24,13 @@ function TabPanel(props) {
       {...other}
     >
       {value === index && (
-        <Box sx={{ p: 7 }}>
+        <Box sx={{paddingLeft: 10}}>
           <Typography>{children}</Typography>
         </Box>
       )}
     </div>
   );
 }
-
 
 TabPanel.propTypes = {
   children: PropTypes.node,
@@ -44,6 +44,7 @@ function a11yProps(index) {
     "aria-controls": `vertical-tabpanel-${index}`,
   };
 }
+
 
 export default function VerticalTabs() {
   const [value, setValue] = React.useState(0);
@@ -63,7 +64,11 @@ export default function VerticalTabs() {
       }}
     >
       <Tabs
-        style={{ backgroundColor: "white", borderRadius: "10px" }}
+        style={{
+          backgroundColor: "white",
+          borderRadius: "10px",
+          textTransform: "none",
+        }}
         orientation="vertical"
         variant="scrollable"
         value={value}
@@ -83,7 +88,7 @@ export default function VerticalTabs() {
       </TabPanel>
 
       <TabPanel value={value} index={1}>
-        <BoxAndWhiskers/>
+        <BoxAndWhiskers style={{position:"relative", top:"0%"}}/>
         <h4 style={{ paddingTop: "10%" }}>
           SMD:<br></br>Number of Majority-Minority Districts: 2<br></br>Wasted
           Minority Votes: 20%
@@ -96,18 +101,19 @@ export default function VerticalTabs() {
       </TabPanel>
 
       <TabPanel value={value} index={2}>
-        <BarChart/>
+        <BarChart />
         <h4 style={{ paddingTop: "10%" }}>
-          Get voter registration and past election data to find out<br/> what
-          percentage of the state is Democratic/Republican. The number
-          of Republican/Democratic seats should be<br/> proportional to the data
+          Get voter registration and past election data to find out
+          <br /> what percentage of the state is Democratic/Republican. <br /><br />The
+          number of Republican/Democratic seats should be
+          <br /> proportional to the data
         </h4>
       </TabPanel>
 
       <TabPanel value={value} index={3}>
         <img src={ohio_population} style={{ maxWidth: "600px" }} />
       </TabPanel>
-      
+
       <TabPanel value={value} index={4}>
         <h4>MMD</h4>
         <img src={compactness} />
@@ -116,7 +122,6 @@ export default function VerticalTabs() {
         <h4>SMD</h4>
         <img src={compactness2} />
       </TabPanel>
-
     </Box>
   );
 }

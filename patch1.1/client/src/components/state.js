@@ -1,4 +1,5 @@
 import CottageIcon from "@mui/icons-material/Cottage";
+import RestartAltIcon from '@mui/icons-material/RestartAlt';
 import Button from "@mui/material/Button";
 import VerticalTabs from "../components/verticalTabs";
 import ToggleButton from "@mui/material/ToggleButton";
@@ -21,9 +22,20 @@ const State = (props) => {
         <Button
           // onClick={handleHome}
           variant="contained"
-          style={{ position: "relative", left: "1%" }}
+          style={{ position: "relative", left: "1%", width:"8%"}}
+          size="large"
         >
           <CottageIcon />
+        </Button>
+
+        <Button
+          // onClick={handleHome}
+          variant="contained"
+          style={{ position: "relative", left: "2%", width:"8%"}}
+          color="warning"
+          size="large"
+        >
+          <RestartAltIcon />
         </Button>
         <h1
           style={{

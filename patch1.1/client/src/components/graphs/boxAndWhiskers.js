@@ -1,7 +1,16 @@
-import React from "react";
+import React, {useState} from "react";
 import Chart from "react-apexcharts";
+import ToggleButton from "@mui/material/ToggleButton";
+import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 
-function boxAndWhiskers() {
+function BoxAndWhiskers() {
+  const [alignment, setAlignment] = React.useState("web");
+
+  const handleChange = (event, newAlignment) => {
+    setAlignment(newAlignment);
+  };
+
+
   let options = {
     series: [
       {
@@ -58,9 +67,27 @@ function boxAndWhiskers() {
 
   return (
     <div>
-      <Chart options={options.chart} series={options.series} type="boxPlot" width="600"/> 
+      <ToggleButtonGroup
+        style={{position:"relative", left:"67%", paddingBottom:"2%"}}
+        color="success"
+        value={alignment}
+        exclusive
+        onChange={handleChange}
+        size="medium"
+        aria-label="Platform"
+      >
+        <ToggleButton value="SMD"><b>SMD</b></ToggleButton>
+        <ToggleButton value="MMD"><b>MMD</b></ToggleButton>
+        <ToggleButton value="BOTH"><b>SMD & MMD</b></ToggleButton>
+      </ToggleButtonGroup>
+      <Chart
+        options={options.chart}
+        series={options.series}
+        type="boxPlot"
+        width="700"
+      />
     </div>
   );
 }
 
-export default boxAndWhiskers;
+export default BoxAndWhiskers;

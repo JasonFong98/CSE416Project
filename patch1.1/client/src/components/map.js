@@ -20,7 +20,7 @@ const Map = () => {
         style={{ height: "60vh" }}
         center={[35, -95]}
         zoom={4}
-        scrollWheelZoom={false}
+        autoPan={false}
         // zoomControl={false}
       >
         <USMap />
