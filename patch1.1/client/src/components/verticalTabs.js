@@ -92,7 +92,6 @@ export default function VerticalTabs() {
       </TabPanel>
 
       <TabPanel value={value} index={1}>
-        <BoxAndWhiskers style={{position:"relative", top:"0%"}}/>
         <div
         style={{
           position: "absolute",
