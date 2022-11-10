@@ -7,9 +7,12 @@ import Box from "@mui/material/Box";
 import ohio_population from "../imgs/ohio-population.png";
 import compactness from "../imgs/compactness-example.png";
 import compactness2 from "../imgs/compactness-example2.png";
-import Table from "./Table";
+import Table from "./tables/Table";
 import BoxAndWhiskers from "./graphs/boxAndWhiskers";
 import BarChart from "./graphs/barChart";
+import MMDSummaryTable from "./tables/MMDSummaryTable"
+import SMDSummaryTable from "./tables/SMDSummaryTable"
+import { borderRadius } from "@mui/system";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -30,7 +33,6 @@ function TabPanel(props) {
     </div>
   );
 }
-
 
 TabPanel.propTypes = {
   children: PropTypes.node,
@@ -68,14 +70,15 @@ export default function VerticalTabs() {
         variant="scrollable"
         value={value}
         onChange={handleChange}
-        aria-label="Vertical tabs"
+        aria-label="Vertical tabs example"
         sx={{ borderRight: 1, borderColor: "divider" }}
       >
         <Tab label="General Information" {...a11yProps(0)} />
-        <Tab label="Racial Fairness" {...a11yProps(1)} />
-        <Tab label="Political Fairness" {...a11yProps(2)} />
-        <Tab label="Population Equality" {...a11yProps(3)} />
-        <Tab label="Compactness Measure" {...a11yProps(4)} />
+        <Tab label="Ensemble Summary" {...a11yProps(1)} />
+        <Tab label="Racial Fairness" {...a11yProps(2)} />
+        <Tab label="Political Fairness" {...a11yProps(3)} />
+        <Tab label="Population Equality" {...a11yProps(4)} />
+        <Tab label="Compactness Measure" {...a11yProps(5)} />
       </Tabs>
 
       <TabPanel value={value} index={0}>
@@ -83,6 +86,47 @@ export default function VerticalTabs() {
       </TabPanel>
 
       <TabPanel value={value} index={1}>
+        <div
+        style={{
+          position: "absolute",
+          left: "31%",
+          top: "8%",
+          width: "200px",
+          padding: "5px",
+          backgroundColor: "#3482d8",
+          borderRadius: "15px"
+        }}>
+          SMD Ensemble Summary</div>
+        <div
+        style={{
+          position: "absolute",
+          left: "23%",
+          top: "15%"
+        }}>
+          <SMDSummaryTable />
+        </div>
+        <div
+          style={{
+            position: "absolute",
+            left: "69%",
+            top: "8%",
+            width: "200px",
+            padding: "5px",
+            backgroundColor: "#3482d8",
+            borderRadius: "15px"
+          }}>
+          MMD Ensemble Summary</div>
+        <div
+        style={{
+          position: "absolute",
+          left: "61%",
+          top: "15%"
+        }}>
+          <MMDSummaryTable />
+        </div>
+      </TabPanel>
+
+      <TabPanel value={value} index={2}>
         <BoxAndWhiskers/>
         <h4 style={{ paddingTop: "10%" }}>
           SMD:<br></br>Number of Majority-Minority Districts: 2<br></br>Wasted
@@ -95,20 +139,20 @@ export default function VerticalTabs() {
         </h4>
       </TabPanel>
 
-      <TabPanel value={value} index={2}>
+      <TabPanel value={value} index={3}>
         <BarChart/>
         <h4 style={{ paddingTop: "10%" }}>
           Get voter registration and past election data to find out<br/> what
-          percentage of the state is Democratic/Republican. The number
+          percentage of the state is Democratic/Republican.<br/> The number
           of Republican/Democratic seats should be<br/> proportional to the data
         </h4>
       </TabPanel>
 
-      <TabPanel value={value} index={3}>
+      <TabPanel value={value} index={4}>
         <img src={ohio_population} style={{ maxWidth: "600px" }} />
       </TabPanel>
       
-      <TabPanel value={value} index={4}>
+      <TabPanel value={value} index={5}>
         <h4>MMD</h4>
         <img src={compactness} />
         <br></br>
