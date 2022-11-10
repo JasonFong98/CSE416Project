@@ -10,10 +10,9 @@ import compactness2 from "../imgs/compactness-example2.png";
 import Table from "./tables/Table";
 import BoxAndWhiskers from "./graphs/boxAndWhiskers";
 import BarChart from "./graphs/barChart";
-import MMDSummaryTable from "./tables/MMDSummaryTable"
-import SMDSummaryTable from "./tables/SMDSummaryTable"
+import MMDSummaryTable from "./tables/MMDSummaryTable";
+import SMDSummaryTable from "./tables/SMDSummaryTable";
 import { borderRadius } from "@mui/system";
-
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -27,7 +26,7 @@ function TabPanel(props) {
       {...other}
     >
       {value === index && (
-        <Box sx={{paddingLeft: 10}}>
+        <Box sx={{ paddingLeft: 10 }}>
           <Typography>{children}</Typography>
         </Box>
       )}
@@ -47,7 +46,6 @@ function a11yProps(index) {
     "aria-controls": `vertical-tabpanel-${index}`,
   };
 }
-
 
 export default function VerticalTabs() {
   const [value, setValue] = React.useState(0);
@@ -77,14 +75,14 @@ export default function VerticalTabs() {
         value={value}
         onChange={handleChange}
         aria-label="Vertical tabs example"
-        sx={{ borderRight: 1, borderColor: "divider" }}
+        sx={{ borderRight: 1, borderColor: "divider"}}
       >
-        <Tab label="General Information" {...a11yProps(0)} />
-        <Tab label="Ensemble Summary" {...a11yProps(1)} />
-        <Tab label="Racial Fairness" {...a11yProps(2)} />
-        <Tab label="Political Fairness" {...a11yProps(3)} />
-        <Tab label="Population Equality" {...a11yProps(4)} />
-        <Tab label="Compactness Measure" {...a11yProps(5)} />
+        <Tab sx={{textTransform:"none", fontWeight:"bold"}} label="General Information" {...a11yProps(0)} />
+        <Tab sx={{textTransform:"none", fontWeight:"bold"}} label="Ensemble Summary" {...a11yProps(1)} />
+        <Tab sx={{textTransform:"none", fontWeight:"bold"}} label="Racial Fairness" {...a11yProps(2)} />
+        <Tab sx={{textTransform:"none", fontWeight:"bold"}} label="Political Fairness" {...a11yProps(3)} />
+        <Tab sx={{textTransform:"none", fontWeight:"bold"}} label="Population Equality" {...a11yProps(4)} />
+        <Tab sx={{textTransform:"none", fontWeight:"bold"}} label="Compactness Measure" {...a11yProps(5)} />
       </Tabs>
 
       <TabPanel value={value} index={0}>
@@ -93,47 +91,55 @@ export default function VerticalTabs() {
 
       <TabPanel value={value} index={1}>
         <div
-        style={{
-          position: "absolute",
-          left: "31%",
-          top: "8%",
-          width: "200px",
-          padding: "5px",
-          backgroundColor: "#3482d8",
-          borderRadius: "15px"
-        }}>
-          SMD Ensemble Summary</div>
+          style={{
+            position: "absolute",
+            left: "31.5%",
+            top: "8%",
+            width: "200px",
+            padding: "5px",
+            backgroundColor: "#3482d8",
+            borderRadius: "12px",
+            color:"#e8f4f8"
+          }}
+        >
+          SMD Ensemble Summary
+        </div>
         <div
-        style={{
-          position: "absolute",
-          left: "23%",
-          top: "15%"
-        }}>
+          style={{
+            position: "absolute",
+            left: "23%",
+            top: "15%",
+          }}
+        >
           <SMDSummaryTable />
         </div>
         <div
           style={{
             position: "absolute",
-            left: "69%",
+            left: "69.5%",
             top: "8%",
             width: "200px",
             padding: "5px",
             backgroundColor: "#3482d8",
-            borderRadius: "15px"
-          }}>
-          MMD Ensemble Summary</div>
+            borderRadius: "12px",
+            color:"#e8f4f8"
+          }}
+        >
+          MMD Ensemble Summary
+        </div>
         <div
-        style={{
-          position: "absolute",
-          left: "61%",
-          top: "15%"
-        }}>
+          style={{
+            position: "absolute",
+            left: "61%",
+            top: "15%",
+          }}
+        >
           <MMDSummaryTable />
         </div>
       </TabPanel>
 
       <TabPanel value={value} index={2}>
-        <BoxAndWhiskers/>
+        <BoxAndWhiskers />
         <h4 style={{ paddingTop: "10%" }}>
           SMD:<br></br>Number of Majority-Minority Districts: 2<br></br>Wasted
           Minority Votes: 20%
@@ -146,18 +152,19 @@ export default function VerticalTabs() {
       </TabPanel>
 
       <TabPanel value={value} index={3}>
-        <BarChart/>
+        <BarChart />
         <h4 style={{ paddingTop: "10%" }}>
-          Get voter registration and past election data to find out<br/> what
-          percentage of the state is Democratic/Republican.<br/> The number
-          of Republican/Democratic seats should be<br/> proportional to the data
+          Get voter registration and past election data to find out
+          <br /> what percentage of the state is Democratic/Republican.
+          <br /> The number of Republican/Democratic seats should be
+          <br /> proportional to the data
         </h4>
       </TabPanel>
 
       <TabPanel value={value} index={4}>
         <img src={ohio_population} style={{ maxWidth: "600px" }} />
       </TabPanel>
-      
+
       <TabPanel value={value} index={5}>
         <h4>MMD</h4>
         <img src={compactness} />

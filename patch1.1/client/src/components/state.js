@@ -22,7 +22,7 @@ const State = (props) => {
         <Button
           // onClick={handleHome}
           variant="contained"
-          style={{ position: "relative", left: "1%", width:"8%"}}
+          style={{ position: "relative", left: "1%", width:"7%"}}
           size="large"
         >
           <CottageIcon />
@@ -31,7 +31,7 @@ const State = (props) => {
         <Button
           // onClick={handleHome}
           variant="contained"
-          style={{ position: "relative", left: "2%", width:"8%"}}
+          style={{ position: "relative", left: "2%", width:"7%"}}
           color="warning"
           size="large"
         >
