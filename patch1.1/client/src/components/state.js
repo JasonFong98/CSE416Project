@@ -4,10 +4,14 @@ import Button from "@mui/material/Button";
 import VerticalTabs from "../components/verticalTabs";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
-
+import { useNavigate } from "react-router-dom";
 import Map from "./map";
 
 const State = (props) => {
+  const navigate = useNavigate();
+  function handleHome(){
+    navigate('/')
+  }
   return (
     <div>
       <div
@@ -20,7 +24,7 @@ const State = (props) => {
         }}
       >
         <Button
-          // onClick={handleHome}
+          onClick={handleHome}
           variant="contained"
           style={{ position: "relative", left: "1%", width:"7%"}}
           size="large"
