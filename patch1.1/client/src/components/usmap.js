@@ -23,7 +23,7 @@ const USMap = () => {
     color: "green",
   };
 
-  const handleMenu = (stateCode, name) => {
+  const handleMenu = (stateCode, name, popupState) => {
     navigate(`/home/${name}`);
     api.getStateMap(stateCode).then((res) => {
       geoJsonLayer.current.addData(
@@ -31,6 +31,7 @@ const USMap = () => {
       );
     });
     document.getElementById('state-menu').style.display="none";
+    popupState.close();
   }
 
   useEffect(() => {
@@ -103,9 +104,9 @@ const USMap = () => {
                     Select a state
                 </MuiButton>
                   <Menu {...bindMenu(popupState)}>
-                    <MenuItem onClick={() => handleMenu('FL', 'Florida')}>Florida</MenuItem>
-                    <MenuItem onClick={() => handleMenu('NC', 'North Carolina')}>North Carolina</MenuItem>
-                    <MenuItem onClick={() => handleMenu('OH', 'Ohio')}>Ohio</MenuItem>
+                    <MenuItem onClick={() => handleMenu('FL', 'Florida', popupState)}>Florida</MenuItem>
+                    <MenuItem onClick={() => handleMenu('NC', 'North Carolina', popupState)}>North Carolina</MenuItem>
+                    <MenuItem onClick={() => handleMenu('OH', 'Ohio', popupState)}>Ohio</MenuItem>
                   </Menu>
                 </React.Fragment>
               )}

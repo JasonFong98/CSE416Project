@@ -77,10 +77,9 @@ export default function VerticalTabs() {
         <Tab sx={{textTransform:"none", fontWeight:"bold"}} label="General Information" {...a11yProps(0)} />
         <Tab sx={{textTransform:"none", fontWeight:"bold"}} label="Ensemble Summary" {...a11yProps(1)} />
         <Tab sx={{textTransform:"none", fontWeight:"bold"}} label="Sample District Plans" {...a11yProps(2)} />
-        <Tab sx={{textTransform:"none", fontWeight:"bold"}} label="Racial Fairness" {...a11yProps(3)} />
-        <Tab sx={{textTransform:"none", fontWeight:"bold"}} label="Political Fairness" {...a11yProps(4)} />
+        <Tab sx={{textTransform:"none", fontWeight:"bold"}} label="Box & Whisker Plot" {...a11yProps(3)} />
+        <Tab sx={{textTransform:"none", fontWeight:"bold"}} label="Political Split" {...a11yProps(4)} />
         <Tab sx={{textTransform:"none", fontWeight:"bold"}} label="Population Equality" {...a11yProps(5)} />
-        <Tab sx={{textTransform:"none", fontWeight:"bold"}} label="Compactness Measure" {...a11yProps(6)} />
       </Tabs>
 
       <TabPanel value={value} index={0}>
@@ -133,14 +132,6 @@ export default function VerticalTabs() {
         <img src={ohio_population} style={{ maxWidth: "600px" }} />
       </TabPanel>
 
-      <TabPanel value={value} index={6}>
-        <h4>MMD</h4>
-        <img src={compactness} />
-        <br></br>
-        <br></br>
-        <h4>SMD</h4>
-        <img src={compactness2} />
-      </TabPanel>
     </Box>
   );
 }
