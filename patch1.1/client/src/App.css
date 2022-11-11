@@ -39,6 +39,7 @@
   position: absolute;
   left: 7%;  
   top: 2%;
+  z-index: 500;
 }
 
 #map-container {
@@ -66,11 +67,30 @@
   top: 15%;
 }
 
+#smd-summary-names{
+  padding:7%;
+  font-family:'Times New Roman', Times, serif;
+  font-size: 16px;
+  width:100%;
+}
+
+#smd-summary-data{
+ width:30%
+}
+
+#smd-summary-name{
+  width:50%;
+}
+
+#smd-summary-data, #smd-summary-name{
+  display: inline;
+}
+
+
 #mmd-summary {
   position: absolute;
   left: 70%;
   top: 10%;
-  width: 200px;
   padding: 5px;
   background-color: #3482d8;
   border-radius: 10px;
@@ -79,7 +99,7 @@
 
 #mmd-table {
   position: absolute;
-  left: 59%;
+  left: 58%;
   top: 15%;
 }
 
@@ -124,5 +144,22 @@
 
 #demo-card{
   padding-left: 2%;
-
+  font-family:'Times New Roman', Times, serif;
 }
+
+#demo-card-race{
+  padding-left:4%;
+  padding-top: 1%;
+  width:30%;
+}
+
+#demo-card-stats{
+  width: 34%;
+  text-align: right;
+  padding-right: 4%;
+}
+
+#demo-card-race, #demo-card-stats{
+  display: inline-block;
+}
+

@@ -9,8 +9,8 @@ import ohio_population from "../imgs/ohio-population.png";
 import Table from "./tables/Table";
 import BoxAndWhiskers from "./graphs/boxAndWhiskers";
 import BarChart from "./graphs/barChart";
-import MMDSummaryTable from "./tables/MMDSummaryTable";
-import SMDSummaryTable from "./tables/SMDSummaryTable";
+import MMDSummary from "./tabs/ensembleSummary/MMDSummary";
+import SMDSummary from "./tabs/ensembleSummary/SMDSummary";
 import SamplePlansMenu from "./tabs/samplePlansMenu"
 import GeneralInfo from "./tabs/generalInfo";
 
@@ -27,7 +27,7 @@ function TabPanel(props) {
       {...other}
     >
       {value === index && (
-        <Box sx={{ paddingLeft: 4 }}>
+        <Box sx={{ paddingLeft: 3 }}>
           <Typography>{children}</Typography>
         </Box>
       )}
@@ -83,7 +83,6 @@ export default function VerticalTabs() {
       </Tabs>
 
       <TabPanel value={value} index={0}>
-        {/* <Table /> */}
         <GeneralInfo/>
       </TabPanel>
 
@@ -92,13 +91,13 @@ export default function VerticalTabs() {
           SMD Ensemble Summary
         </div>
         <div id="smd-table">
-          <SMDSummaryTable />
+          <SMDSummary />
         </div>
         <div id="mmd-summary">
           MMD Ensemble Summary
         </div>
         <div id="mmd-table">
-          <MMDSummaryTable />
+          <MMDSummary />
         </div>
       </TabPanel>
 
@@ -108,25 +107,10 @@ export default function VerticalTabs() {
 
       <TabPanel value={value} index={3}>
         <BoxAndWhiskers />
-        <h4 style={{ paddingTop: "10%" }}>
-          SMD:<br></br>Number of Majority-Minority Districts: 2<br></br>Wasted
-          Minority Votes: 20%
-        </h4>
-        <br></br>
-        <h4>
-          MMD:<br></br>Number of Majority-Minority Districts: 5<br></br>Wasted
-          Minority Votes: 10%
-        </h4>
       </TabPanel>
 
       <TabPanel value={value} index={4}>
         <BarChart />
-        <h4 style={{ paddingTop: "10%" }}>
-          Get voter registration and past election data to find out
-          <br /> what percentage of the state is Democratic/Republican.
-          <br /> The number of Republican/Democratic seats should be
-          <br /> proportional to the data
-        </h4>
       </TabPanel>
 
       <TabPanel value={value} index={5}>

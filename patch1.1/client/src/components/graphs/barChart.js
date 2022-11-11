@@ -25,7 +25,8 @@ function barChart() {
         options={options.options}
         series={options.series}
         type="bar"
-        width="500"
+        width="700"
+        height="500"
       />
     </div>
   );
