@@ -99,13 +99,14 @@
 
 #home-button {
   position: relative;
-  left: 1%;
+  left: 0.7%;
   width: 15.5%;
+  height: 8%;
 }
 
 #state-name {
   position: relative;
-  left: 8%;
+  left: 4.8%;
   top: 1%;
   display: inline-block;
   font-size: 40px;

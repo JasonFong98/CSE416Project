@@ -1,5 +1,4 @@
 import CottageIcon from "@mui/icons-material/Cottage";
-import RestartAltIcon from '@mui/icons-material/RestartAlt';
 import Button from "@mui/material/Button";
 import VerticalTabs from "../components/verticalTabs";
 import Paper from '@mui/material/Paper';
@@ -7,7 +6,6 @@ import Box from '@mui/material/Box';
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import { useNavigate, useParams } from "react-router-dom";
-import Map from "./map";
 
 const State = (props) => {
   const navigate = useNavigate();
@@ -16,6 +14,7 @@ const State = (props) => {
     
   function handleHome(){
     navigate('/')
+    window.location.reload(false);
   }
 
   function handleReset(){
@@ -54,7 +53,6 @@ const State = (props) => {
         <VerticalTabs />
       </div>
       <div id="state-map-container">
-        {/* <Map /> */}
       </div>
     </div>
   );

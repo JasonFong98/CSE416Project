@@ -1,3 +1,4 @@
+import { geoJson } from "leaflet";
 import { useEffect, useRef, useState } from "react";
 import { useMap, GeoJSON } from "react-leaflet";
 import { useNavigate } from "react-router-dom";
@@ -10,6 +11,7 @@ const USMap = () => {
   const geoJsonLayer = useRef();
 
   const states = ["Florida", "Ohio", "North Carolina"];
+  const [state, setState] = useState();
 
   let state_style = {
     weight: 0.8,
@@ -34,14 +36,15 @@ const USMap = () => {
     layer.bindPopup(state.properties.NAME);
     layer.on({
       click: (event) => {
-        map.fitBounds(event.target.getBounds());
         api.getStateMap(state.properties.STUSPS).then((res) => {
-          console.log(res.data.stateEnsemble.currentDistrictPlan.features);
           geoJsonLayer.current.addData(
             res.data.stateEnsemble.currentDistrictPlan.features
           );
         });
-        navigate(`/home/${state.properties.NAME}`);
+        map.fitBounds(event.target.getBounds());
+        geoJsonLayer.current.remove(layer);
+        console.log(geoJsonLayer.current);
+        navigate(`/home/${state.properties.NAME}`,{props:geoJsonLayer});
       },
       mouseout: (event) => {
         if (states.includes(state.properties.NAME)) {
@@ -75,8 +78,6 @@ const USMap = () => {
       },
     });
   };
-
-  console.log(geoJsonLayer.current);
 
   return geoJsonLayer ? (
     <GeoJSON
