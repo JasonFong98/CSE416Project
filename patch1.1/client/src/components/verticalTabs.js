@@ -12,6 +12,7 @@ import BoxAndWhiskers from "./graphs/boxAndWhiskers";
 import BarChart from "./graphs/barChart";
 import MMDSummaryTable from "./tables/MMDSummaryTable";
 import SMDSummaryTable from "./tables/SMDSummaryTable";
+import SamplePlansMenu from "./SamplePlansMenu"
 import { borderRadius } from "@mui/system";
 
 function TabPanel(props) {
@@ -79,10 +80,11 @@ export default function VerticalTabs() {
       >
         <Tab sx={{textTransform:"none", fontWeight:"bold"}} label="General Information" {...a11yProps(0)} />
         <Tab sx={{textTransform:"none", fontWeight:"bold"}} label="Ensemble Summary" {...a11yProps(1)} />
-        <Tab sx={{textTransform:"none", fontWeight:"bold"}} label="Racial Fairness" {...a11yProps(2)} />
-        <Tab sx={{textTransform:"none", fontWeight:"bold"}} label="Political Fairness" {...a11yProps(3)} />
-        <Tab sx={{textTransform:"none", fontWeight:"bold"}} label="Population Equality" {...a11yProps(4)} />
-        <Tab sx={{textTransform:"none", fontWeight:"bold"}} label="Compactness Measure" {...a11yProps(5)} />
+        <Tab sx={{textTransform:"none", fontWeight:"bold"}} label="Sample District Plans" {...a11yProps(2)} />
+        <Tab sx={{textTransform:"none", fontWeight:"bold"}} label="Racial Fairness" {...a11yProps(3)} />
+        <Tab sx={{textTransform:"none", fontWeight:"bold"}} label="Political Fairness" {...a11yProps(4)} />
+        <Tab sx={{textTransform:"none", fontWeight:"bold"}} label="Population Equality" {...a11yProps(5)} />
+        <Tab sx={{textTransform:"none", fontWeight:"bold"}} label="Compactness Measure" {...a11yProps(6)} />
       </Tabs>
 
       <TabPanel value={value} index={0}>
@@ -138,6 +140,10 @@ export default function VerticalTabs() {
       </TabPanel>
 
       <TabPanel value={value} index={2}>
+          <SamplePlansMenu />
+      </TabPanel>
+
+      <TabPanel value={value} index={3}>
         <BoxAndWhiskers />
         <h4 style={{ paddingTop: "10%" }}>
           SMD:<br></br>Number of Majority-Minority Districts: 2<br></br>Wasted
@@ -150,7 +156,7 @@ export default function VerticalTabs() {
         </h4>
       </TabPanel>
 
-      <TabPanel value={value} index={3}>
+      <TabPanel value={value} index={4}>
         <BarChart />
         <h4 style={{ paddingTop: "10%" }}>
           Get voter registration and past election data to find out
@@ -160,11 +166,11 @@ export default function VerticalTabs() {
         </h4>
       </TabPanel>
 
-      <TabPanel value={value} index={4}>
+      <TabPanel value={value} index={5}>
         <img src={ohio_population} style={{ maxWidth: "600px" }} />
       </TabPanel>
 
-      <TabPanel value={value} index={5}>
+      <TabPanel value={value} index={6}>
         <h4>MMD</h4>
         <img src={compactness} />
         <br></br>
