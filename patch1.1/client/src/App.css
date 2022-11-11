@@ -41,6 +41,16 @@
   top: 21%;
 }
 
+#map-container {
+  width: 40%;
+  height: 60%;
+  top: 25%;
+  left: 60%;
+  position: absolute;
+  background-color: #E8F4F8;
+  border-radius: 30px;
+}
+
 #smd-summary {
   position: absolute;
   left: 31.5%;
@@ -77,4 +87,36 @@
   background-color: white;
   border-radius: 10px;
   text-transform: none;
+}
+
+#state-top-banner {
+  width: 60%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  background-color: #E8F4F8;
+}
+
+#home-button {
+  position: relative;
+  left: 1%;
+  width: 15.5%;
+}
+
+#state-name {
+  position: relative;
+  left: 8%;
+  top: 1%;
+  display: inline-block;
+  font-size: 40px;
+  font-weight: bold;
+  letter-spacing: 4px;
+}
+
+#state-map-container {
+  width: 40%;
+  height: 100%;
+  right: 0;
+  position: fixed;
+  background-color: #E8F4F8;
 }

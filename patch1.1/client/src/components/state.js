@@ -24,36 +24,18 @@ const State = (props) => {
 
   return (
     <div>
-      <div
-        style={{
-          width: "60%",
-          height: "100%",
-          position: "fixed",
-          left: 0,
-          backgroundColor: "#E8F4F8",
-        }}
-      >
+      <div id="state-top-banner">
         <Button
+          id="home-button"
           onClick={handleHome}
           variant="contained"
-          style={{ position: "relative", left: "1%", width:"15.5%"}}
           size="large"
         >
           <CottageIcon />
         </Button>
 
-        <Box
-          style={{
-            position: "relative",
-            left: "6.2%",
-            top: "1%",
-            display: "inline-block",
-            fontSize: "40px",
-            fontWeight: "bold",
-            letterSpacing: " 4px",
-            
-          }}
-
+        <Box 
+          id="state-name"
           sx={{
             display: 'flex',
             flexWrap: 'wrap',
@@ -71,15 +53,7 @@ const State = (props) => {
 
         <VerticalTabs />
       </div>
-      <div
-        style={{
-          width: "40%",
-          height: "100%",
-          right: 0,
-          position: "fixed",
-          backgroundColor: "#E8F4F8",
-        }}
-      >
+      <div id="state-map-container">
         {/* <Map /> */}
       </div>
     </div>
