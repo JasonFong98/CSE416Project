@@ -1,15 +1,9 @@
 // import { useState } from "react";
-import Map from "./map";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import "bootstrap/dist/css/bootstrap.min.css";
 import * as React from 'react';
-import MuiButton from '@mui/material/Button';
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
-import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state';
 import { useNavigate } from "react-router-dom";
-import { popup } from "leaflet";
 
 
 const Home = () => {
@@ -43,22 +37,6 @@ const Home = () => {
         </Card>
       </div>
       <div id="home-map-container">
-      </div>
-      <div id="state-menu">
-        <PopupState variant="popover" popupId="demo-popup-menu">
-            {(popupState) => (
-              <React.Fragment>
-                <MuiButton variant="contained" {...bindTrigger(popupState)}>
-                  Select a state
-              </MuiButton>
-                <Menu {...bindMenu(popupState)}>
-                  <MenuItem onClick={handleMenu}>Florida</MenuItem>
-                  <MenuItem onClick={handleMenu}>North Carolina</MenuItem>
-                  <MenuItem onClick={handleMenu}>Ohio</MenuItem>
-                </Menu>
-              </React.Fragment>
-            )}
-          </PopupState>
       </div>
     </div>
   );

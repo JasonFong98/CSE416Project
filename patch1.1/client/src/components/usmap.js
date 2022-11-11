@@ -1,7 +1,12 @@
+import * as React from 'react';
 import { geoJson } from "leaflet";
 import { useEffect, useRef, useState } from "react";
 import { useMap, GeoJSON } from "react-leaflet";
 import { useNavigate } from "react-router-dom";
+import MuiButton from '@mui/material/Button';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state';
 
 import api from "../api/api";
 
@@ -11,13 +16,22 @@ const USMap = () => {
   const geoJsonLayer = useRef();
 
   const states = ["Florida", "Ohio", "North Carolina"];
-  const [state, setState] = useState();
 
   let state_style = {
     weight: 0.8,
     fillColor: "lightgreen",
     color: "green",
   };
+
+  const handleMenu = (stateCode, name) => {
+    navigate(`/home/${name}`);
+    api.getStateMap(stateCode).then((res) => {
+      geoJsonLayer.current.addData(
+        res.data.stateEnsemble.currentDistrictPlan.features
+      );
+    });
+    document.getElementById('state-menu').style.display="none";
+  }
 
   useEffect(() => {
     api.getUSMap().then((res) => {
@@ -42,8 +56,8 @@ const USMap = () => {
           );
         });
         map.fitBounds(event.target.getBounds());
-        geoJsonLayer.current.remove(layer);
-        console.log(geoJsonLayer.current);
+
+        //geoJsonLayer.current.remove(layer);
         navigate(`/home/${state.properties.NAME}`,{props:geoJsonLayer});
       },
       mouseout: (event) => {
@@ -80,11 +94,29 @@ const USMap = () => {
   };
 
   return geoJsonLayer ? (
-    <GeoJSON
-      ref={geoJsonLayer}
-      style={state_style}
-      onEachFeature={onEachFeature}
-    />
+    <div>
+      <div id="state-menu">
+          <PopupState variant="popover" popupId="demo-popup-menu">
+              {(popupState) => (
+                <React.Fragment>
+                  <MuiButton variant="contained" {...bindTrigger(popupState)}>
+                    Select a state
+                </MuiButton>
+                  <Menu {...bindMenu(popupState)}>
+                    <MenuItem onClick={() => handleMenu('FL', 'Florida')}>Florida</MenuItem>
+                    <MenuItem onClick={() => handleMenu('NC', 'North Carolina')}>North Carolina</MenuItem>
+                    <MenuItem onClick={() => handleMenu('OH', 'Ohio')}>Ohio</MenuItem>
+                  </Menu>
+                </React.Fragment>
+              )}
+            </PopupState>
+        </div>
+      <GeoJSON
+        ref={geoJsonLayer}
+        style={state_style}
+        onEachFeature={onEachFeature}
+      />
+    </div>
   ) : (
     <div></div>
   );
