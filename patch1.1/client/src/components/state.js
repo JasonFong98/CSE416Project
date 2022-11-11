@@ -3,8 +3,6 @@ import Button from "@mui/material/Button";
 import VerticalTabs from "../components/verticalTabs";
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
-import ToggleButton from "@mui/material/ToggleButton";
-import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import { useNavigate, useParams } from "react-router-dom";
 
 const State = (props) => {
@@ -14,10 +12,6 @@ const State = (props) => {
     
   function handleHome(){
     navigate('/')
-    window.location.reload(false);
-  }
-
-  function handleReset(){
     window.location.reload(false);
   }
 
