@@ -5,15 +5,15 @@ import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import ohio_population from "../imgs/ohio-population.png";
-import compactness from "../imgs/compactness-example.png";
-import compactness2 from "../imgs/compactness-example2.png";
+
 import Table from "./tables/Table";
 import BoxAndWhiskers from "./graphs/boxAndWhiskers";
 import BarChart from "./graphs/barChart";
 import MMDSummaryTable from "./tables/MMDSummaryTable";
 import SMDSummaryTable from "./tables/SMDSummaryTable";
-import SamplePlansMenu from "./SamplePlansMenu"
-import { borderRadius } from "@mui/system";
+import SamplePlansMenu from "./tabs/samplePlansMenu"
+import GeneralInfo from "./tabs/generalInfo";
+
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -27,7 +27,7 @@ function TabPanel(props) {
       {...other}
     >
       {value === index && (
-        <Box sx={{ paddingLeft: 6 }}>
+        <Box sx={{ paddingLeft: 4 }}>
           <Typography>{children}</Typography>
         </Box>
       )}
@@ -83,7 +83,8 @@ export default function VerticalTabs() {
       </Tabs>
 
       <TabPanel value={value} index={0}>
-        <Table />
+        {/* <Table /> */}
+        <GeneralInfo/>
       </TabPanel>
 
       <TabPanel value={value} index={1}>

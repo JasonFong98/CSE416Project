@@ -53,11 +53,11 @@
 
 #smd-summary {
   position: absolute;
-  left: 31.5%;
+  left: 30.5%;
   top: 10%;
   padding: 5px;
   background-color: #3482d8;
-  border-radius: 12px;
+  border-radius: 10px;
   color: #e8f4f8;
 }
 
@@ -66,21 +66,21 @@
   top: 15%;
 }
 
-#mmd-table {
-  position: absolute;
-  left: 61%;
-  top: 15%;
-}
-
 #mmd-summary {
   position: absolute;
-  left: 71%;
+  left: 70%;
   top: 10%;
   width: 200px;
   padding: 5px;
   background-color: #3482d8;
-  border-radius: 12px;
+  border-radius: 10px;
   color: #e8f4f8;
+}
+
+#mmd-table {
+  position: absolute;
+  left: 59%;
+  top: 15%;
 }
 
 #vertical-tab {
@@ -100,13 +100,13 @@
 #home-button {
   position: relative;
   left: 0.7%;
-  width: 15.5%;
+  width: 15%;
   height: 5%;
 }
 
 #state-name {
   position: relative;
-  left: 4.8%;
+  left: 3%;
   top: 1%;
   display: inline-block;
   font-size: 40px;
@@ -120,4 +120,9 @@
   right: 0;
   position: fixed;
   background-color: #E8F4F8;
+}
+
+#demo-card{
+  padding-left: 2%;
+
 }

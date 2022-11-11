@@ -8,10 +8,7 @@ import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const navigate = useNavigate();
-  const handleMenu = event => {
-    const stateName = event.currentTarget.textContent
-    navigate(`/home/${stateName}`);
-  }
+
   return (
     <div>
       <div id="hr-bill-container">

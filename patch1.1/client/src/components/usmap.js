@@ -7,6 +7,7 @@ import MuiButton from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state';
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 
 import api from "../api/api";
 
@@ -16,8 +17,9 @@ const USMap = () => {
   const geoJsonLayer = useRef();
 
   const states = ["Florida", "Ohio", "North Carolina"];
+  const stateBounds = new Map();
 
-  let state_style = {
+  let stateStyle = {
     weight: 0.8,
     fillColor: "lightgreen",
     color: "green",
@@ -32,6 +34,7 @@ const USMap = () => {
     });
     document.getElementById('state-menu').style.display="none";
     popupState.close();
+    map.fitBounds(stateBounds.get(name));
   }
 
   useEffect(() => {
@@ -47,6 +50,8 @@ const USMap = () => {
         fillColor: "yellow",
         fillOpacity: "0.8",
       });
+
+      stateBounds.set(state.properties.NAME, layer.getBounds());
     }
     layer.bindPopup(state.properties.NAME);
     layer.on({
@@ -56,8 +61,8 @@ const USMap = () => {
             res.data.stateEnsemble.currentDistrictPlan.features
           );
         });
+        document.getElementById('state-menu').style.display="none";
         map.fitBounds(event.target.getBounds());
-
         //geoJsonLayer.current.remove(layer);
         navigate(`/home/${state.properties.NAME}`,{props:geoJsonLayer});
       },
@@ -101,7 +106,7 @@ const USMap = () => {
               {(popupState) => (
                 <React.Fragment>
                   <MuiButton variant="contained" {...bindTrigger(popupState)}>
-                    Select a state
+                    Select a state<ArrowDropDownIcon/>
                 </MuiButton>
                   <Menu {...bindMenu(popupState)}>
                     <MenuItem onClick={() => handleMenu('FL', 'Florida', popupState)}>Florida</MenuItem>
@@ -114,7 +119,7 @@ const USMap = () => {
         </div>
       <GeoJSON
         ref={geoJsonLayer}
-        style={state_style}
+        style={stateStyle}
         onEachFeature={onEachFeature}
       />
     </div>
