@@ -41,7 +41,7 @@
   top: 21%;
 }
 
-#SMD-Summary {
+#smd-summary {
   position: absolute;
   left: 31.5%;
   top: 10%;
@@ -51,7 +51,18 @@
   color: #e8f4f8;
 }
 
-#MMD-Summary {
+#smd-table {
+  position: absolute;
+  top: 15%;
+}
+
+#mmd-table {
+  position: absolute;
+  left: 61%;
+  top: 15%;
+}
+
+#mmd-summary {
   position: absolute;
   left: 71%;
   top: 10%;
@@ -60,4 +71,10 @@
   background-color: #3482d8;
   border-radius: 12px;
   color: #e8f4f8;
+}
+
+#vertical-tab {
+  background-color: white;
+  border-radius: 10px;
+  text-transform: none;
 }

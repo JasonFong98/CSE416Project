@@ -66,11 +66,7 @@ export default function VerticalTabs() {
       }}
     >
       <Tabs
-        style={{
-          backgroundColor: "white",
-          borderRadius: "10px",
-          textTransform: "none",
-        }}
+        id="vertical-tab"
         orientation="vertical"
         variant="scrollable"
         value={value}
@@ -92,27 +88,16 @@ export default function VerticalTabs() {
       </TabPanel>
 
       <TabPanel value={value} index={1}>
-        <div id="SMD-Summary">
+        <div id="smd-summary">
           SMD Ensemble Summary
         </div>
-        <div
-          style={{
-            position: "absolute",
-            top: "15%",
-          }}
-        >
+        <div id="smd-table">
           <SMDSummaryTable />
         </div>
-        <div id="MMD-Summary">
+        <div id="mmd-summary">
           MMD Ensemble Summary
         </div>
-        <div
-          style={{
-            position: "absolute",
-            left: "61%",
-            top: "15%",
-          }}
-        >
+        <div id="mmd-table">
           <MMDSummaryTable />
         </div>
       </TabPanel>
