@@ -94,7 +94,7 @@ export default function VerticalTabs() {
           style={{
             position: "absolute",
             left: "31.5%",
-            top: "8%",
+            top: "10%",
             width: "200px",
             padding: "5px",
             backgroundColor: "#3482d8",
@@ -116,7 +116,7 @@ export default function VerticalTabs() {
           style={{
             position: "absolute",
             left: "71%",
-            top: "8%",
+            top: "10%",
             width: "200px",
             padding: "5px",
             backgroundColor: "#3482d8",
