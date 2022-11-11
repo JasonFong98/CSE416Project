@@ -12,13 +12,13 @@ export default function SelectSmall() {
   };
 
   return (
-    <FormControl sx={{ m: 1, minWidth: 220 }} size="small">
+    <FormControl sx={{ m: 1 , minWidth: 220 }} size="small">
       <InputLabel id="demo-select-small">Select Plans</InputLabel>
       <Select
         labelId="demo-select-small"
         id="demo-select-small"
         value={age}
-        label="Age"
+        label="Select Plans"
         onChange={handleChange}
       >
         <MenuItem value="">
