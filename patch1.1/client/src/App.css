@@ -5,3 +5,59 @@
 .leaflet-container {
   background-color: #e8f4f8;
 }
+
+#hr-bill-container {
+  position: fixed;
+  width: 35%;
+  height: 100%;
+  left: 0;
+  background-color: #E8F4F8;
+}
+
+#hr-bill {
+  position: relative;
+  width: 75%;
+  height: 60%;
+  left: 25%;
+  top: 20%;
+}
+
+#learn-more-button {
+  position: absolute;
+  bottom: 8%
+}
+
+#home-map-container {
+  width: 65%;
+  height: 100%;
+  right: 0;
+  position: fixed;
+  background-color: #E8F4F8;
+}
+
+#state-menu {
+  position: absolute;
+  left: 60.6%;
+  top: 21%;
+}
+
+#SMD-Summary {
+  position: absolute;
+  left: 31.5%;
+  top: 10%;
+  padding: 5px;
+  background-color: #3482d8;
+  border-radius: 12px;
+  color: #e8f4f8;
+}
+
+#MMD-Summary {
+  position: absolute;
+  left: 71%;
+  top: 10%;
+  width: 200px;
+  padding: 5px;
+  background-color: #3482d8;
+  border-radius: 12px;
+  color: #e8f4f8;
+}

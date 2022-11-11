@@ -92,18 +92,7 @@ export default function VerticalTabs() {
       </TabPanel>
 
       <TabPanel value={value} index={1}>
-        <div
-          style={{
-            position: "absolute",
-            left: "31.5%",
-            top: "10%",
-            width: "200px",
-            padding: "5px",
-            backgroundColor: "#3482d8",
-            borderRadius: "12px",
-            color:"#e8f4f8"
-          }}
-        >
+        <div id="SMD-Summary">
           SMD Ensemble Summary
         </div>
         <div
@@ -114,18 +103,7 @@ export default function VerticalTabs() {
         >
           <SMDSummaryTable />
         </div>
-        <div
-          style={{
-            position: "absolute",
-            left: "71%",
-            top: "10%",
-            width: "200px",
-            padding: "5px",
-            backgroundColor: "#3482d8",
-            borderRadius: "12px",
-            color:"#e8f4f8"
-          }}
-        >
+        <div id="MMD-Summary">
           MMD Ensemble Summary
         </div>
         <div
