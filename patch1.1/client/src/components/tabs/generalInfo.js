@@ -53,12 +53,12 @@ const GeneralInfo = (state) => {
             <span><p>Total</p></span>
           </div>
           <div id="demo-card-stats">
-            <p>{demographics.white}</p>
-            <p>{demographics.africanAmerican}</p>
-            <p>{demographics.asian}</p>
-            <p>{demographics.latino}</p>
+            <span><p>{demographics.white}</p></span>
+            <span><p>{demographics.africanAmerican}</p></span>
+            <span><p>{demographics.asian}</p></span>
+            <span><p>{demographics.latino}</p></span>
             <hr />
-            <p>{demographics.total}</p>
+            <span><p>{demographics.total}</p></span>
           </div>
 
           <div id="demo-card-stats">
