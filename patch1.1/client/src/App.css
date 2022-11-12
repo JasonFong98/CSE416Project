@@ -85,19 +85,23 @@
 #summary-names{
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 16px;
-  width:70%;
+  width:80%;
 }
 
 #summary-data{
-  width:30%;
+  width:20%;
   text-align: right;
   padding-right: 4%;
 }
+
 
 #summary-names, #summary-data{
   display: inline-block;
 }
 
+#line{
+  visibility: hidden;
+}
 
 #mmd-summary {
   position: absolute;

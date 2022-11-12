@@ -25,13 +25,13 @@ export default function MMDSummary() {
           <Paper id="summary-block" elevation={2}>
           <div id="summary-names">
             <p>Number of district plans</p>
-            <hr id="line"/>
+            <hr/>
             <p>Average number of <br/>majority-minority representatives</p>
-            <hr id="line"/>
+            <hr/>
             <p>Average equal population measure</p>
-            <hr id="line"/>
+            <hr/>
             <p>Average Polsby-popper value</p>
-            <hr id="line"/>
+            <hr/>
             <p>Average Republican/Democratic split</p>
           </div>
 
