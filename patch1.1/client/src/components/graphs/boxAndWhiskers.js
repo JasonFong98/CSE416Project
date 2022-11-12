@@ -1,11 +1,24 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import Chart from "react-apexcharts";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 
-function BoxAndWhiskers() {
-  const [alignment, setAlignment] = React.useState("SMD");
+import api from "../../api/api"
 
+const BoxAndWhiskers = (state) => {
+  const stateDict =  {"Ohio": "OH", "Florida": "FL", "North Carolina": "NC"}
+  const [alignment, setAlignment] = useState("SMD");
+  const [data, setData] = useState({ "Asian": [0,1,2,3,4]});
+  useEffect(() => {
+    api.getBoxWhisker(stateDict[state.state.state]).then((res) => {
+      //console.log(res.data.ensemble.boxAndWhiskers[0])
+      const boxWhiskerData=res.data.ensemble.boxAndWhiskers[0]
+      console.log(boxWhiskerData)
+      setData({
+        "Asian": [boxWhiskerData.min, boxWhiskerData.firstQ, boxWhiskerData.median, boxWhiskerData.thirdQ, boxWhiskerData.max]
+      });
+    });
+  }, []);
   const handleChange = (event, newAlignment) => {
     setAlignment(newAlignment);
   };
@@ -17,32 +30,32 @@ function BoxAndWhiskers() {
         type: "boxPlot",
         data: [
           {
-            x: "Jan 2015",
-            y: [54, 66, 69, 75, 88],
+            x: "Asian",
+            y: data["Asian"],
           },
           {
             x: "Jan 2016",
-            y: [43, 65, 69, 76, 81],
+            y: data["Asian"],
           },
           {
             x: "Jan 2017",
-            y: [31, 39, 45, 51, 59],
+            y: data["Asian"],
           },
           {
             x: "Jan 2018",
-            y: [39, 46, 55, 65, 71],
+            y: data["Asian"],
           },
           {
             x: "Jan 2019",
-            y: [29, 31, 35, 39, 44],
+            y: data["Asian"],
           },
           {
             x: "Jan 2020",
-            y: [41, 49, 58, 61, 67],
+            y: data["Asian"],
           },
           {
             x: "Jan 2021",
-            y: [54, 59, 66, 71, 88],
+            y: data["Asian"],
           },
         ],
       },
@@ -50,6 +63,7 @@ function BoxAndWhiskers() {
     chart: {
       type: "boxPlot",
       height: 500,
+      
     },
     title: {
       text: "Basic BoxPlot Chart",

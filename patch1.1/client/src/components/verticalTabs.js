@@ -7,7 +7,7 @@ import Box from "@mui/material/Box";
 import ohio_population from "../imgs/ohio-population.png";
 
 import BoxAndWhiskers from "./graphs/boxAndWhiskers";
-import BarChart from "./graphs/barChart";
+import BarGraph from "./graphs/barGraph";
 import MMDSummary from "./tabs/ensembleSummary/MMDSummary";
 import SMDSummary from "./tabs/ensembleSummary/SMDSummary";
 import SamplePlansMenu from "./tabs/samplePlansMenu"
@@ -105,11 +105,11 @@ export default function VerticalTabs(state) {
       </TabPanel>
 
       <TabPanel value={value} index={3}>
-        <BoxAndWhiskers />
+        <BoxAndWhiskers state={state}/>
       </TabPanel>
 
       <TabPanel value={value} index={4}>
-        <BarChart />
+        <BarGraph state={state} />
       </TabPanel>
 
       <TabPanel value={value} index={5}>

@@ -13,7 +13,6 @@ const GeneralInfo = (state) => {
   useEffect(() => {
     api.getStateDemographics(stateDict[state.state.state]).then((res) => {
       const demographicData=res.data.stateDemographic
-      console.log(demographicData)
       setDemographics({
         "white": demographicData.caucasian, 
         "africanAmerican": demographicData.africanAmerican, 

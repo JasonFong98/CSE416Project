@@ -1,14 +1,24 @@
 import React from "react";
+import { useEffect, useState } from "react";
 import Chart from "react-apexcharts";
 
-function barChart() {
+
+import api from "../../api/api"
+
+const BarGraph = (state) => {
+  const stateDict =  {"Ohio": "OH", "Florida": "FL", "North Carolina": "NC"}
+  useEffect(() => {
+    api.getBarGraph(stateDict[state.state.state]).then((res) => {
+      console.log(res.data)
+    });
+  }, []);
   let options = {
     options: {
       chart: {
         id: "basic-bar",
       },
       xaxis: {
-        categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998],
+        categories: ["1:2", "2:3", "1:3", "2:5", "5:2", "3:1", "3:2", "3:1"],
       },
     },
     series: [
@@ -32,4 +42,4 @@ function barChart() {
   );
 }
 
-export default barChart;
+export default BarGraph;
