@@ -23,11 +23,11 @@ const GeneralInfo = (state) => {
       })
     });
   }, []);
-    const whitePer = 0;
-    const africanAmericanPer = 0;
-    const asianPer = 0;
-    const latinoPer = 0;
-    const totalPer = 0;
+    const whitePer = (100 * demographics.white/demographics.total).toFixed(2);
+    const africanAmericanPer = (100 * demographics.africanAmerican/demographics.total).toFixed(2);
+    const asianPer = (100 * demographics.asian/demographics.total).toFixed(2);
+    const latinoPer = (100 * demographics.latino/demographics.total).toFixed(2);
+    const totalPer = (100 * (demographics.white + demographics.africanAmerican + demographics.asian + demographics.latino)/demographics.total).toFixed(2);
 
   return (
     <div>
