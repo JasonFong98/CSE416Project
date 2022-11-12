@@ -22,6 +22,12 @@ const GeneralInfo = (state) => {
       })
     });
   }, []);
+    const white = demographics.white.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    const africanAmerican = demographics.africanAmerican.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    const asian = demographics.asian.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    const latino = demographics.latino.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    const total = demographics.total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
     const whitePer = (100 * demographics.white/demographics.total).toFixed(2);
     const africanAmericanPer = (100 * demographics.africanAmerican/demographics.total).toFixed(2);
     const asianPer = (100 * demographics.asian/demographics.total).toFixed(2);
@@ -51,14 +57,6 @@ const GeneralInfo = (state) => {
             <hr />
             <span><p>Total</p></span>
           </div>
-          <div id="demo-card-stats">
-            <span><p>{demographics.white}</p></span>
-            <span><p>{demographics.africanAmerican}</p></span>
-            <span><p>{demographics.asian}</p></span>
-            <span><p>{demographics.latino}</p></span>
-            <hr />
-            <span><p>{demographics.total}</p></span>
-          </div>
 
           <div id="demo-card-stats">
             <span><p>{whitePer}%</p></span>
@@ -67,6 +65,15 @@ const GeneralInfo = (state) => {
             <span><p>{latinoPer}%</p></span>
             <hr />
             <span><p>{totalPer}%</p></span>
+          </div>
+          
+          <div id="demo-card-stats">
+            <span><p>{white}</p></span>
+            <span><p>{africanAmerican}</p></span>
+            <span><p>{asian}</p></span>
+            <span><p>{latino}</p></span>
+            <hr />
+            <span><p>{total}</p></span>
           </div>
         </Paper>
       </Box>
