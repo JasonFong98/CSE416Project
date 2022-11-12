@@ -41,6 +41,15 @@
   top: 2%;
   z-index: 500;
 }
+#state-name{
+  position: relative;
+  left: 2%;
+  top: 1%;
+  display: inline-block;
+  font-size: 35px;
+  letter-spacing: 4px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
 
 #map-container {
   width: 40%;
@@ -74,7 +83,7 @@
 }
 
 #summary-names{
-  /* font-family:'Times New Roman', Times, serif; */
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 16px;
   width:70%;
 }
@@ -147,14 +156,11 @@
   background-color: #E8F4F8;
 }
 
-#gen-small-box{
-  display: inline-block;
-}
 
 #demo-card{
   padding-top: 1%;
   padding-left: 2%;
-  /* font-family:'Times New Roman', Times, serif; */
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 #demo-card-race{
@@ -173,3 +179,35 @@
   display: inline-block;
 }
 
+#num-of-dis{
+  width:40%;
+  position: relative;
+  left: 1%;
+  height:30%;
+  top:10%;
+}
+
+#elect-info{
+
+  width:57%;
+  height:30%;
+  position: relative;
+  left:2%;
+}
+
+#num-of-dis, #elect-info{
+  padding: 5%;
+}
+#per2{
+  text-align: right;
+  font-size: 18.8px;
+  width: 57%;
+}
+
+#per1, #per2{
+  display: inline-block;
+}
+
+.flex-container {
+  display: flex;
+}

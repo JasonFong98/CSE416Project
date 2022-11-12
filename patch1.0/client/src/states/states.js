@@ -43,6 +43,7 @@ const States = (props) => {
           <CottageIcon />
         </Button>
         <h1
+          id = "state-name"
           style={{
             position: "relative",
             left: "2%",

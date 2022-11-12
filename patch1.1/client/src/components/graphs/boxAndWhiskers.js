@@ -4,7 +4,7 @@ import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 
 function BoxAndWhiskers() {
-  const [alignment, setAlignment] = React.useState("web");
+  const [alignment, setAlignment] = React.useState("SMD");
 
   const handleChange = (event, newAlignment) => {
     setAlignment(newAlignment);
@@ -69,7 +69,7 @@ function BoxAndWhiskers() {
     <div>
       <ToggleButtonGroup
         style={{position:"relative", left:"67%", paddingBottom:"2%"}}
-        color="success"
+        color="warning"
         value={alignment}
         exclusive
         onChange={handleChange}
