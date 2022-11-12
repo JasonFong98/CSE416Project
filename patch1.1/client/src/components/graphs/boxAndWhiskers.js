@@ -5,20 +5,9 @@ import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 
 import api from "../../api/api"
 
-const BoxAndWhiskers = (state) => {
-  const stateDict =  {"Ohio": "OH", "Florida": "FL", "North Carolina": "NC"}
+const BoxAndWhiskers = (data) => {
   const [alignment, setAlignment] = useState("SMD");
-  const [data, setData] = useState({ "Asian": [0,1,2,3,4]});
-  useEffect(() => {
-    api.getBoxWhisker(stateDict[state.state.state]).then((res) => {
-      //console.log(res.data.ensemble.boxAndWhiskers[0])
-      const boxWhiskerData=res.data.ensemble.boxAndWhiskers[0]
-      console.log(boxWhiskerData)
-      setData({
-        "Asian": [boxWhiskerData.min, boxWhiskerData.firstQ, boxWhiskerData.median, boxWhiskerData.thirdQ, boxWhiskerData.max]
-      });
-    });
-  }, []);
+  
   const handleChange = (event, newAlignment) => {
     setAlignment(newAlignment);
   };
@@ -31,31 +20,31 @@ const BoxAndWhiskers = (state) => {
         data: [
           {
             x: "Asian",
-            y: data["Asian"],
+            y: data.data["Asian"],
           },
           {
             x: "Jan 2016",
-            y: data["Asian"],
+            y: [0,0,0,0,0],
           },
           {
             x: "Jan 2017",
-            y: data["Asian"],
+            y: [0,0,0,0,0],
           },
           {
             x: "Jan 2018",
-            y: data["Asian"],
+            y: [0,0,0,0,0],
           },
           {
             x: "Jan 2019",
-            y: data["Asian"],
+            y: [0,0,0,0,0],
           },
           {
             x: "Jan 2020",
-            y: data["Asian"],
+            y: [0,0,0,0,0],
           },
           {
             x: "Jan 2021",
-            y: data["Asian"],
+            y: [0,0,0,0,0],
           },
         ],
       },
@@ -63,7 +52,6 @@ const BoxAndWhiskers = (state) => {
     chart: {
       type: "boxPlot",
       height: 500,
-      
     },
     title: {
       text: "Basic BoxPlot Chart",

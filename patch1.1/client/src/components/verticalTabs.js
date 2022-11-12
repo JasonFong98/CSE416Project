@@ -13,6 +13,7 @@ import SMDSummary from "./tabs/ensembleSummary/SMDSummary";
 import SamplePlansMenu from "./tabs/samplePlansMenu"
 import GeneralInfo from "./tabs/generalInfo";
 
+import api from "../api/api"
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -48,7 +49,18 @@ function a11yProps(index) {
 }
 
 export default function VerticalTabs(state) {
+  const stateDict =  {"Ohio": "OH", "Florida": "FL", "North Carolina": "NC"}
   const [value, setValue] = React.useState(0);
+
+  const [data, setData] = React.useState({ "Asian": [0,1,2,3,4]});
+  React.useEffect(() => {
+    api.getBoxWhisker(stateDict[state.state]).then((res) => {
+      const boxWhiskerData=res.data.ensemble.boxAndWhiskers[0]
+      setData({
+        "Asian": [boxWhiskerData.min, boxWhiskerData.firstQ, boxWhiskerData.median, boxWhiskerData.thirdQ, boxWhiskerData.max]
+      });
+    });
+  }, []);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -105,7 +117,7 @@ export default function VerticalTabs(state) {
       </TabPanel>
 
       <TabPanel value={value} index={3}>
-        <BoxAndWhiskers state={state}/>
+        <BoxAndWhiskers data={data}/>
       </TabPanel>
 
       <TabPanel value={value} index={4}>
