@@ -7,8 +7,7 @@ import { useNavigate, useParams } from "react-router-dom";
 
 const State = (props) => {
   const navigate = useNavigate();
-  const params=useParams();
-  const state = params.state;
+  const state=useParams().state;
     
   function handleHome(){
     navigate('/')
