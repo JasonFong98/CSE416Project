@@ -43,7 +43,7 @@ const State = (props) => {
           <Paper elevation={3}>{state}</Paper>
         </Box>
 
-        <VerticalTabs />
+        <VerticalTabs state={state}/>
       </div>
       <div id="state-map-container">
       </div>
