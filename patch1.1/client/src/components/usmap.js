@@ -117,14 +117,14 @@ const USMap = () => {
               )}
             </PopupState>
         </div>
+        {/* <div className="lds-dual-ring"></div> */}
       <GeoJSON
         ref={geoJsonLayer}
         style={stateStyle}
         onEachFeature={onEachFeature}
       />
     </div>
-  ) : (
-    <div></div>
+  ) : (<div></div>
   );
 };
 

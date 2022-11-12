@@ -32,32 +32,33 @@ function GeneralInfo() {
         <Paper id="demo-card" elevation={2}>
           <h3>Demographics</h3>
           <div id="demo-card-race">
-            <p>White</p>
-            <p>Black/African American</p>
-            <p>Asian</p>
-            <p>Latino</p>
+            <span><p>White</p></span>
+            <span><p>Black/African American</p></span>
+            <span><p>Asian</p></span>
+            <span><p>Latino</p></span>
             <hr />
-            <p>Total</p>
+            <span><p>Total</p></span>
           </div>
           <div id="demo-card-stats">
-            <p>{white}</p>
-            <p>{africanAmerican}</p>
-            <p>{asian}</p>
-            <p>{latino}</p>
+            <span><p>{white}</p></span>
+            <span><p>{africanAmerican}</p></span>
+            <span><p>{asian}</p></span>
+            <span><p>{latino}</p></span>
             <hr />
-            <p>{total}</p>
+            <span><p>{total}</p></span>
           </div>
 
           <div id="demo-card-stats">
-            <p>{whitePer}%</p>
-            <p>{africanAmericanPer}%</p>
-            <p>{asianPer}%</p>
-            <p>{latinoPer}%</p>
+            <span><p>{whitePer}%</p></span>
+            <span><p>{africanAmericanPer}%</p></span>
+            <span><p>{asianPer}%</p></span>
+            <span><p>{latinoPer}%</p></span>
             <hr />
-            <p>{totalPer}%</p>
+            <span><p>{totalPer}%</p></span>
           </div>
         </Paper>
       </Box>
+
 
       <div className="flex-container">
         <Paper id="num-of-dis"elevation={2}>
@@ -67,10 +68,10 @@ function GeneralInfo() {
 
         <Paper id="elect-info" elevation={2}>   
             <h3>2020 Election</h3>
-            <div id="per1"><h7>Republican Percentage:</h7></div>
+            <div id="per1">Republican Percentage:</div>
             <div id="per2">53.3%</div>
             <br/>
-            <div id="per1"><h7>Democratic Percentage:</h7></div>
+            <div id="per1">Democratic Percentage:</div>
             <div id="per2">45.2%</div>
         </Paper>
 
