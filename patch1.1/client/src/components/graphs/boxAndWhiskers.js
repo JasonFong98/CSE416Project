@@ -19,31 +19,31 @@ const BoxAndWhiskers = (data) => {
         type: "boxPlot",
         data: [
           {
-            x: "Asian",
-            y: data.data["Asian"],
+            x: "District 1",
+            y: data.data["one"],
           },
           {
-            x: "Jan 2016",
+            x: "District 2",
             y: [0,0,0,0,0],
           },
           {
-            x: "Jan 2017",
+            x: "District 3",
             y: [0,0,0,0,0],
           },
           {
-            x: "Jan 2018",
+            x: "District 4",
             y: [0,0,0,0,0],
           },
           {
-            x: "Jan 2019",
+            x: "JDistrict 5",
             y: [0,0,0,0,0],
           },
           {
-            x: "Jan 2020",
+            x: "District 6",
             y: [0,0,0,0,0],
           },
           {
-            x: "Jan 2021",
+            x: "District 7",
             y: [0,0,0,0,0],
           },
         ],

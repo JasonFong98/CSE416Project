@@ -51,14 +51,25 @@ function a11yProps(index) {
 export default function VerticalTabs(state) {
   const stateDict =  {"Ohio": "OH", "Florida": "FL", "North Carolina": "NC"}
   const [value, setValue] = React.useState(0);
-
-  const [data, setData] = React.useState({ "Asian": [0,1,2,3,4]});
+  const [BWdata, setBWData] = React.useState({ "one": [0,1,2,3,4]});
+  const [BGdata, setBGData] = React.useState();
   React.useEffect(() => {
-    api.getBoxWhisker(stateDict[state.state]).then((res) => {
-      const boxWhiskerData=res.data.ensemble.boxAndWhiskers[0]
-      setData({
-        "Asian": [boxWhiskerData.min, boxWhiskerData.firstQ, boxWhiskerData.median, boxWhiskerData.thirdQ, boxWhiskerData.max]
+    api.getPlots(stateDict[state.state]).then((res) => {
+      const barGraphData = res.data.ensemble.repDemSplits;
+      const boxWhiskerData=res.data.ensemble.boxAndWhiskers[0];
+      console.log(barGraphData[0].numberOfPlans)
+      setBWData({
+        "one": [boxWhiskerData.min, boxWhiskerData.firstQ, boxWhiskerData.median, boxWhiskerData.thirdQ, boxWhiskerData.max]
       });
+      setBGData({
+        "1/2": barGraphData[0].numberOfPlans,
+        "2/3": barGraphData[1].numberOfPlans,
+        "1/3": barGraphData[2].numberOfPlans,
+        "3/1": barGraphData[3].numberOfPlans,
+        "3/2": barGraphData[4].numberOfPlans,
+        "3/1": barGraphData[5].numberOfPlans
+      });
+      console.log(BGdata)
     });
   }, []);
 
@@ -117,11 +128,11 @@ export default function VerticalTabs(state) {
       </TabPanel>
 
       <TabPanel value={value} index={3}>
-        <BoxAndWhiskers data={data}/>
+        <BoxAndWhiskers data={BWdata}/>
       </TabPanel>
 
       <TabPanel value={value} index={4}>
-        <BarGraph state={state} />
+        <BarGraph data={BGdata} />
       </TabPanel>
 
       <TabPanel value={value} index={5}>
