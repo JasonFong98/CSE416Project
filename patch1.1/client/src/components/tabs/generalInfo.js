@@ -1,15 +1,28 @@
 import * as React from "react";
+import { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 
-function GeneralInfo() {
+import api from "../../api/api"
 
-    const white = 0;
-    const africanAmerican = 0;
-    const asian = 0;
-    const latino = 0;
-    const total = 0;
+const GeneralInfo = (state) => {
+  const stateDict =  {"Ohio": "OH", "Florida": "FL", "North Carolina": "NC"}
+  const [demographics, setDemographics] = useState({ 
+    "white": 0, "africanAmerican": 0, "asian": 0, "latino": 0, "total": 0 });
 
+  useEffect(() => {
+    api.getStateMap(stateDict[state.state.state]).then((res) => {
+      const demographicData=res.data.stateDemographic
+      console.log(demographicData)
+      setDemographics({
+        "white": demographicData.caucasian, 
+        "africanAmerican": demographicData.africanAmerican, 
+        "asian": demographicData.asian,
+        "latino": demographicData.latino,
+        "total": demographicData.totalPopulation
+      })
+    });
+  }, []);
     const whitePer = 0;
     const africanAmericanPer = 0;
     const asianPer = 0;
@@ -40,12 +53,12 @@ function GeneralInfo() {
             <p>Total</p>
           </div>
           <div id="demo-card-stats">
-            <p>{white}</p>
-            <p>{africanAmerican}</p>
-            <p>{asian}</p>
-            <p>{latino}</p>
+            <p>{demographics.white}</p>
+            <p>{demographics.africanAmerican}</p>
+            <p>{demographics.asian}</p>
+            <p>{demographics.latino}</p>
             <hr />
-            <p>{total}</p>
+            <p>{demographics.total}</p>
           </div>
 
           <div id="demo-card-stats">

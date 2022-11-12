@@ -48,7 +48,7 @@ function a11yProps(index) {
   };
 }
 
-export default function VerticalTabs() {
+export default function VerticalTabs(state) {
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
@@ -83,7 +83,7 @@ export default function VerticalTabs() {
       </Tabs>
 
       <TabPanel value={value} index={0}>
-        <GeneralInfo/>
+        <GeneralInfo state={state}/>
       </TabPanel>
 
       <TabPanel value={value} index={1}>
