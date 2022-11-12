@@ -53,7 +53,7 @@ const USMap = () => {
 
       stateBounds.set(state.properties.NAME, layer.getBounds());
     }
-    layer.bindPopup(state.properties.NAME);
+    layer.bindPopup(state.properties.NAME, {autoPan: false});
     layer.on({
       click: (event) => {
         api.getStateMap(state.properties.STUSPS).then((res) => {
