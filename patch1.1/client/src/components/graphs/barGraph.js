@@ -2,19 +2,26 @@ import React from "react";
 import { useEffect, useState } from "react";
 import Chart from "react-apexcharts";
 
-
-import api from "../../api/api"
-
 const BarGraph = (data) => {
   const keys = Object.keys(data.data);
   const values = Object.values(data.data);
   let options = {
     options: {
       chart: {
-        id: "basic-bar",
+        height: 500,
+        id: "bar",
       },
       xaxis: {
         categories: keys,
+      },
+      yaxis: {
+        title: { text: "Number of District Plans" },
+      },
+      title: {
+        text: "Republican/Democrat Split",
+        floating: true,
+        offsetY: 0,
+        align: "center",
       },
     },
     series: [
@@ -32,10 +39,10 @@ const BarGraph = (data) => {
         series={options.series}
         type="bar"
         width="700"
-        height="500"
+        height="600"
       />
     </div>
   );
-}
+};
 
 export default BarGraph;
