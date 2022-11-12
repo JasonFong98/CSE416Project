@@ -4,7 +4,6 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import ohio_population from "../imgs/ohio-population.png";
 
 import BoxAndWhiskers from "./graphs/boxAndWhiskers";
 import BarGraph from "./graphs/barGraph";
@@ -101,7 +100,6 @@ export default function VerticalTabs(state) {
         <Tab sx={{textTransform:"none", fontWeight:"bold"}} label="Sample District Plans" {...a11yProps(2)} />
         <Tab sx={{textTransform:"none", fontWeight:"bold"}} label="Box & Whisker Plot" {...a11yProps(3)} />
         <Tab sx={{textTransform:"none", fontWeight:"bold"}} label="Political Split" {...a11yProps(4)} />
-        <Tab sx={{textTransform:"none", fontWeight:"bold"}} label="Population Equality" {...a11yProps(5)} />
       </Tabs>
 
       <TabPanel value={value} index={0}>
@@ -135,9 +133,6 @@ export default function VerticalTabs(state) {
         <BarGraph data={BGdata} />
       </TabPanel>
 
-      <TabPanel value={value} index={5}>
-        <img src={ohio_population} style={{ maxWidth: "600px" }} />
-      </TabPanel>
 
     </Box>
   );

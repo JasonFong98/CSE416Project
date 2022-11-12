@@ -3,7 +3,6 @@ import Chart from "react-apexcharts";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 
-import api from "../../api/api"
 
 const BoxAndWhiskers = (data) => {
   const [alignment, setAlignment] = useState("SMD");
@@ -57,13 +56,23 @@ const BoxAndWhiskers = (data) => {
       text: "Basic BoxPlot Chart",
       align: "left",
     },
-    plotOptions: {
-      boxPlot: {
-        colors: {
-          upper: "#5C4742",
-          lower: "#A5978B",
-        },
+    options: {
+      chart: {
+        type: 'boxPlot',
+        height: 350
       },
+      title: {
+        text: 'Basic BoxPlot Chart',
+        align: 'left'
+      },
+      plotOptions: {
+        boxPlot: {
+          colors: {
+            upper:'#008FFB', 
+            lower:'#FEB019'
+          }
+        }
+      }
     },
   };
 
