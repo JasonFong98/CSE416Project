@@ -59,37 +59,12 @@ function GeneralInfo() {
         </Paper>
       </Box>
 
-      {/* <Box
-         id ="gen-small-box"
-        sx={{
-          display: "flex",
-          flexWrap: "wrap",
-          "& > :not(style)": {
-            m: 1,
-            width: 417,
-            height: 200,
-          },
-        }}
-      > */}
       <div className="flex-container">
         <Paper id="num-of-dis"elevation={2}>
            <h3>Number of Districts</h3>
            <h1>16</h1>
         </Paper>
-      {/* </Box> */}
 
-      {/* <Box
-        id="gen-small-box"
-        sx={{
-          display: "flex",
-          flexWrap: "wrap",
-          "& > :not(style)": {
-            m: 1,
-            width: 417,
-            height: 200,
-          },
-        }}
-      > */}
         <Paper id="elect-info" elevation={2}>   
             <h3>2020 Election</h3>
             <div id="per1"><h7>Republican Percentage:</h7></div>
@@ -98,7 +73,7 @@ function GeneralInfo() {
             <div id="per1"><h7>Democratic Percentage:</h7></div>
             <div id="per2">45.2%</div>
         </Paper>
-      {/* </Box> */}
+
       </div>
     </div>
   );

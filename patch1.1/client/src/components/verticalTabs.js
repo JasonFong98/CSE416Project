@@ -6,7 +6,6 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import ohio_population from "../imgs/ohio-population.png";
 
-import Table from "./tables/Table";
 import BoxAndWhiskers from "./graphs/boxAndWhiskers";
 import BarChart from "./graphs/barChart";
 import MMDSummary from "./tabs/ensembleSummary/MMDSummary";
