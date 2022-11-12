@@ -29,7 +29,7 @@ const USMap = () => {
     navigate(`/home/${name}`);
     api.getStateMap(stateCode).then((res) => {
       geoJsonLayer.current.addData(
-        res.data.stateEnsemble.currentDistrictPlan.features
+        res.data.ensemble.currentDistrictPlan.features
       );
     });
     document.getElementById('state-menu').style.display="none";
@@ -58,7 +58,7 @@ const USMap = () => {
       click: (event) => {
         api.getStateMap(state.properties.STUSPS).then((res) => {
           geoJsonLayer.current.addData(
-            res.data.stateEnsemble.currentDistrictPlan.features
+            res.data.ensemble.currentDistrictPlan.features
           );
         });
         document.getElementById('state-menu').style.display="none";

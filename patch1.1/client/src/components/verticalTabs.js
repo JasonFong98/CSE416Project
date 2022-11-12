@@ -74,7 +74,7 @@ export default function VerticalTabs() {
         aria-label="Vertical tabs example"
         sx={{ borderRight: 1, borderColor: "divider"}}
       >
-        <Tab sx={{textTransform:"none", fontWeight:"bold"}} label="General Information" {...a11yProps(0)} />
+        <Tab sx={{textTransform:"none", fontWeight:"bold"}} label="General" {...a11yProps(0)} />
         <Tab sx={{textTransform:"none", fontWeight:"bold"}} label="Ensemble Summary" {...a11yProps(1)} />
         <Tab sx={{textTransform:"none", fontWeight:"bold"}} label="Sample District Plans" {...a11yProps(2)} />
         <Tab sx={{textTransform:"none", fontWeight:"bold"}} label="Box & Whisker Plot" {...a11yProps(3)} />

@@ -3,6 +3,19 @@ import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 
 function GeneralInfo() {
+
+    const white = 0;
+    const africanAmerican = 0;
+    const asian = 0;
+    const latino = 0;
+    const total = 0;
+
+    const whitePer = 0;
+    const africanAmericanPer = 0;
+    const asianPer = 0;
+    const latinoPer = 0;
+    const totalPer = 0;
+
   return (
     <div>
       <Box
@@ -27,32 +40,50 @@ function GeneralInfo() {
             <p>Total</p>
           </div>
           <div id="demo-card-stats">
-            <p>0</p>
-            <p>0</p>
-            <p>0</p>
-            <p>0</p>
+            <p>{white}</p>
+            <p>{africanAmerican}</p>
+            <p>{asian}</p>
+            <p>{latino}</p>
             <hr />
-            <p>0</p>
+            <p>{total}</p>
           </div>
 
           <div id="demo-card-stats">
-            <p>0%</p>
-            <p>0%</p>
-            <p>0%</p>
-            <p>0%</p>
+            <p>{whitePer}%</p>
+            <p>{africanAmericanPer}%</p>
+            <p>{asianPer}%</p>
+            <p>{latinoPer}%</p>
             <hr />
-            <p>100%</p>
+            <p>{totalPer}%</p>
           </div>
         </Paper>
       </Box>
 
       <Box
+        id ="gen-small-box"
         sx={{
           display: "flex",
           flexWrap: "wrap",
           "& > :not(style)": {
             m: 1,
-            width: 850,
+            width: 417,
+            height: 275,
+          },
+        }}
+      >
+        <Paper elevation={2}>
+
+        </Paper>
+      </Box>
+
+      <Box
+        id="gen-small-box"
+        sx={{
+          display: "flex",
+          flexWrap: "wrap",
+          "& > :not(style)": {
+            m: 1,
+            width: 417,
             height: 275,
           },
         }}
