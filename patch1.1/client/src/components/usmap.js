@@ -56,6 +56,7 @@ const USMap = () => {
     layer.bindPopup(state.properties.NAME, {autoPan: false});
     layer.on({
       click: (event) => {
+        if(states.includes(state.properties.NAME)){}
         api.getStateMap(state.properties.STUSPS).then((res) => {
           geoJsonLayer.current.addData(
             res.data.ensemble.currentDistrictPlan.features
