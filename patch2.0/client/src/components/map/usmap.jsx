@@ -1,25 +1,25 @@
 import { useRef, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { GeoJSON, LayersControl, useMap } from "react-leaflet";
+import { GeoJSON, useMap } from "react-leaflet";
 import api from "../../api/api";
 
 const USMap = () => {
-  const layerControlRef = useRef(null);
   const geoJsonLayerRef = useRef(null);
   const map = useMap();
+
+  const stateStyle = {
+    weight: 0.8,
+    opacity: 0.8,
+  };
+
   useEffect(() => {
-    const layer = geoJsonLayerRef.current;
-    const layerControl = layerControlRef.current;
-    layerControl.remove();
+    const mapLayer = geoJsonLayerRef.current;
     api.getUSMap().then((res) => {
-      layer.addData(res.data);
+      mapLayer.addData(res.data);
     });
   }, []);
-  return (
-    <LayersControl ref={layerControlRef}>
-      <GeoJSON ref={geoJsonLayerRef} />
-    </LayersControl>
-  );
+
+  return <GeoJSON ref={geoJsonLayerRef} style={stateStyle} />;
 };
 
 export default USMap;
