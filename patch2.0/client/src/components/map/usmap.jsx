@@ -14,6 +14,7 @@ const USMap = () => {
   const geoJsonLayerRef = useRef(null);
   const map = useMap();
   const navigate = useNavigate();
+  const stateBounds = new Map();
 
   const stateStyle = {
     weight: 0.8,
@@ -22,16 +23,14 @@ const USMap = () => {
   };
 
   const handleMenu = (stateCode, name, popupState) => {
-    api.getStateMap(stateCode).then((res) => {
-      geoJsonLayer.current.addData(
-        res.data.ensemble.currentDistrictPlan.features
-      );
-    });
+    // api.getStateMap(stateCode).then((res) => {
+    //   geoJsonLayer.current.addData(
+    //     res.data.ensemble.currentDistrictPlan.features
+    //   );
+    // });
     document.getElementById('state-menu').style.display="none";
     popupState.close();
-   //map.fitBounds(stateBounds.get(name));
-    console.log("JEASDASJDAJISDJIADIAISUHDIADHIUDIAUDHIUIUHIUIUHIHU")
-    console.log(map)
+    map.fitBounds(stateBounds.get(name));
     navigate(`/home/${name}`, { state: { stateCode } });
   }
 
@@ -42,7 +41,7 @@ const USMap = () => {
         fillOpacity: "0.2",
       });
 
-      // map.set(state.properties.NAME, layer.getBounds());
+      stateBounds.set(state.properties.NAME, layer.getBounds());
     }
     layer.bindPopup(state.properties.NAME, { autoPan: false });
     layer.on({
@@ -54,6 +53,7 @@ const USMap = () => {
           //   );
           // });
           const code = state.properties.STUSPS;
+          console.log(event.target);
           map.fitBounds(event.target.getBounds());
           navigate(`/home/${state.properties.NAME}`, { state: { code } });
         }
