@@ -86,9 +86,9 @@ const USMap = () => {
                     Select a state<ArrowDropDownIcon/>
                 </MuiButton>
                   <Menu {...bindMenu(popupState)}>
-                    <MenuItem onClick={() => handleMenu('FL', 'Florida', popupState)}>Florida</MenuItem>
                     <MenuItem onClick={() => handleMenu('NC', 'North Carolina', popupState)}>North Carolina</MenuItem>
                     <MenuItem onClick={() => handleMenu('OH', 'Ohio', popupState)}>Ohio</MenuItem>
+                    <MenuItem onClick={() => handleMenu('VA', 'Virginia', popupState)}>Virginia</MenuItem>
                   </Menu>
                 </React.Fragment>
               )}
