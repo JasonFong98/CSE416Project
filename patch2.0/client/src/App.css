@@ -1,6 +1,221 @@
-#root {
-  margin: 0 auto;
-  padding: 0;
-  box-sizing: border-box;
+.App {
   text-align: center;
+}
+
+.leaflet-container {
+  background-color: #e8f4f8;
+}
+
+:root{
+  background-color: #E8F4F8;
+}
+
+#hr-bill-container {
+  position: fixed;
+  width: 35%;
+  height: 100%;
+  left: 0;
+  background-color: #E8F4F8;
+}
+
+#hr-bill {
+  position: relative;
+  width: 75%;
+  height: 60%;
+  left: 25%;
+  top: 20%;
+}
+
+#learn-more-button {
+  position: absolute;
+  bottom: 8%
+}
+
+#home-map-container {
+  width: 65%;
+  height: 100%;
+  right: 0;
+  position: fixed;
+  background-color: #E8F4F8;
+}
+
+#state-menu {
+  position: absolute;
+  left: 7%;  
+  top: 2%;
+  z-index: 500;
+}
+#state-name{
+  position: relative;
+  left: 2%;
+  top: 1%;
+  display: inline-block;
+  font-size: 35px;
+  letter-spacing: 4px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#map-container {
+  width: 40%;
+  height: 60%;
+  top: 25%;
+  left: 60%;
+  position: absolute;
+  background-color: #E8F4F8;
+  border-radius: 30px;
+}
+
+#smd-summary {
+  position: absolute;
+  left: 28%;
+  top: 10%;
+  padding: 8px;
+  background-color: #3482d8;
+  border-radius: 10px;
+  color: #E8F4F8;
+  font-size: 20px;
+}
+
+#smd-table {
+  position: absolute;
+  top: 15%;
+}
+
+#summary-block{
+  padding-top:7%;
+  padding-left: 4%;
+}
+
+#summary-names{
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 16px;
+  width:80%;
+}
+
+#summary-data{
+  width:20%;
+  text-align: right;
+  padding-right: 4%;
+}
+
+
+#summary-names, #summary-data{
+  display: inline-block;
+}
+
+#line{
+  visibility: hidden;
+}
+
+#mmd-summary {
+  position: absolute;
+  left: 67.5%;
+  top: 10%;
+  padding: 8px;
+  background-color: #3482d8;
+  border-radius: 10px;
+  color: #e8f4f8;
+  font-size: 20px;
+}
+
+
+#mmd-table {
+  position: absolute;
+  left: 58%;
+  top: 15%;
+}
+
+#vertical-tab {
+  background-color: white;
+  border-radius: 10px;
+  text-transform: none;
+}
+
+#state-top-banner {
+  width: 60%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  background-color: #E8F4F8;
+}
+
+#home-button {
+  position: relative;
+  left: 0.7%;
+  width: 15%;
+  height: 5%;
+}
+
+#state-name {
+  position: relative;
+  left: 3%;
+  top: 1%;
+  display: inline-block;
+  font-size: 40px;
+  font-weight: bold;
+  letter-spacing: 4px;
+}
+
+#state-map-container {
+  width: 40%;
+  height: 100%;
+  right: 0;
+  position: fixed;
+  background-color: #E8F4F8;
+}
+
+
+#demo-card{
+  padding-top: 1%;
+  padding-left: 2%;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#demo-card-race{
+  padding-left:4%;
+  padding-top: 1%;
+  width:30%;
+}
+
+#demo-card-stats{
+  width: 34%;
+  text-align: right;
+  padding-right: 4%;
+}
+
+#demo-card-race, #demo-card-stats{
+  display: inline-block;
+}
+
+#num-of-dis{
+  width:40%;
+  position: relative;
+  left: 1%;
+  height:30%;
+  top:10%;
+}
+
+#elect-info{
+
+  width:57%;
+  height:30%;
+  position: relative;
+  left:2%;
+}
+
+#num-of-dis, #elect-info{
+  padding: 5%;
+}
+#per2{
+  text-align: right;
+  font-size: 18.8px;
+  width: 57%;
+}
+
+#per1, #per2{
+  display: inline-block;
+}
+
+.flex-container {
+  display: flex;
 }
