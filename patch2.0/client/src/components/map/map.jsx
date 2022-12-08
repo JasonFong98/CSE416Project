@@ -17,7 +17,7 @@ const Map = () => {
   console.log(params);
   return (
     <div id="us-map-container">
-      <MapContainer style={{ height: "60vh" }} center={[40, -99]} zoom={5}>
+      <MapContainer style={{ height: "60vh" }} center={[40, -99]} zoom={4}>
         <TileLayer
           url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution="&copy; <a href=https://www.openstreetmap.org/copyright target=_blank>© OpenStreetMap</a> contributors"
