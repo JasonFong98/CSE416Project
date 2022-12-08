@@ -13,12 +13,12 @@ const GeneralInfo = (state) => {
   useEffect(() => {
     api.getStateDemographics(stateDict[state.state.state]).then((res) => {
       const demographicData=res.data.stateDemographic
+      const demograpgicsData=res.data.stateDemographics
       setDemographics({
-        "white": demographicData.caucasian, 
-        "africanAmerican": demographicData.africanAmerican, 
-        "asian": demographicData.asian,
-        "latino": demographicData.latino,
-        "total": demographicData.totalPopulation
+        "white": demograpgicsData[0].population,
+        "africanAmerican": demograpgicsData[1].population, 
+        "asian": demograpgicsData[2].population,
+        "latino": demograpgicsData[3].population,
       })
     });
   }, []);
@@ -26,13 +26,14 @@ const GeneralInfo = (state) => {
     const africanAmerican = demographics.africanAmerican.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     const asian = demographics.asian.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     const latino = demographics.latino.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    const total = demographics.total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    const totalNum = demographics.white+demographics.africanAmerican+demographics.asian+demographics.latino
+    const total = totalNum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
-    const whitePer = (100 * demographics.white/demographics.total).toFixed(2);
-    const africanAmericanPer = (100 * demographics.africanAmerican/demographics.total).toFixed(2);
-    const asianPer = (100 * demographics.asian/demographics.total).toFixed(2);
-    const latinoPer = (100 * demographics.latino/demographics.total).toFixed(2);
-    const totalPer = (100 * (demographics.white + demographics.africanAmerican + demographics.asian + demographics.latino)/demographics.total).toFixed(2);
+    const whitePer = (100 * demographics.white/totalNum).toFixed(2);
+    const africanAmericanPer = (100 * demographics.africanAmerican/totalNum).toFixed(2);
+    const asianPer = (100 * demographics.asian/totalNum).toFixed(2);
+    const latinoPer = (100 * demographics.latino/totalNum).toFixed(2);
+    const totalPer = 100;
 
   return (
     <div>
