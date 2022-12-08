@@ -10,7 +10,7 @@ import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 
 const USMap = () => {
-  const states = ["Florida", "North Carolina", "Ohio"];
+  const states = ["Virginia", "North Carolina", "Ohio"];
   const geoJsonLayerRef = useRef(null);
   const map = useMap();
   const navigate = useNavigate();
@@ -22,7 +22,7 @@ const USMap = () => {
     // color: "#EDE4E0",
   };
 
-  const handleMenu = (stateCode, name, popupState) => {
+  const handleMenu = (code, name, popupState) => {
     // api.getStateMap(stateCode).then((res) => {
     //   geoJsonLayer.current.addData(
     //     res.data.ensemble.currentDistrictPlan.features
@@ -31,7 +31,7 @@ const USMap = () => {
     document.getElementById('state-menu').style.display="none";
     popupState.close();
     map.fitBounds(stateBounds.get(name));
-    navigate(`/home/${name}`, { state: { stateCode } });
+    navigate(`/home/${name}`, { state: { code } });
   }
 
   const onEachFeature = (state, layer) => {

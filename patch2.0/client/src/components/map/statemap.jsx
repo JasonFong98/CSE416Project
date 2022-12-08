@@ -1,19 +1,16 @@
 import { useEffect, useRef } from "react";
 import { GeoJSON, LayersControl } from "react-leaflet";
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation} from "react-router-dom";
 import api from "../../api/api";
 
 const StateMap = () => {
   const stateGeoJsonLayer = useRef();
   const location = useLocation();
-  const params = useParams();
-  console.log(params.id);
-  console.log(location.state.code);
   useEffect(() => {
+    console.log(location);
     const stateLayer = stateGeoJsonLayer.current;
     api.getStateMap(location.state.code).then((res) => {
-      stateLayer.addData(res.data.ensemble.currentDistrictPlan.features);
-      console.log(res.data.ensemble.currentDistrictPlan.features);
+      stateLayer.addData(res.data.features);
     });
   }, []);
   const onEachFeature = (district, layer) => {
@@ -27,14 +24,19 @@ const StateMap = () => {
       },
     });
   };
+
+  const layer = (
+    <LayersControl.Overlay checked name="Districts">
+      <GeoJSON ref={stateGeoJsonLayer} onEachFeature={onEachFeature} />
+    </LayersControl.Overlay>
+  );
+
   return (
     <LayersControl>
-      <LayersControl.Overlay name="Districts">
-        <GeoJSON ref={stateGeoJsonLayer} onEachFeature={onEachFeature} />
-      </LayersControl.Overlay>
-      <LayersControl.Overlay name="Precinct">
+      {layer}
+      {/* <LayersControl.Overlay name="Precinct">
         <GeoJSON />
-      </LayersControl.Overlay>
+      </LayersControl.Overlay> */}
     </LayersControl>
   );
 };

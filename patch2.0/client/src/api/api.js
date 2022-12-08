@@ -5,7 +5,7 @@ const api = axios.create({
 });
 
 export const getUSMap = async () => await api.get("home");
-export const getStateMap = async (state) => await api.get(`/home/map/${state}`);
+export const getStateMap = async (state) => await api.get(`/map/${state}`);
 export const getStateDemographics = async (state) => await api.get(`/home/${state}`);
 export const getPlots = async (state) => await api.get(`/districtplan/plots/${state}`);
 

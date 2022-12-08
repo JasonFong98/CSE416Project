@@ -45,24 +45,15 @@
   top: 2%;
   z-index: 500;
 }
-#state-name{
-  position: relative;
-  left: 2%;
-  top: 1%;
-  display: inline-block;
-  font-size: 35px;
-  letter-spacing: 4px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
 
 #map-container {
   width: 40%;
   height: 60%;
-  top: 25%;
-  left: 60%;
+  top: 20%;
+  left: 58%;
   position: absolute;
   background-color: #E8F4F8;
-  border-radius: 30px;
+
 }
 
 #smd-summary {
@@ -148,12 +139,13 @@
 
 #state-name {
   position: relative;
-  left: 3%;
+  left: 3.1%;
   top: 1%;
   display: inline-block;
   font-size: 40px;
   font-weight: bold;
   letter-spacing: 4px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 #state-map-container {
