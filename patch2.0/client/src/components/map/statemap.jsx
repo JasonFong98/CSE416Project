@@ -7,7 +7,6 @@ const StateMap = () => {
   const stateGeoJsonLayer = useRef();
   const location = useLocation();
   useEffect(() => {
-    console.log(location);
     const stateLayer = stateGeoJsonLayer.current;
     api.getStateMap(location.state.code).then((res) => {
       stateLayer.addData(res.data.features);
@@ -27,16 +26,13 @@ const StateMap = () => {
 
   const layer = (
     <LayersControl.Overlay checked name="Districts">
-      <GeoJSON ref={stateGeoJsonLayer} onEachFeature={onEachFeature} />
+      <GeoJSON pathOptions={{color: 'blue', fillColor: 'lightblue'}} ref={stateGeoJsonLayer} onEachFeature={onEachFeature} />
     </LayersControl.Overlay>
   );
 
   return (
     <LayersControl>
       {layer}
-      {/* <LayersControl.Overlay name="Precinct">
-        <GeoJSON />
-      </LayersControl.Overlay> */}
     </LayersControl>
   );
 };

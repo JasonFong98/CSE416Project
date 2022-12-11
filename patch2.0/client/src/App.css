@@ -50,26 +50,27 @@
   width: 40%;
   height: 60%;
   top: 20%;
-  left: 58%;
+  left: 59.5%;
   position: absolute;
   background-color: #E8F4F8;
 
 }
 
 #smd-summary {
-  position: absolute;
-  left: 28%;
-  top: 10%;
+  position: relative;
+  left: 25%;
+  top: 12%;
   padding: 8px;
-  background-color: #3482d8;
+  background-color: #3482d8; 
   border-radius: 10px;
   color: #E8F4F8;
   font-size: 20px;
+  width: 54.5%;
 }
 
 #smd-table {
-  position: absolute;
-  top: 15%;
+  position: relative;
+  top: 19%;
 }
 
 #summary-block{
@@ -100,8 +101,8 @@
 
 #mmd-summary {
   position: absolute;
-  left: 67.5%;
-  top: 10%;
+  left: 41%;
+  top: 12%;
   padding: 8px;
   background-color: #3482d8;
   border-radius: 10px;
@@ -112,8 +113,8 @@
 
 #mmd-table {
   position: absolute;
-  left: 58%;
-  top: 15%;
+  left: 35%;
+  top: 19%;
 }
 
 #vertical-tab {
@@ -123,7 +124,7 @@
 }
 
 #state-top-banner {
-  width: 60%;
+  width: 100%;
   height: 100%;
   position: fixed;
   left: 0;
@@ -132,14 +133,14 @@
 
 #home-button {
   position: relative;
-  left: 0.7%;
-  width: 15%;
+  left: 0.4%;
+  width: 9.2%;
   height: 5%;
 }
 
 #state-name {
   position: relative;
-  left: 3.1%;
+  left: 1.7%;
   top: 1%;
   display: inline-block;
   font-size: 40px;
@@ -150,12 +151,16 @@
 
 #state-map-container {
   width: 40%;
-  height: 100%;
+  height: 20%;
   right: 0;
-  position: fixed;
+  position: absolute;
   background-color: #E8F4F8;
 }
 
+#map-toggle-button{
+  position: relative;
+  top: 55%;
+}
 
 #demo-card{
   padding-top: 1%;
