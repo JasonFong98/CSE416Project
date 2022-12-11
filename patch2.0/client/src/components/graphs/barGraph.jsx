@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import Chart from "react-apexcharts";
 
 const BarGraph = (data) => {
-  console.log(data.data)
   const keys = Object.keys(data.data);
   const values = Object.values(data.data);
   let options = {

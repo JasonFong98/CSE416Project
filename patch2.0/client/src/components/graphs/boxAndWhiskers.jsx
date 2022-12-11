@@ -15,65 +15,38 @@ const BoxAndWhiskers = (data) => {
   let options = {
     series: [
       {
+        name: 'box',
         type: "boxPlot",
         data: [
           {
             x: "District 1",
-            y: data.data["one"],
-          },
-          {
-            x: "District 2",
-            y: [0,0,0,0,0],
-          },
-          {
-            x: "District 3",
-            y: [0,0,0,0,0],
-          },
-          {
-            x: "District 4",
-            y: [0,0,0,0,0],
-          },
-          {
-            x: "JDistrict 5",
-            y: [0,0,0,0,0],
-          },
-          {
-            x: "District 6",
-            y: [0,0,0,0,0],
-          },
-          {
-            x: "District 7",
-            y: [0,0,0,0,0],
+            y: [1,2,3,4,5],
           },
         ],
       },
+      {
+        name: 'outliers',
+        type: "scatter",
+        data: [
+          {
+            x: "District 1",
+            y: 7
+          }
+        ]
+      },
     ],
-    chart: {
-      type: "boxPlot",
-      height: 500,
-    },
-    title: {
-      text: "Basic BoxPlot Chart",
-      align: "left",
-    },
     options: {
       chart: {
-        type: 'boxPlot',
-        height: 350
+        type: "boxPlot",
+        height: 500,
       },
       title: {
-        text: 'Basic BoxPlot Chart',
-        align: 'left'
+        text: "chart",
+        align: "left",
       },
-      plotOptions: {
-        boxPlot: {
-          colors: {
-            upper:'#008FFB', 
-            lower:'#FEB019'
-          }
-        }
-      }
+      colors: ['#008FFB', '#FEB019'],
     },
+
   };
 
   return (
@@ -91,11 +64,25 @@ const BoxAndWhiskers = (data) => {
         <ToggleButton value="MMD"><b>MMD</b></ToggleButton>
         <ToggleButton value="BOTH"><b>SMD & MMD</b></ToggleButton>
       </ToggleButtonGroup>
+      <ToggleButtonGroup
+        style={{position:"relative", right:"31%", paddingBottom:"2%"}}
+        color="warning"
+        value={alignment}
+        exclusive
+        onChange={handleChange}
+        size="medium"
+        aria-label="Platform"
+      >
+        <ToggleButton value="SMD"><b>African</b></ToggleButton>
+        <ToggleButton value="MMD"><b>Asian</b></ToggleButton>
+        <ToggleButton value="BOTH"><b>Latino</b></ToggleButton>
+      </ToggleButtonGroup>
       <Chart
-        options={options.chart}
+        options={options.options}
         series={options.series}
         type="boxPlot"
         width="700"
+        height="700"
       />
     </div>
   );

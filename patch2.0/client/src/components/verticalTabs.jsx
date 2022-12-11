@@ -61,6 +61,9 @@ export default function VerticalTabs(state) {
       }
       setBGData(tempDict)
     });
+    api.getSMDBoxAndWhiskers(stateDict[state.state]).then((res) => {
+      console.log(res.data)
+    });
   }, []);
   //React.useEffect(() => {
     //api.getPlots(stateDict[state.state]).then((res) => {
