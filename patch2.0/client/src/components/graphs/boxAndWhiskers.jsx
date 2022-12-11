@@ -10,6 +10,7 @@ const BoxAndWhiskers = (data) => {
   const handleChange = (event, newAlignment) => {
     setAlignment(newAlignment);
   };
+  const Wdata = data.data[1]
 
 
   let options = {
@@ -17,12 +18,7 @@ const BoxAndWhiskers = (data) => {
       {
         name: 'box',
         type: "boxPlot",
-        data: [
-          {
-            x: "District 1",
-            y: [1,2,3,4,5],
-          },
-        ],
+        data: Wdata,
       },
       {
         name: 'outliers',

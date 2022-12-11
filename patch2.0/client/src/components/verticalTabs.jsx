@@ -48,7 +48,8 @@ function a11yProps(index) {
 }
 
 export default function VerticalTabs(state) {
-  const stateDict =  {"Ohio": "OH", "Florida": "FL", "North Carolina": "NC"}
+  const stateDict =  {"Ohio": "OH", "Virginia": "VA", "North Carolina": "NC"}
+  const stateDistrictNum = {"Ohio": 16, "Virginia": 11, "North Carolina": 13}
   const [value, setValue] = React.useState(0);
   const [BWdata, setBWData] = React.useState({});
   const [BGdata, setBGData] = React.useState({});
@@ -62,7 +63,35 @@ export default function VerticalTabs(state) {
       setBGData(tempDict)
     });
     api.getSMDBoxAndWhiskers(stateDict[state.state]).then((res) => {
-      console.log(res.data)
+      const boxAndWhiskersData = res.data;
+      const tempArray = [[],[],[]];
+      let districtNumCounter = 1;
+      for(let i=0; i<boxAndWhiskersData.length; i++) {
+        if (state.state=="Ohio" && districtNumCounter>16) {
+          districtNumCounter=1;
+        }
+        if (state.state=="Virginia" && districtNumCounter>11) {
+          districtNumCounter=1;
+        }
+        if (state.state=="North Carolina" && districtNumCounter>13) {
+          districtNumCounter=1;
+        }
+        let x = districtNumCounter;
+        let y = [boxAndWhiskersData[i].min, boxAndWhiskersData[i].firstQ, boxAndWhiskersData[i].median, boxAndWhiskersData[i].thirdQ, boxAndWhiskersData[i].max];
+        let xy = { x: x, y: y};
+        if(boxAndWhiskersData[i].type=="AFRICAN") {
+          tempArray[0].push(xy);
+        }
+        else if(boxAndWhiskersData[i].type=="ASIAN") {
+          tempArray[1].push(xy);
+        }
+        else if(boxAndWhiskersData[i].type=="LATINO") {
+          tempArray[2].push(xy);
+        }
+        tempArray.push(xy);
+        districtNumCounter++;
+      }
+      setBWData(tempArray);
     });
   }, []);
   //React.useEffect(() => {

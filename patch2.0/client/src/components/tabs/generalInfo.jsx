@@ -6,7 +6,7 @@ import Paper from "@mui/material/Paper";
 import api from "../../api/api"
 
 const GeneralInfo = (state) => {
-  const stateDict =  {"Ohio": "OH", "Florida": "FL", "North Carolina": "NC"}
+  const stateDict =  {"Ohio": "OH", "Virginia": "VA", "North Carolina": "NC"}
   const [demographics, setDemographics] = useState({ 
     "white": 0, "africanAmerican": 0, "asian": 0, "latino": 0, "total": 0 });
 
