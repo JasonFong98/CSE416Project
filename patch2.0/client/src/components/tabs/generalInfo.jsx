@@ -33,6 +33,29 @@ const GeneralInfo = (state) => {
     const asianPer = (100 * demographics.asian/totalNum).toFixed(2);
     const latinoPer = (100 * demographics.latino/totalNum).toFixed(2);
     const totalPer = 100;
+    
+    let districtNum = 0;
+    let demPer = 0;
+    let repPer = 0;
+    switch (state.state.state) {
+      case "Ohio":
+        districtNum=16;
+        demPer=45.2;
+        repPer=53.3;
+        break;
+      case "Virginia":
+        districtNum=11;
+        demPer=54.1;
+        repPer=44.0;
+        break;
+      case "North Carolina":
+        districtNum=13;
+        demPer=48.6;
+        repPer=49.9;
+        break;
+      default:
+    }
+    
 
   return (
     <div>
@@ -82,16 +105,16 @@ const GeneralInfo = (state) => {
       <div className="flex-container">
         <Paper id="num-of-dis"elevation={2}>
            <h3>Number of Districts</h3>
-           <h1>16</h1>
+           <h1>{districtNum}</h1>
         </Paper>
 
         <Paper id="elect-info" elevation={2}>   
             <h3>2020 Election</h3>
             <div id="per1">Republican Percentage:</div>
-            <div id="per2">53.3%</div>
+            <div id="per2">{repPer}%</div>
             <br/>
             <div id="per1">Democratic Percentage:</div>
-            <div id="per2">45.2%</div>
+            <div id="per2">{demPer}%</div>
         </Paper>
 
       </div>
