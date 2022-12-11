@@ -5,27 +5,43 @@ import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 
 
 const BoxAndWhiskers = (data) => {
-  const [alignment, setAlignment] = useState("SMD");
+  const [planAlignment, setPlanAlignment] = useState("SMD");
+  const [raceAlignment, setRaceAlignment] = useState("AFRICAN");
+  const [barData, setBarData] = useState(data.data[0]);
   
-  const handleChange = (event, newAlignment) => {
-    setAlignment(newAlignment);
+  const handlePlanChange = (event, newPlanAlignment) => {
+    setPlanAlignment(newPlanAlignment);
   };
-  const Wdata = data.data[1]
+  const handleRaceChange = (event, newRaceAlignment) => {
+    if (newRaceAlignment=="AFRICAN") {
+      setBarData(data.data[0])
+    }
+    else if (newRaceAlignment=="ASIAN") {
+      setBarData(data.data[1])
+    }
+    else if (newRaceAlignment=="LATINO") {
+      setBarData(data.data[2])
+    }
+    else {
+      setBarData([])
+    }
+    setRaceAlignment(newRaceAlignment);
+  };
 
 
   let options = {
     series: [
       {
-        name: 'box',
+        name: 'ReCom Ensemble',
         type: "boxPlot",
-        data: Wdata,
+        data: barData,
       },
       {
-        name: 'outliers',
+        name: 'Enacted Plan',
         type: "scatter",
         data: [
           {
-            x: "District 1",
+            x: 1,
             y: 7
           }
         ]
@@ -35,12 +51,47 @@ const BoxAndWhiskers = (data) => {
       chart: {
         type: "boxPlot",
         height: 500,
+        animations: {
+          enabled: false,
+        },
+        dyamicAnimation: {
+          enabled: false,
+        }
       },
       title: {
-        text: "chart",
+        text: "Box and Whiskers",
         align: "left",
+        offsetX: 250,
+        style: {
+          fontSize: 22,
+          color: '#189AB4',
+        }
       },
       colors: ['#008FFB', '#FEB019'],
+      yaxis: {
+        labels: {
+          formatter: function (value) {
+            return value;
+          }
+        },
+        title: { text: "Percentage",
+                 style: {
+                  fontSize: 20,
+                  color: '#189AB4',
+                  fontFamily: "sans-serif",
+                } 
+        },
+      },
+      xaxis: {
+        title: { text: "Districts",
+                 offsetY: 90,
+                 offsetX: 0,
+                 style: {
+                  fontSize: 20,
+                  color: "#189AB4",
+                 }
+        },
+      },
     },
 
   };
@@ -50,9 +101,9 @@ const BoxAndWhiskers = (data) => {
       <ToggleButtonGroup
         style={{position:"relative", left:"67%", paddingBottom:"2%"}}
         color="warning"
-        value={alignment}
+        value={planAlignment}
         exclusive
-        onChange={handleChange}
+        onChange={handlePlanChange}
         size="medium"
         aria-label="Platform"
       >
@@ -63,15 +114,15 @@ const BoxAndWhiskers = (data) => {
       <ToggleButtonGroup
         style={{position:"relative", right:"31%", paddingBottom:"2%"}}
         color="warning"
-        value={alignment}
+        value={raceAlignment}
         exclusive
-        onChange={handleChange}
+        onChange={handleRaceChange}
         size="medium"
         aria-label="Platform"
       >
-        <ToggleButton value="SMD"><b>African</b></ToggleButton>
-        <ToggleButton value="MMD"><b>Asian</b></ToggleButton>
-        <ToggleButton value="BOTH"><b>Latino</b></ToggleButton>
+        <ToggleButton value="AFRICAN"><b>African</b></ToggleButton>
+        <ToggleButton value="ASIAN"><b>Asian</b></ToggleButton>
+        <ToggleButton value="LATINO"><b>Latino</b></ToggleButton>
       </ToggleButtonGroup>
       <Chart
         options={options.options}

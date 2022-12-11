@@ -27,9 +27,8 @@ const BarGraph = (data) => {
                  style: {
                   fontSize: 16,
                   color: '#189AB4',
-                  fontFamily: "sans-serif",
                 } 
-      },
+        },
       },
       title: {
         text: "Republican/Democrat Split",
@@ -40,7 +39,6 @@ const BarGraph = (data) => {
         style: {
           fontSize: 22,
           color: '#189AB4',
-          fontFamily: "sans-serif",
         } 
       },
     },
