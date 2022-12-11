@@ -14,15 +14,35 @@ const BarGraph = (data) => {
       },
       xaxis: {
         categories: keys,
+        title: { text: "Republican/Democrat",
+                 offsetY: 90,
+                 offsetX: 0,
+                 style: {
+                  fontSize: 16,
+                  color: "#189AB4",
+                 }
+        },
       },
       yaxis: {
-        title: { text: "Number of District Plans" },
+        title: { text: "Number of District Plans",
+                 style: {
+                  fontSize: 16,
+                  color: '#189AB4',
+                  fontFamily: "sans-serif",
+                } 
+      },
       },
       title: {
         text: "Republican/Democrat Split",
         floating: true,
         offsetY: 0,
+        offsetX: 20,
         align: "center",
+        style: {
+          fontSize: 22,
+          color: '#189AB4',
+          fontFamily: "sans-serif",
+        } 
       },
     },
     series: [
@@ -40,7 +60,7 @@ const BarGraph = (data) => {
         series={options.series}
         type="bar"
         width="700"
-        height="600"
+        height="750"
       />
     </div>
   );
