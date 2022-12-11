@@ -53,10 +53,11 @@ export default function VerticalTabs(state) {
   const [value, setValue] = React.useState(0);
   const [BWdata, setBWData] = React.useState({});
   const [BGdata, setBGData] = React.useState({});
+  const [enactedData, setEnactedData] = React.useState({});
   React.useEffect(() => {
     api.getSMDBarGraph(stateDict[state.state]).then((res) => {
       const barGraphData = res.data;
-      const tempDict = {};
+      let tempDict = {};
       for(let i=0; i<barGraphData.length; i++) {
         tempDict[barGraphData[i].split]=barGraphData[i].numberOfPlan
       }
@@ -64,7 +65,7 @@ export default function VerticalTabs(state) {
     });
     api.getSMDBoxAndWhiskers(stateDict[state.state]).then((res) => {
       const boxAndWhiskersData = res.data;
-      const tempArray = [[],[],[]];
+      let tempArray = [[],[],[]];
       let districtNumCounter = 1;
       for(let i=0; i<boxAndWhiskersData.length; i++) {
         if (state.state=="Ohio" && districtNumCounter>16) {
@@ -92,6 +93,42 @@ export default function VerticalTabs(state) {
         districtNumCounter++;
       }
       setBWData(tempArray);
+    });
+    api.getSMDDistrictPlans(stateDict[state.state]).then((res) => {
+      const enactedDistricts = res.data[0].districts
+      let tempArray = [[],[],[]];
+      for(let i=0; i<enactedDistricts.length; i++) {
+        let x = enactedDistricts[i].id;
+        const totalPopulation = enactedDistricts[i].districtDemographics[0].population + enactedDistricts[i].districtDemographics[1].population + enactedDistricts[i].districtDemographics[2].population + enactedDistricts[i].districtDemographics[3].population;
+        const africanPercentage = (enactedDistricts[i].districtDemographics[2].population/totalPopulation)*100;
+        const asianPercentage = (enactedDistricts[i].districtDemographics[1].population/totalPopulation)*100;
+        const latinoPercentage = (enactedDistricts[i].districtDemographics[3].population/totalPopulation)*100;
+        let y = africanPercentage;
+        let xy = { x: x, y: y};
+        tempArray[0].push(xy);
+        y = asianPercentage;
+        xy = { x: x, y: y};
+        tempArray[1].push(xy);
+        y = latinoPercentage;
+        xy = { x: x, y: y};
+        tempArray[2].push(xy);
+      }
+      tempArray[0].sort(function(a,b) {
+        return a.y - b.y;
+      });
+      tempArray[1].sort(function(a,b) {
+        return a.y - b.y;
+      });
+      tempArray[2].sort(function(a,b) {
+        return a.y - b.y;
+      });
+      for(let i=0; i<enactedDistricts.length; i++) {
+        tempArray[0][i]["x"]=i+1;
+        tempArray[1][i]["x"]=i+1;
+        tempArray[2][i]["x"]=i+1;
+      }
+      console.log(tempArray)
+      setEnactedData(tempArray)
     });
   }, []);
   //React.useEffect(() => {
@@ -168,7 +205,7 @@ export default function VerticalTabs(state) {
       </TabPanel>
 
       <TabPanel value={value} index={3}>
-        <BoxAndWhiskers data={BWdata}/>
+        <BoxAndWhiskers data={BWdata} enactedData={enactedData} />
       </TabPanel>
 
       <TabPanel value={value} index={4}>

@@ -9,9 +9,9 @@ export const getStateMap = async (state) => await api.get(`/map/${state}`);
 export const getStateDemographics = async (state) => await api.get(`/home/${state}`);
 export const getSMDBarGraph = async (state) => await api.get(`/smd/barGraph/${state}`);
 export const getSMDBoxAndWhiskers = async (state) => await api.get(`/smd/boxAndWhiskers/${state}`);
-export const getPlots = async (state) => await api.get(`/districtplan/plots/${state}`);
+export const getSMDDistrictPlans = async (state) => await api.get(`/smd/districtPlans/${state}`);
 
 
-const apis = { getUSMap, getStateMap, getStateDemographics, getSMDBarGraph, getSMDBoxAndWhiskers, getPlots };
+const apis = { getUSMap, getStateMap, getStateDemographics, getSMDBarGraph, getSMDBoxAndWhiskers, getSMDDistrictPlans};
 
 export default apis;

@@ -12,7 +12,6 @@ const GeneralInfo = (state) => {
 
   useEffect(() => {
     api.getStateDemographics(stateDict[state.state.state]).then((res) => {
-      const demographicData=res.data.stateDemographic
       const demograpgicsData=res.data.stateDemographics
       setDemographics({
         "white": demograpgicsData[0].population,

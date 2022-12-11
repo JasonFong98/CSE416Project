@@ -8,19 +8,23 @@ const BoxAndWhiskers = (data) => {
   const [planAlignment, setPlanAlignment] = useState("SMD");
   const [raceAlignment, setRaceAlignment] = useState("AFRICAN");
   const [barData, setBarData] = useState(data.data[0]);
-  
+  const [enactedData, setEnactedData] = useState(data.enactedData[0]);
+  console.log(data.enactedData)
   const handlePlanChange = (event, newPlanAlignment) => {
     setPlanAlignment(newPlanAlignment);
   };
   const handleRaceChange = (event, newRaceAlignment) => {
     if (newRaceAlignment=="AFRICAN") {
-      setBarData(data.data[0])
+      setBarData(data.data[0]);
+      setEnactedData(data.enactedData[0]);
     }
     else if (newRaceAlignment=="ASIAN") {
-      setBarData(data.data[1])
+      setBarData(data.data[1]);
+      setEnactedData(data.enactedData[1]);
     }
     else if (newRaceAlignment=="LATINO") {
-      setBarData(data.data[2])
+      setBarData(data.data[2]);
+      setEnactedData(data.enactedData[2]);
     }
     else {
       setBarData([])
@@ -39,12 +43,7 @@ const BoxAndWhiskers = (data) => {
       {
         name: 'Enacted Plan',
         type: "scatter",
-        data: [
-          {
-            x: 1,
-            y: 7
-          }
-        ]
+        data: enactedData,
       },
     ],
     options: {
