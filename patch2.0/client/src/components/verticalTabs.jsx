@@ -50,27 +50,37 @@ function a11yProps(index) {
 export default function VerticalTabs(state) {
   const stateDict =  {"Ohio": "OH", "Florida": "FL", "North Carolina": "NC"}
   const [value, setValue] = React.useState(0);
-  const [BWdata, setBWData] = React.useState({ "one": [0,1,2,3,4]});
-  const [BGdata, setBGData] = React.useState();
+  const [BWdata, setBWData] = React.useState({});
+  const [BGdata, setBGData] = React.useState({});
   React.useEffect(() => {
-    api.getPlots(stateDict[state.state]).then((res) => {
-      const barGraphData = res.data.ensemble.repDemSplits;
-      const boxWhiskerData=res.data.ensemble.boxAndWhiskers[0];
-      console.log(barGraphData[0].numberOfPlans)
-      setBWData({
-        "one": [boxWhiskerData.min, boxWhiskerData.firstQ, boxWhiskerData.median, boxWhiskerData.thirdQ, boxWhiskerData.max]
-      });
-      setBGData({
-        "1/2": barGraphData[0].numberOfPlans,
-        "2/3": barGraphData[1].numberOfPlans,
-        "1/3": barGraphData[2].numberOfPlans,
-        "3/1": barGraphData[3].numberOfPlans,
-        "3/2": barGraphData[4].numberOfPlans,
-        "3/1": barGraphData[5].numberOfPlans
-      });
-      console.log(BGdata)
+    api.getSMDBarGraph(stateDict[state.state]).then((res) => {
+      const barGraphData = res.data;
+      const tempDict = {};
+      for(let i=0; i<barGraphData.length; i++) {
+        tempDict[barGraphData[i].split]=barGraphData[i].numberOfPlan
+      }
+      setBGData(tempDict)
     });
   }, []);
+  //React.useEffect(() => {
+    //api.getPlots(stateDict[state.state]).then((res) => {
+      //const barGraphData = res.data.ensemble.repDemSplits;
+      //const boxWhiskerData=res.data.ensemble.boxAndWhiskers[0];
+      //console.log(barGraphData[0].numberOfPlans)
+     // setBWData({
+       // "one": [boxWhiskerData.min, boxWhiskerData.firstQ, boxWhiskerData.median, boxWhiskerData.thirdQ, boxWhiskerData.max]
+     // });
+     // setBGData({
+      //  "1/2": barGraphData[0].numberOfPlans,
+     //   "2/3": barGraphData[1].numberOfPlans,
+      //  "1/3": barGraphData[2].numberOfPlans,
+     //   "3/1": barGraphData[3].numberOfPlans,
+     //   "3/2": barGraphData[4].numberOfPlans,
+     //   "3/1": barGraphData[5].numberOfPlans
+     // });
+  //    console.log(BGdata)
+  //  });
+ // }, []);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
