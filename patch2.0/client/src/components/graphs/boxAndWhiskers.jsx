@@ -211,6 +211,16 @@ const BoxAndWhiskers = (data) => {
         },
       },
       xaxis: {
+        labels: {
+          formatter: function (value) {
+            if (value!=1 && data.state.state!="Virginia") {
+              return Math.ceil(Number(value)+0.01);
+            }
+            else {
+              return value
+            }
+          }
+        },
         title: { text: "Districts",
                  offsetY: 90,
                  offsetX: 0,
