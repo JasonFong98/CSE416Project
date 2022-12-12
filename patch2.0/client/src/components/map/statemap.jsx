@@ -11,16 +11,22 @@ const StateMap = () => {
 
   useEffect(() => {
     const stateLayer = stateGeoJsonLayer.current;
-    
+    console.log(stateLayer);
     if(store.geoJson == "Enacted Plan"){
-      stateLayer.clearLayers();
+
       api.getStateMap(location.state.code).then((res) => {
-        stateLayer.addData(res.data.features);
+        stateLayer.clearLayers().addData(res.data.features);
+        console.log(res.data.features);
       });
-    }else if (store.geoJson == "Average MMD Plan"){
-      stateLayer.clearLayers();
-      api.getUSMap().then((res) => {
-        stateLayer.addData(res.data);
+    }else if (store.geoJson == "mmd1"){
+      api.getMMDAveragePlan(location.state.code, store.mmd1).then((res) => {
+        stateLayer.clearLayers().addData(res.data.features);
+        console.log(res.data.features);
+      });
+    }else if (store.geoJson == "mmd2"){
+      api.getMMDAveragePlan(location.state.code, store.mmd2).then((res) => {
+        stateLayer.clearLayers().addData(res.data.features);
+        console.log(res.data.features);
       });
     }else{
       stateLayer.clearLayers();
@@ -28,9 +34,13 @@ const StateMap = () => {
     
   }, [store]);
 
-
   const onEachFeature = (district, layer) => {
-    layer.bindPopup("District: " + parseInt(district.properties.NAME, 10));
+
+    if(store.geoJson == "Enacted Plan"){
+      layer.bindPopup("District: " + parseInt(district.properties.NAME, 10));
+    }else{
+      layer.bindPopup("District: " + district.properties.District);
+    }
     layer.on({
       mouseout: (event) => {
         layer.closePopup();
@@ -42,22 +52,12 @@ const StateMap = () => {
   };
 
 
-  let layer = (
-    <LayersControl.Overlay checked name="Districts">
-    <GeoJSON pathOptions={{color: 'red', fillColor: 'pink'}} ref={stateGeoJsonLayer} onEachFeature={onEachFeature} />
-    </LayersControl.Overlay>
-  );
 
-  if(store.geoJson == "Average MMD Plan"){
-    layer = (
-      <LayersControl.Overlay checked name="Average MMD Plan">
-        <GeoJSON pathOptions={{color: 'red', fillColor: 'pink'}} ref={stateGeoJsonLayer} onEachFeature={onEachFeature} />
-      </LayersControl.Overlay>
-    ); 
-  }
   return (
     <LayersControl>
-      {layer}
+      <LayersControl.Overlay checked name=" ">
+      <GeoJSON style={{fillColor: "lightblue"}} ref={stateGeoJsonLayer} onEachFeature={onEachFeature} />
+    </LayersControl.Overlay>
     </LayersControl>
   );
 };

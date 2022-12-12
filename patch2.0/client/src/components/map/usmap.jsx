@@ -101,7 +101,7 @@ const USMap = () => {
       ref={geoJsonLayerRef}
       style={stateStyle}
       onEachFeature={onEachFeature}
-    />
+      />
     </div>
   );
 };

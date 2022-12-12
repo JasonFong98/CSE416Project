@@ -1,4 +1,5 @@
 import * as React from "react";
+import {useContext} from "react";
 import PropTypes from "prop-types";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
@@ -11,6 +12,7 @@ import MMDSummary from "./tabs/ensembleSummary/MMDSummary";
 import SMDSummary from "./tabs/ensembleSummary/SMDSummary";
 import SamplePlansMenu from "./tabs/samplePlansMenu"
 import GeneralInfo from "./tabs/generalInfo";
+import { GlobalStoreContext } from "../store/store";
 
 import api from "../api/api"
 
@@ -55,6 +57,7 @@ export default function VerticalTabs(state) {
   const [BGdata, setBGData] = React.useState({});
   const [enactedData, setEnactedData] = React.useState({});
   const [MMDBWdata, setMMDBWdata] = React.useState({});
+  const {store}  = useContext(GlobalStoreContext);
   React.useEffect(() => {
     api.getSMDBarGraph(stateDict[state.state]).then((res) => {
       const barGraphData = res.data;

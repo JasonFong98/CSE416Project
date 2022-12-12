@@ -8,16 +8,21 @@ import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import { useNavigate, useParams } from "react-router-dom";
 import { GlobalStoreContext } from "../store/store";
+import apis from '../api/api';
 
 const State = (props) => {
   const navigate = useNavigate();
   const [alignment, setAlignment] = useState("Enacted Plan");
+  const stateDict =  {"Ohio": "OH", "Virginia": "VA", "North Carolina": "NC"}
   const state=useParams().id;
   const {store}  = useContext(GlobalStoreContext);
 
   useEffect(() => {
-    
-  });
+    apis.getMMDBoxAndWhiskers(stateDict[state]).then((res) => {
+      store.setMMDPlan(res.data[0][0].pattern, res.data[1][0].pattern);
+    });
+  },[state]);
+
   function handleHome(){
     navigate('/')
     window.location.reload(false);
@@ -71,7 +76,8 @@ const State = (props) => {
         aria-label="Platform"
       >
         <ToggleButton sx={{textTransform:"none"}} value="Enacted Plan"><b>Enacted Plan</b></ToggleButton>
-        <ToggleButton sx={{textTransform:"none"}} value="Average MMD Plan"><b>Average MMD Plan</b></ToggleButton>
+        <ToggleButton sx={{textTransform:"none"}} value="mmd1"><b>Average {store.mmd1} Plan</b></ToggleButton>
+        <ToggleButton sx={{textTransform:"none"}} value="mmd2"><b>Average {store.mmd2} Plan</b></ToggleButton>
       </ToggleButtonGroup>
       </div>
     </div>
