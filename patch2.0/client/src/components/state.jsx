@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useState, useContext, useEffect} from 'react';
 import CottageIcon from "@mui/icons-material/Cottage";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
@@ -7,12 +7,17 @@ import VerticalTabs from "../components/verticalTabs";
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import { useNavigate, useParams } from "react-router-dom";
+import { GlobalStoreContext } from "../store/store";
 
 const State = (props) => {
   const navigate = useNavigate();
   const [alignment, setAlignment] = useState("Enacted Plan");
   const state=useParams().id;
+  const {store}  = useContext(GlobalStoreContext);
+
+  useEffect(() => {
     
+  });
   function handleHome(){
     navigate('/')
     window.location.reload(false);
@@ -20,6 +25,7 @@ const State = (props) => {
   
   const handleChange = (event, newAlignment) => {
     setAlignment(newAlignment);
+    store.setStateMap(newAlignment);
   };
 
 
@@ -65,7 +71,6 @@ const State = (props) => {
         aria-label="Platform"
       >
         <ToggleButton sx={{textTransform:"none"}} value="Enacted Plan"><b>Enacted Plan</b></ToggleButton>
-        <ToggleButton sx={{textTransform:"none"}} value="Average SMD Plan"><b>Average SMD Plan</b></ToggleButton>
         <ToggleButton sx={{textTransform:"none"}} value="Average MMD Plan"><b>Average MMD Plan</b></ToggleButton>
       </ToggleButtonGroup>
       </div>

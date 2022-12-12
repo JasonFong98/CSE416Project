@@ -13,6 +13,7 @@ export const getSMDBoxAndWhiskers = async (state) => await api.get(`/smd/boxAndW
 export const getMMDBoxAndWhiskers = async (state) => await api.get(`/mmd/boxAndWhiskers/${state}`);
 export const getSMDDistrictPlans = async (state) => await api.get(`/smd/districtPlans/${state}`);
 export const getEnsemble = async (state) => await api.get(`/ensemble/${state}`);
+export const getMMDAveragePlan = async (state, type) => await api.get(`/mmd/average/map/${state}/${type}`);
 
 
 const apis = { 
@@ -23,6 +24,6 @@ const apis = {
   getSMDBarGraph, 
   getSMDBoxAndWhiskers, 
   getMMDBoxAndWhiskers,
-  getSMDDistrictPlans, getEnsemble};
+  getSMDDistrictPlans, getEnsemble, getMMDAveragePlan};
 
 export default apis;

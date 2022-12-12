@@ -4,6 +4,7 @@ import "leaflet/dist/leaflet.css";
 import USMap from "./usmap";
 import StateMap from "./statemap";
 import { useParams } from "react-router-dom";
+import { useContext } from "react";
 
 const Map = () => {
   // const map_api = import.meta.env.VITE_MAPTILER_API;

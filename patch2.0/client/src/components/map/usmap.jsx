@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useContext} from "react";
 import { useNavigate } from "react-router-dom";
 import { GeoJSON, useMap } from "react-leaflet";
 import api from "../../api/api";
@@ -8,6 +8,7 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import { GlobalStoreContext } from "../../store/store";
 
 const USMap = () => {
   const states = ["Virginia", "North Carolina", "Ohio"];
@@ -15,6 +16,7 @@ const USMap = () => {
   const map = useMap();
   const navigate = useNavigate();
   const stateBounds = new Map();
+  const {store}  = useContext(GlobalStoreContext);
 
   const stateStyle = {
     weight: 0.8,
@@ -53,8 +55,9 @@ const USMap = () => {
           //   );
           // });
           const code = state.properties.STUSPS;
-          console.log(event.target);
+          //store.setStateMap(code);
           map.fitBounds(event.target.getBounds());
+          
           navigate(`/home/${state.properties.NAME}`, { state: { code } });
         }
         // document.getElementById("state-menu").style.display = "none";
