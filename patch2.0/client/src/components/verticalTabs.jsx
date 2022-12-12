@@ -210,7 +210,7 @@ export default function VerticalTabs(state) {
       </TabPanel>
 
       <TabPanel value={value} index={3}>
-        <BoxAndWhiskers data={BWdata} enactedData={enactedData} mmdData={MMDBWdata}/>
+        <BoxAndWhiskers data={BWdata} enactedData={enactedData} mmdData={MMDBWdata} state={state}/>
       </TabPanel>
 
       <TabPanel value={value} index={4}>
