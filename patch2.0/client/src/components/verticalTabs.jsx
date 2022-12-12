@@ -129,6 +129,9 @@ export default function VerticalTabs(state) {
       }
       setEnactedData(tempArray)
     });
+    api.getMMDBoxAndWhiskers(stateDict[state.state]).then((res) => {
+      console.log(res.data)
+    });
   }, []);
   //React.useEffect(() => {
     //api.getPlots(stateDict[state.state]).then((res) => {

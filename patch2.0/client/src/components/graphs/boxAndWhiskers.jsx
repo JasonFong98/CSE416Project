@@ -9,7 +9,6 @@ const BoxAndWhiskers = (data) => {
   const [raceAlignment, setRaceAlignment] = useState("AFRICAN");
   const [barData, setBarData] = useState(data.data[0]);
   const [enactedData, setEnactedData] = useState(data.enactedData[0]);
-  console.log(data.enactedData)
   const handlePlanChange = (event, newPlanAlignment) => {
     setPlanAlignment(newPlanAlignment);
   };
