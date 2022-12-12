@@ -54,6 +54,7 @@ export default function VerticalTabs(state) {
   const [BWdata, setBWData] = React.useState({});
   const [BGdata, setBGData] = React.useState({});
   const [enactedData, setEnactedData] = React.useState({});
+  const [MMDBWdata, setMMDBWdata] = React.useState({});
   React.useEffect(() => {
     api.getSMDBarGraph(stateDict[state.state]).then((res) => {
       const barGraphData = res.data;
@@ -89,7 +90,6 @@ export default function VerticalTabs(state) {
         else if(boxAndWhiskersData[i].type=="LATINO") {
           tempArray[2].push(xy);
         }
-        tempArray.push(xy);
         districtNumCounter++;
       }
       setBWData(tempArray);
@@ -130,7 +130,7 @@ export default function VerticalTabs(state) {
       setEnactedData(tempArray)
     });
     api.getMMDBoxAndWhiskers(stateDict[state.state]).then((res) => {
-      console.log(res.data)
+      setMMDBWdata(res.data)
     });
   }, []);
   //React.useEffect(() => {
@@ -207,7 +207,7 @@ export default function VerticalTabs(state) {
       </TabPanel>
 
       <TabPanel value={value} index={3}>
-        <BoxAndWhiskers data={BWdata} enactedData={enactedData} />
+        <BoxAndWhiskers data={BWdata} enactedData={enactedData} mmdData={MMDBWdata}/>
       </TabPanel>
 
       <TabPanel value={value} index={4}>
