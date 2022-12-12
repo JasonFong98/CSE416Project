@@ -127,7 +127,6 @@ export default function VerticalTabs(state) {
         tempArray[1][i]["x"]=i+1;
         tempArray[2][i]["x"]=i+1;
       }
-      console.log(tempArray)
       setEnactedData(tempArray)
     });
   }, []);
@@ -190,7 +189,7 @@ export default function VerticalTabs(state) {
           SMD Ensemble Summary
         </div>
         <div id="smd-table">
-          <SMDSummary />
+          <SMDSummary state={state}/>
         </div>
         <div id="mmd-summary">
           MMD Ensemble Summary

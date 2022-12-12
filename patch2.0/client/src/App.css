@@ -68,9 +68,26 @@
   width: 54.5%;
 }
 
+#mmd-summary {
+  position: absolute;
+  left: 41%;
+  top: 10%;
+  padding: 8px;
+  background-color: #3482d8;
+  border-radius: 10px;
+  color: #e8f4f8;
+  font-size: 20px;
+}
+
 #smd-table {
   position: relative;
   top: 19%;
+}
+
+#mmd-table {
+  position: absolute;
+  left: 35%;
+  top: 14.7%;
 }
 
 #summary-block{
@@ -90,31 +107,12 @@
   padding-right: 4%;
 }
 
-
 #summary-names, #summary-data{
   display: inline-block;
 }
 
 #line{
   visibility: hidden;
-}
-
-#mmd-summary {
-  position: absolute;
-  left: 41%;
-  top: 12%;
-  padding: 8px;
-  background-color: #3482d8;
-  border-radius: 10px;
-  color: #e8f4f8;
-  font-size: 20px;
-}
-
-
-#mmd-table {
-  position: absolute;
-  left: 35%;
-  top: 19%;
 }
 
 #vertical-tab {

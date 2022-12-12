@@ -1,13 +1,38 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
+import { useEffect, useState } from "react";
+import api from "../../../api/api"
 
-export default function BasicTable() {
-  const numOfPlans = 0;
-  const avgMajMinRep = 0;
-  const avgPopMes = 0;
-  const avgPolPopVal = 0;
-  const avgSplit = 0;
+export default function BasicTable(state) {
+  const stateDict =  {"Ohio": "OH", "Virginia": "VA", "North Carolina": "NC"}
+  const numOfPlans = 10000;
+  let averagePopulation = 0;
+  let averageWhitePopulation = 0;
+  let averageAfricanPopulation = 0;
+  let averageAsianPopulation = 0;
+  let averageLatinoPopulation = 0;
+  let averageMajorityMinority = 0;
+  let averageDemocrat = 0;
+  let averageRepublican = 0;
+  let averagePolsbyPopper = 0;
+  useEffect(() => {
+    api.getSMDSummary(stateDict[state.state.state]).then((res) => {
+      const data = res.data;
+      console.log(data)
+      averagePopulation = data.averagePopulation;
+      averageWhitePopulation = data.averageWhitePopulation;
+      averageAfricanPopulation = data.averageAfricanPopulation;
+      averageAsianPopulation = data.averageAsianPopulation;
+      averageLatinoPopulation = data.averageLatinoPopulation;
+      averageMajorityMinority = data.averageMajorityMinority;
+      averageDemocrat = data.averageDemocrat;
+      averageRepublican = data.averageRepublican;
+      averagePolsbyPopper = data.averagePolsbyPopper;
+    });
+  }, []);
+
+  
 
   return (
     <div>
@@ -36,16 +61,16 @@ export default function BasicTable() {
           </div>
 
           <div id="summary-data">
-            <p>{numOfPlans}</p>
+            <p>555</p>
             <hr id="line"/>
             <br/>
-            <p>{avgMajMinRep}</p>
+            <p>555</p>
             <hr id="line"/>
-            <p>{avgPopMes}</p>
+            <p>555</p>
             <hr id="line"/>
-            <p>{avgPolPopVal}</p>
+            <p>555</p>
             <hr id="line"/>
-            <p>{avgSplit}</p>
+            <p>555</p>
           </div>
         </Paper>
       </Box>
