@@ -25,13 +25,9 @@ const GeneralInfo = (state) => {
 
   useEffect(() => {
     api.getStateDemographics(stateDict[state.state.state]).then((res) => {
-      console.log(res.data);
       const stateDemographics = res.data;
-      console.log(stateDemographics);
       const demographicPercentages = stateDemographics[0];
-      console.log(demographicPercentages);
       const demographicPopulation = stateDemographics[1];
-      console.log(demographicPopulation);
       const totalPopulation = stateDemographics[2];
       setDemographicPercentages({
         white: demographicPercentages["CAUCASIAN"],
@@ -74,8 +70,9 @@ const GeneralInfo = (state) => {
     total -
     demographicPopulation.white -
     demographicPopulation.asian -
-    demographicPopulation.latino
-  )
+    demographicPopulation.latino -
+    demographicPopulation.africanAmerican
+    )
     .toString()
     .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   total = total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
