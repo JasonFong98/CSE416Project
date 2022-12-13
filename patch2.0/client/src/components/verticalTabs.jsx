@@ -201,7 +201,7 @@ export default function VerticalTabs(state) {
           MMD Ensemble Summary
         </div>
         <div id="mmd-table">
-          <MMDSummary />
+          <MMDSummary state={state}/>
         </div>
       </TabPanel>
 

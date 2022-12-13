@@ -19,9 +19,6 @@ export default function BasicTable(state) {
   });
   
   useEffect(() => {
-    api.getEnsemble(stateDict[state.state.state]).then((res) => {
-      console.log(res.data)
-      })
     api.getSMDSummary(stateDict[state.state.state]).then((res) => {
       const data = res.data;
       setSummary({
