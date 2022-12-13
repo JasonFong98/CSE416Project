@@ -8,31 +8,40 @@ import api from "../../api/api"
 const GeneralInfo = (state) => {
   const stateDict =  {"Ohio": "OH", "Virginia": "VA", "North Carolina": "NC"}
   const [demographics, setDemographics] = useState({ 
-    "white": 0, "africanAmerican": 0, "asian": 0, "latino": 0, "total": 0 });
+    "white": 0, "africanAmerican": 0, "asian": 0, "latino": 0, "other": 0, "total": 0 });
 
   useEffect(() => {
     api.getStateDemographics(stateDict[state.state.state]).then((res) => {
-      const demograpgicsData=res.data.stateDemographics
+      const demograpgicsData=res.data.stateDemographics;
+      const totalPopulation=res.data.totalPopulation;
       setDemographics({
-        "white": demograpgicsData[0].population,
-        "africanAmerican": demograpgicsData[1].population, 
-        "asian": demograpgicsData[2].population,
-        "latino": demograpgicsData[3].population,
+        "white": demograpgicsData["CAUCASIAN"],
+        "africanAmerican": demograpgicsData["AFRICAN"], 
+        "asian": demograpgicsData["ASIAN"],
+        "latino": demograpgicsData["LATINO"],
+        "other": demograpgicsData["OTHER"],
+        "total": totalPopulation,
       })
     });
   }, []);
-    const white = demographics.white.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    const africanAmerican = demographics.africanAmerican.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    const asian = demographics.asian.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    const latino = demographics.latino.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    const totalNum = demographics.white+demographics.africanAmerican+demographics.asian+demographics.latino
-    const total = totalNum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
-    const whitePer = (100 * demographics.white/totalNum).toFixed(2);
-    const africanAmericanPer = (100 * demographics.africanAmerican/totalNum).toFixed(2);
-    const asianPer = (100 * demographics.asian/totalNum).toFixed(2);
-    const latinoPer = (100 * demographics.latino/totalNum).toFixed(2);
+    const whitePer = (demographics.white*100).toFixed(2);
+    const africanAmericanPer = (demographics.africanAmerican*100).toFixed(2);
+    const asianPer = (demographics.asian*100).toFixed(2);
+    const latinoPer = (demographics.latino*100).toFixed(2);
+    const otherPer = (demographics.other*100).toFixed(2);
     const totalPer = 100;
+
+    let total = demographics.total;
+    const white = Math.round(demographics.white*total).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    const africanAmerican = Math.round(demographics.africanAmerican*total).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    const asian = Math.round(demographics.asian*total).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    const latino = Math.round(demographics.latino*total).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    const other = Math.round(demographics.other*total).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    total = total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  
+
+    
     
     let districtNum = 0;
     let demPer = 0;
@@ -66,7 +75,7 @@ const GeneralInfo = (state) => {
           "& > :not(style)": {
             m: 1,
             width: 850,
-            height: 275,
+            height: 320,
           },
         }}
       >
@@ -77,6 +86,7 @@ const GeneralInfo = (state) => {
             <span><p>Black/African American</p></span>
             <span><p>Asian</p></span>
             <span><p>Latino</p></span>
+            <span><p>Other</p></span>
             <hr />
             <span><p>Total</p></span>
           </div>
@@ -86,6 +96,7 @@ const GeneralInfo = (state) => {
             <span><p>{africanAmericanPer}%</p></span>
             <span><p>{asianPer}%</p></span>
             <span><p>{latinoPer}%</p></span>
+            <span><p>{otherPer}%</p></span>
             <hr />
             <span><p>{totalPer}%</p></span>
           </div>
@@ -95,6 +106,7 @@ const GeneralInfo = (state) => {
             <span><p>{africanAmerican}</p></span>
             <span><p>{asian}</p></span>
             <span><p>{latino}</p></span>
+            <span><p>{other}</p></span>
             <hr />
             <span><p>{total}</p></span>
           </div>
