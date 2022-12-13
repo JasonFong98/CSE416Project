@@ -35,7 +35,7 @@ export default function BasicTable(state) {
     });
   }, []);
   const num = 10000;
-  const numOfPlans = num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");;
+  const numOfPlans = num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   const averagePopulation = summary.averagePopulation.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   const averageWhitePopulation = summary.averageWhitePopulation.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   const averageAfricanPopulation = summary.averageAfricanPopulation.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
