@@ -57,6 +57,7 @@ export default function VerticalTabs(state) {
   const [BGdata, setBGData] = React.useState({});
   const [enactedData, setEnactedData] = React.useState({});
   const [MMDBWdata, setMMDBWdata] = React.useState({});
+  const [MMDSummaryData, setMMDSummaryData] = React.useState();
   const {store}  = useContext(GlobalStoreContext);
   React.useEffect(() => {
     api.getSMDBarGraph(stateDict[state.state]).then((res) => {
@@ -135,6 +136,9 @@ export default function VerticalTabs(state) {
     api.getMMDBoxAndWhiskers(stateDict[state.state]).then((res) => {
       setMMDBWdata(res.data)
     });
+    api.getMMDSummary(stateDict[state.state]).then((res) => {
+      setMMDSummaryData(res.data)
+    });
   }, []);
   //React.useEffect(() => {
     //api.getPlots(stateDict[state.state]).then((res) => {
@@ -201,7 +205,7 @@ export default function VerticalTabs(state) {
           MMD Ensemble Summary
         </div>
         <div id="mmd-table">
-          <MMDSummary state={state}/>
+          <MMDSummary mmdData={MMDSummaryData}/>
         </div>
       </TabPanel>
 

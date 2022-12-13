@@ -7,22 +7,16 @@ import { useEffect, useState } from "react";
 import api from "../../../api/api"
 
 export default function MMDSummary(data) {
-  console.log(data)
-  const [mmdOne, setmmdOne] = useState(data.mmdData[0][0].pattern);
-  const [mmdTwo, setmmdTwo] = useState(data.mmdData[1][0].pattern);
+  const [mmdOne, setmmdOne] = useState(data.mmdData[0].type);
+  const [mmdTwo, setmmdTwo] = useState(data.mmdData[1].type);
   const [planAlignment, setPlanAlignment] = useState(mmdOne);
-  const stateDict =  {"Ohio": "OH", "Virginia": "VA", "North Carolina": "NC"}
   const numOfPlans = 0;
   const avgMajMinRep = 0;
   const avgPopMes = 0;
   const avgPolPopVal = 0;
   const avgSplit = 0;
 
-  useEffect(() => {
-    api.getMMDSummary(stateDict[state.state.state]).then((res) => {
-      console.log(res.data);
-    });
-  }, []);
+  
 
   const handlePlanChange = (event, newPlanAlignment) => {
     setPlanAlignment(newPlanAlignment);
@@ -30,18 +24,6 @@ export default function MMDSummary(data) {
 
   return (
     <div>
-      <ToggleButtonGroup
-        style={{position:"relative", left:"67%", paddingBottom:"2%"}}
-        color="warning"
-        value={planAlignment}
-        exclusive
-        onChange={handlePlanChange}
-        size="medium"
-        aria-label="Platform"
-      >
-        <ToggleButton value={mmdOne}><b>{mmdOne}</b></ToggleButton>
-        <ToggleButton value={mmdTwo}><b>{mmdTwo}</b></ToggleButton>
-      </ToggleButtonGroup>
       <Box
         sx={{
           display: "flex",
@@ -80,6 +62,18 @@ export default function MMDSummary(data) {
           </div>
         </Paper>
       </Box>
+      <ToggleButtonGroup
+        style={{position:"relative", left:"55%", paddingBottom:"2%"}}
+        color="warning"
+        value={planAlignment}
+        exclusive
+        onChange={handlePlanChange}
+        size="medium"
+        aria-label="Platform"
+      >
+        <ToggleButton value={mmdOne}><b>{mmdOne}</b></ToggleButton>
+        <ToggleButton value={mmdTwo}><b>{mmdTwo}</b></ToggleButton>
+      </ToggleButtonGroup>
     </div>
   );
 }
