@@ -161,6 +161,21 @@
   top: 55%;
 }
 
+#MMD-info{
+  right: 0.5%;
+  position: absolute;
+  width: 40%;
+  top: 81%;
+}
+
+#MMD-paper-half1, #MMD-paper-half2, #MMD-paper-half3{
+  font-size: 14px;
+  padding: 1%;
+  width: 33%;
+  height: 100%;
+}
+
+
 #demo-card{
   padding-top: 1%;
   padding-left: 2%;

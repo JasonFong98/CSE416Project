@@ -5,7 +5,8 @@ export const GlobalStoreContext = createContext({});
 
 export const GlobalStoreActionType={
     SET_STATE_MAP: "SET_STATE_MAP",
-    SET_MMD_PLAN: "SET_MMD_PLAN"
+    SET_MMD_PLAN: "SET_MMD_PLAN",
+    SET_DISTRICT_DATA: "SET_DISTRICT_DATA"
 }
 
 function GlobalStoreContextProvider(props){
@@ -22,7 +23,8 @@ function GlobalStoreContextProvider(props){
                 return setStore({
                     geoJson: payload,
                     mmd1: store.mmd1,
-                    mmd2: store.mmd2
+                    mmd2: store.mmd2,
+                    districtData:{},
                 });
             }
 
@@ -30,7 +32,14 @@ function GlobalStoreContextProvider(props){
                 return setStore({
                     geoJson: store.geoJson,
                     mmd1: payload.mmd1,
-                    mmd2: payload.mmd2
+                    mmd2: payload.mmd2,
+                    districtData: {},
+                });
+            }
+
+            case GlobalStoreActionType.SET_DISTRICT_DATA:{
+                return setStore({
+                    districtData: payload
                 });
             }
 
@@ -51,6 +60,13 @@ function GlobalStoreContextProvider(props){
         storeReducer({
             type: GlobalStoreActionType.SET_MMD_PLAN,
             payload: {mmd1:one, mmd2:two}
+        });
+    }
+
+    store.setDistrictData = function(data){
+        storeReducer({
+            type: GlobalStoreActionType.SET_DISTRICT_DATA,
+            payload: data
         });
     }
 

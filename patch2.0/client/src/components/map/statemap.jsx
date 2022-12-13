@@ -11,9 +11,8 @@ const StateMap = () => {
 
   useEffect(() => {
     const stateLayer = stateGeoJsonLayer.current;
-    console.log(stateLayer);
+    console.log(store.geoJson);
     if(store.geoJson == "Enacted Plan"){
-
       api.getStateMap(location.state.code).then((res) => {
         stateLayer.clearLayers().addData(res.data.features);
         console.log(res.data.features);
@@ -34,18 +33,27 @@ const StateMap = () => {
     
   }, [store]);
 
-  const onEachFeature = (district, layer) => {
+  const clickDistrict = (data) =>{
+    store.setDistrictData(data);
+  };
 
-    if(store.geoJson == "Enacted Plan"){
+  
+  const onEachFeature = (district, layer) => {
+    console.log(store);
+    if(district.properties.NAME){
       layer.bindPopup("District: " + parseInt(district.properties.NAME, 10));
     }else{
-      layer.bindPopup("District: " + district.properties.District);
+      layer.bindPopup("District: " + parseInt(district.properties.District, 10));
     }
     layer.on({
+      click:(event)=>{
+        clickDistrict(event.target.feature.properties);
+      },
       mouseout: (event) => {
         layer.closePopup();
       },
       mouseover: (event) => {
+        console.log(store);
         layer.openPopup();
       },
     });
@@ -56,8 +64,8 @@ const StateMap = () => {
   return (
     <LayersControl>
       <LayersControl.Overlay checked name=" ">
-      <GeoJSON style={{fillColor: "lightblue"}} ref={stateGeoJsonLayer} onEachFeature={onEachFeature} />
-    </LayersControl.Overlay>
+        <GeoJSON style={{fillColor: "lightblue"}} ref={stateGeoJsonLayer} onEachFeature={onEachFeature} />
+      </LayersControl.Overlay>
     </LayersControl>
   );
 };

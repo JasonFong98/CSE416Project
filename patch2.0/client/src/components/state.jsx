@@ -9,6 +9,7 @@ import Box from '@mui/material/Box';
 import { useNavigate, useParams } from "react-router-dom";
 import { GlobalStoreContext } from "../store/store";
 import apis from '../api/api';
+import DistrictData from './DistrictData';
 
 const State = (props) => {
   const navigate = useNavigate();
@@ -18,6 +19,7 @@ const State = (props) => {
   const {store}  = useContext(GlobalStoreContext);
 
   useEffect(() => {
+    console.log(store);
     apis.getMMDBoxAndWhiskers(stateDict[state]).then((res) => {
       store.setMMDPlan(res.data[0][0].pattern, res.data[1][0].pattern);
     });
@@ -32,7 +34,6 @@ const State = (props) => {
     setAlignment(newAlignment);
     store.setStateMap(newAlignment);
   };
-
 
   return (
     <div>
@@ -79,6 +80,10 @@ const State = (props) => {
         <ToggleButton sx={{textTransform:"none"}} value="mmd1"><b>Average {store.mmd1} Plan</b></ToggleButton>
         <ToggleButton sx={{textTransform:"none"}} value="mmd2"><b>Average {store.mmd2} Plan</b></ToggleButton>
       </ToggleButtonGroup>
+      </div>
+
+      <div id="MMD-info">
+          <DistrictData/>
       </div>
     </div>
   );

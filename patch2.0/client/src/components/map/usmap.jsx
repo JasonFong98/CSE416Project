@@ -21,15 +21,9 @@ const USMap = () => {
   const stateStyle = {
     weight: 0.8,
     opacity: 0.5,
-    // color: "#EDE4E0",
   };
 
   const handleMenu = (code, name, popupState) => {
-    // api.getStateMap(stateCode).then((res) => {
-    //   geoJsonLayer.current.addData(
-    //     res.data.ensemble.currentDistrictPlan.features
-    //   );
-    // });
     document.getElementById('state-menu').style.display="none";
     popupState.close();
     map.fitBounds(stateBounds.get(name));
@@ -49,19 +43,11 @@ const USMap = () => {
     layer.on({
       click: (event) => {
         if (states.includes(state.properties.NAME)) {
-          // api.getStateMap(state.properties.STUSPS).then((res) => {
-          //   geoJsonLayerRef.current.addData(
-          //     res.data.ensemble.currentDistrictPlan.features
-          //   );
-          // });
           const code = state.properties.STUSPS;
-          //store.setStateMap(code);
           map.fitBounds(event.target.getBounds());
           
           navigate(`/home/${state.properties.NAME}`, { state: { code } });
         }
-        // document.getElementById("state-menu").style.display = "none";
-        //geoJsonLayer.current.remove(layer);
       },
       mouseout: (event) => {
         layer.closePopup();

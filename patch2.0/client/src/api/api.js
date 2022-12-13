@@ -14,6 +14,11 @@ export const getMMDBoxAndWhiskers = async (state) => await api.get(`/mmd/boxAndW
 export const getSMDDistrictPlans = async (state) => await api.get(`/smd/districtPlans/${state}`);
 export const getEnsemble = async (state) => await api.get(`/ensemble/${state}`);
 export const getMMDAveragePlan = async (state, type) => await api.get(`/mmd/average/map/${state}/${type}`);
+export const getSMDExtremeDem = async (state) => await api.get(`/smd/extremeDem/map/${state}`);
+export const getSMDExtremeRep = async (state) => await api.get(`/smd/extremeRep/map/${state}`);
+export const getSMDLeastMajority = async (state) => await api.get(`/smd/leastM/map/${state}`);
+export const getSMDMostMajority = async (state) => await api.get(`/smd/mostM/map/${state}`);
+export const getSMDRandomPlan = async (state, value) => await api.get(`/smd/random/map/${state}/${value}`);
 
 
 const apis = { 
@@ -24,6 +29,6 @@ const apis = {
   getSMDBarGraph, 
   getSMDBoxAndWhiskers, 
   getMMDBoxAndWhiskers,
-  getSMDDistrictPlans, getEnsemble, getMMDAveragePlan};
+  getSMDDistrictPlans, getEnsemble, getMMDAveragePlan, getSMDExtremeDem, getSMDExtremeRep};
 
 export default apis;
