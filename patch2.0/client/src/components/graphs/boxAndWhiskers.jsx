@@ -381,7 +381,7 @@ const BoxAndWhiskers = (data) => {
       xaxis: {
         labels: {
           formatter: function (value) {
-            if (value!=1 && data.state.state!="Virginia" && (planAlignment==mmdOne || planAlignment==mmdTwo)) {
+            if (value!=1 && (planAlignment==mmdOne || planAlignment==mmdTwo)) {
               return Math.ceil(Number(value)+0.01);
             }
             else {
