@@ -231,3 +231,8 @@
   display: flex;
   position: relative;
 }
+
+#sources {
+  font-size: 40px;
+  color: #189AB4;
+}

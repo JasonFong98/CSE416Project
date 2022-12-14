@@ -175,6 +175,7 @@ export default function VerticalTabs(state) {
         <Tab sx={{textTransform:"none", fontWeight:"bold"}} label="Box & Whisker Plot" {...a11yProps(3)} />
         <Tab sx={{textTransform:"none", fontWeight:"bold"}} label="Political Split" {...a11yProps(4)} />
         <Tab sx={{textTransform:"none", fontWeight:"bold"}} label="Compare Plans" {...a11yProps(5)} />
+        <Tab sx={{textTransform:"none", fontWeight:"bold"}} label="Sources" {...a11yProps(6)} />
       </Tabs>
 
       <TabPanel value={value} index={0}>
@@ -210,6 +211,19 @@ export default function VerticalTabs(state) {
 
       <TabPanel value={value} index={5}>
         <ComparePlans mmdData={MMDSummaryData} averageMMDData={averageMMDData}/>
+      </TabPanel>
+
+      <TabPanel value={value} index={6}>
+        <div id="sources">
+          Sources:
+        </div>
+        <a href="url">https://ballotpedia.org/Main_Page</a>
+        <hr id="line"/>
+        <a href="url">https://www.census.gov/mycd/</a>
+        <hr id="line"/>
+        <a href="url">https://github.com/orgs/mggg-states/repositories?page=2&type=all</a>
+        <hr id="line"/>
+        <a href="url">https://redistrictingdatahub.org/</a>
       </TabPanel>
 
     </Box>
