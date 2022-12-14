@@ -179,7 +179,12 @@
   font-size: 14px;
   padding: 1%;
   width: 33%;
-  height: 100%;
+}
+
+#paper-thirds{
+  font-size: 14px;
+  padding: 1%;
+  width: 33.33%;
 }
 
 
@@ -242,4 +247,12 @@
 #sources {
   font-size: 40px;
   color: #189AB4;
+}
+
+#plan-summary{
+  position: relative;
+  width: 140%;
+  left: 1%;
+  height:100%;
+  top:10%;
 }

@@ -40,10 +40,12 @@ const StateMap = () => {
   }, [store.geoJson, data]);
   
   const onEachFeature = (district, layer) => {
-    if(district.properties.NAME){
-      layer.bindPopup("District: " + parseInt(district.properties.NAME, 10));
+    if(district.properties.DistrictDRSplit){
+      layer.bindPopup("District: " + parseInt(district.properties.District, 10) + "<br>Number Of Rep: "+ district.properties.Representatives.split(" ").length +"<br>Representatives: "+ district.properties.Representatives.replaceAll(" ", ", "));
+    }else if(district.properties.District){
+      layer.bindPopup("District: " + parseInt(district.properties.District, 10) + "<br>Representative: "+ (district.properties.DemPercent > .5) ? "Democrat" : "Republican");  
     }else{
-      layer.bindPopup("District: " + parseInt(district.properties.District, 10));
+      layer.bindPopup("District: " + parseInt(district.properties.NAME, 10) + "<br>Representative: " + (district.properties.Representatives) + "<br>Party: " + (district.properties.DemVote > district.properties.RepVote) ? "Democrat": "Republican");    
     }
     layer.on({
       click:(event)=>{
