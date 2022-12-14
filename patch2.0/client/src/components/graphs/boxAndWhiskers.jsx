@@ -51,6 +51,32 @@ const BoxAndWhiskers = (data) => {
         setBarData(mmdBoxAndWhiskerArray[1][0]);
         setEnactedData([]);
       }
+      else if (newPlanAlignment=="SMD"+mmdOne) {
+        let values = Object.values(mmdBoxAndWhiskerArray[0][0]);
+        let newArrayOne = []
+        for(let i=0; i<mmdBoxAndWhiskerArray[0][0].length; i++) {
+          let x = values[i]['x']+(data.data[0].length);
+          let y = values[i]['y'];
+          let xy = { x:x, y:y};
+          newArrayOne.push(xy)
+        }
+        newArrayOne = data.data[0].concat(newArrayOne)
+        setBarData(newArrayOne);
+        setEnactedData(data.enactedData[0])
+      }
+      else if (newPlanAlignment=="SMD"+mmdTwo) {
+        let values = Object.values(mmdBoxAndWhiskerArray[1][0]);
+        let newArrayOne = []
+        for(let i=0; i<mmdBoxAndWhiskerArray[1][0].length; i++) {
+          let x = values[i]['x']+(data.data[0].length);
+          let y = values[i]['y'];
+          let xy = { x:x, y:y};
+          newArrayOne.push(xy)
+        }
+        newArrayOne = data.data[0].concat(newArrayOne)
+        setBarData(newArrayOne);
+        setEnactedData(data.enactedData[0])
+      }
       else {
         setBarData([]);
         setEnactedData([]);
@@ -68,6 +94,32 @@ const BoxAndWhiskers = (data) => {
       else if (newPlanAlignment==mmdTwo) {
         setBarData(mmdBoxAndWhiskerArray[1][1]);
         setEnactedData([]);
+      }
+      else if (newPlanAlignment=="SMD"+mmdOne) {
+        let values = Object.values(mmdBoxAndWhiskerArray[0][1]);
+        let newArrayOne = []
+        for(let i=0; i<mmdBoxAndWhiskerArray[0][1].length; i++) {
+          let x = values[i]['x']+(data.data[1].length);
+          let y = values[i]['y'];
+          let xy = { x:x, y:y};
+          newArrayOne.push(xy)
+        }
+        newArrayOne = data.data[1].concat(newArrayOne)
+        setBarData(newArrayOne);
+        setEnactedData(data.enactedData[1])
+      }
+      else if (newPlanAlignment=="SMD"+mmdTwo) {
+        let values = Object.values(mmdBoxAndWhiskerArray[1][1]);
+        let newArrayOne = []
+        for(let i=0; i<mmdBoxAndWhiskerArray[1][1].length; i++) {
+          let x = values[i]['x']+(data.data[1].length);
+          let y = values[i]['y'];
+          let xy = { x:x, y:y};
+          newArrayOne.push(xy)
+        }
+        newArrayOne = data.data[1].concat(newArrayOne)
+        setBarData(newArrayOne);
+        setEnactedData(data.enactedData[1])
       }
       else {
         setBarData([]);
@@ -87,6 +139,32 @@ const BoxAndWhiskers = (data) => {
         setBarData(mmdBoxAndWhiskerArray[1][2]);
         setEnactedData([]);
       }
+      else if (newPlanAlignment=="SMD"+mmdOne) {
+        let values = Object.values(mmdBoxAndWhiskerArray[0][2]);
+        let newArrayOne = []
+        for(let i=0; i<mmdBoxAndWhiskerArray[0][2].length; i++) {
+          let x = values[i]['x']+(data.data[1].length);
+          let y = values[i]['y'];
+          let xy = { x:x, y:y};
+          newArrayOne.push(xy)
+        }
+        newArrayOne = data.data[2].concat(newArrayOne)
+        setBarData(newArrayOne);
+        setEnactedData(data.enactedData[2])
+      }
+      else if (newPlanAlignment=="SMD"+mmdTwo) {
+        let values = Object.values(mmdBoxAndWhiskerArray[1][2]);
+        let newArrayOne = []
+        for(let i=0; i<mmdBoxAndWhiskerArray[1][2].length; i++) {
+          let x = values[i]['x']+(data.data[1].length);
+          let y = values[i]['y'];
+          let xy = { x:x, y:y};
+          newArrayOne.push(xy)
+        }
+        newArrayOne = data.data[2].concat(newArrayOne)
+        setBarData(newArrayOne);
+        setEnactedData(data.enactedData[2])
+      }
       else {
         setBarData([]);
         setEnactedData([]);
@@ -99,7 +177,97 @@ const BoxAndWhiskers = (data) => {
     setPlanAlignment(newPlanAlignment);
   };
   const handleRaceChange = (event, newRaceAlignment) => {
-    if (planAlignment=="SMD") {
+    if (planAlignment=="SMD"+mmdOne) {
+      if (newRaceAlignment=="AFRICAN") {
+        let values = Object.values(mmdBoxAndWhiskerArray[0][0]);
+        let newArrayOne = []
+        for(let i=0; i<mmdBoxAndWhiskerArray[0][0].length; i++) {
+          let x = values[i]['x']+(data.data[0].length);
+          let y = values[i]['y'];
+          let xy = { x:x, y:y};
+          newArrayOne.push(xy)
+        }
+        newArrayOne = data.data[0].concat(newArrayOne)
+        setBarData(newArrayOne);
+        setEnactedData(data.enactedData[0])
+      }
+      else if (newRaceAlignment=="ASIAN") {
+        let values = Object.values(mmdBoxAndWhiskerArray[0][1]);
+        let newArrayOne = []
+        for(let i=0; i<mmdBoxAndWhiskerArray[0][1].length; i++) {
+          let x = values[i]['x']+(data.data[1].length);
+          let y = values[i]['y'];
+          let xy = { x:x, y:y};
+          newArrayOne.push(xy)
+        }
+        newArrayOne = data.data[1].concat(newArrayOne)
+        setBarData(newArrayOne);
+        setEnactedData(data.enactedData[1])
+      }
+      else if (newRaceAlignment=="LATINO") {
+        let values = Object.values(mmdBoxAndWhiskerArray[0][2]);
+        let newArrayOne = []
+        for(let i=0; i<mmdBoxAndWhiskerArray[0][2].length; i++) {
+          let x = values[i]['x']+(data.data[2].length);
+          let y = values[i]['y'];
+          let xy = { x:x, y:y};
+          newArrayOne.push(xy)
+        }
+        newArrayOne = data.data[2].concat(newArrayOne)
+        setBarData(newArrayOne);
+        setEnactedData(data.enactedData[2])
+      }
+      else {
+        setBarData([]);
+        setEnactedData([]);
+      }
+    }
+    else if (planAlignment=="SMD"+mmdTwo) {
+      if (newRaceAlignment=="AFRICAN") {
+        let values = Object.values(mmdBoxAndWhiskerArray[1][0]);
+        let newArrayOne = []
+        for(let i=0; i<mmdBoxAndWhiskerArray[1][0].length; i++) {
+          let x = values[i]['x']+(data.data[0].length);
+          let y = values[i]['y'];
+          let xy = { x:x, y:y};
+          newArrayOne.push(xy)
+        }
+        newArrayOne = data.data[0].concat(newArrayOne)
+        setBarData(newArrayOne);
+        setEnactedData(data.enactedData[0])
+      }
+      else if (newRaceAlignment=="ASIAN") {
+        let values = Object.values(mmdBoxAndWhiskerArray[1][1]);
+        let newArrayOne = []
+        for(let i=0; i<mmdBoxAndWhiskerArray[1][1].length; i++) {
+          let x = values[i]['x']+(data.data[1].length);
+          let y = values[i]['y'];
+          let xy = { x:x, y:y};
+          newArrayOne.push(xy)
+        }
+        newArrayOne = data.data[1].concat(newArrayOne)
+        setBarData(newArrayOne);
+        setEnactedData(data.enactedData[1])
+      }
+      else if (newRaceAlignment=="LATINO") {
+        let values = Object.values(mmdBoxAndWhiskerArray[1][2]);
+        let newArrayOne = []
+        for(let i=0; i<mmdBoxAndWhiskerArray[1][2].length; i++) {
+          let x = values[i]['x']+(data.data[2].length);
+          let y = values[i]['y'];
+          let xy = { x:x, y:y};
+          newArrayOne.push(xy)
+        }
+        newArrayOne = data.data[2].concat(newArrayOne)
+        setBarData(newArrayOne);
+        setEnactedData(data.enactedData[2])
+      }
+      else {
+        setBarData([]);
+        setEnactedData([]);
+      }
+    }
+    else if (planAlignment=="SMD") {
       if (newRaceAlignment=="AFRICAN") {
         setBarData(data.data[0]);
         setEnactedData(data.enactedData[0]);
@@ -213,7 +381,7 @@ const BoxAndWhiskers = (data) => {
       xaxis: {
         labels: {
           formatter: function (value) {
-            if (value!=1 && data.state.state!="Virginia") {
+            if (value!=1 && data.state.state!="Virginia" && (planAlignment==mmdOne || planAlignment==mmdTwo)) {
               return Math.ceil(Number(value)+0.01);
             }
             else {
@@ -237,7 +405,7 @@ const BoxAndWhiskers = (data) => {
   return (
     <div>
       <ToggleButtonGroup
-        style={{position:"relative", left:"67%", paddingBottom:"2%"}}
+        style={{position:"relative", left:"42%", paddingBottom:"2%"}}
         color="warning"
         value={planAlignment}
         exclusive
@@ -248,9 +416,11 @@ const BoxAndWhiskers = (data) => {
         <ToggleButton value="SMD"><b>SMD</b></ToggleButton>
         <ToggleButton value={mmdOne}><b>{mmdOne}</b></ToggleButton>
         <ToggleButton value={mmdTwo}><b>{mmdTwo}</b></ToggleButton>
+        <ToggleButton value={"SMD"+mmdOne}><b>SMD & {mmdOne}</b></ToggleButton>
+        <ToggleButton value={"SMD"+mmdTwo}><b>SMD & {mmdTwo}</b></ToggleButton>
       </ToggleButtonGroup>
       <ToggleButtonGroup
-        style={{position:"relative", right:"31%", paddingBottom:"2%"}}
+        style={{position:"relative", right:"65%", paddingBottom:"2%"}}
         color="warning"
         value={raceAlignment}
         exclusive
