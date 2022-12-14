@@ -174,6 +174,9 @@
   width: 40%;
   top: 81%;
 }
+#MMD-paper{
+  border-radius: 10px;
+}
 
 #MMD-paper-half1, #MMD-paper-half2, #MMD-paper-half3{
   font-size: 14px;
@@ -181,11 +184,10 @@
   width: 33%;
 }
 
-#paper-thirds{
-  font-size: 14px;
+#paper-fourths{
+  font-size: 12px;
   padding: 2%;
-  width: 33.33%;
-  text-align: center;
+  width: 25%;
 }
 
 
@@ -252,8 +254,45 @@
 
 #plan-summary{
   position: relative;
-  width: 140%;
+  width: 120%;
   left: 1%;
   height:100%;
   top:10%;
+}
+
+#district-table{
+  position:relative;
+  width: 120%;
+  left: 1%;
+  height:100%;
+  top:100%;
+}
+
+#column{
+  font-size: 22px;
+  padding: 1%;
+  z-index:10;
+}
+
+#row{
+  font-size:15px;
+  padding: 2%;
+  border-radius: 0px;
+}
+
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+}
+
+*::-webkit-scrollbar-track {
+    background: var(--scroll-bar-bg-color);
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: var(--scroll-bar-color);
+    border-radius: 20px;
+    border: 3px solid var(--scroll-bar-bg-color);
 }

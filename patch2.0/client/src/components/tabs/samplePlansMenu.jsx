@@ -28,11 +28,11 @@ export default function samplePlansMenu(props) {
 
   return (
     <div>
-    <FormControl sx={{ m: 1 , minWidth: 220 }} size="small">
-      <InputLabel id="demo-select-small">Select Plan</InputLabel>
+    <FormControl sx={{ m: 2 , minWidth: 220 }}>
+      <InputLabel id="demo-select">Select Plan</InputLabel>
       <Select
-        labelId="demo-select-small"
-        id="demo-select-small"
+        labelId="demo-select"
+        id="demo-select"
         value={plan}
         label="Select Plans"
         onChange={handleChange}
@@ -59,7 +59,7 @@ export default function samplePlansMenu(props) {
     </FormControl>
 
     <ToggleButtonGroup
-        style={{position:"relative", left:"5%", paddingBottom:"2%"}}
+        style={{position:"relative", left:"0%", top:"22px", paddingBottom:"2%"}}
         color="warning"
         value={planAlignment}
         exclusive

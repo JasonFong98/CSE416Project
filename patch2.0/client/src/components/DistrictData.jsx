@@ -20,7 +20,7 @@ function DistrictData() {
       >
         <div id="MMD-paper-half1">
           <p>
-            <h5>District: <h4>{(data.District) ? data.District: ((data.NAME) ? data.NAME : "")}</h4></h5>Compactness: {(data.Compactness) ? Math.round(data.Compactness * 1000) / 1000 : ""}<br />
+            <h5><b>District:</b> <h4><b>{(data.District) ? data.District: ((data.NAME) ? data.NAME : "")}</b></h4></h5>Compactness: {(data.Compactness) ? Math.round(data.Compactness * 1000) / 1000 : ""}<br />
             Representatives: {(data.Representatives) ? data.Representatives.replaceAll(" ", ", "): ""}<br />
           </p>
         </div>
