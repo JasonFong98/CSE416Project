@@ -1,12 +1,13 @@
 import { useEffect, useRef, useContext, useState} from "react";
-import { GeoJSON, LayersControl } from "react-leaflet";
-import { useLocation} from "react-router-dom";
+import { GeoJSON, LayersControl, useMap} from "react-leaflet";
+import { useLocation, useParams} from "react-router-dom";
 import api from "../../api/api";
 import { GlobalStoreContext } from "../../store/store";
 
 const StateMap = () => {
   const stateGeoJsonLayer = useRef();
   const location = useLocation();
+  const map = useMap();
   const {store}  = useContext(GlobalStoreContext);
   const [data, setData] = useState({});
 
@@ -16,14 +17,21 @@ const StateMap = () => {
     if(store.geoJson == "Enacted Plan"){
       api.getStateMap(location.state.code).then((res) => {
         stateLayer.clearLayers().addData(res.data.features);
+        map.fitBounds(stateLayer.getBounds());
       });
-    }else if (store.geoJson == "mmd1"){
+    }else if (store.geoJson == "smdRand"){
+      api.getSMDRandomPlan(location.state.code, 1).then((res) => {
+        stateLayer.clearLayers().addData(res.data.features);
+      });
+    }else if (store.geoJson == "mmdAvg1"){
       api.getMMDAveragePlan(location.state.code, store.mmd1).then((res) => {
         stateLayer.clearLayers().addData(res.data.features);
+        console.log(res.data);
       });
-    }else if (store.geoJson == "mmd2"){
+    }else if (store.geoJson == "mmdAvg2"){
       api.getMMDAveragePlan(location.state.code, store.mmd2).then((res) => {
         stateLayer.clearLayers().addData(res.data.features);
+        console.log(res.data);
       });
     }else{
       stateLayer.clearLayers();

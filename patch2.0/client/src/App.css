@@ -133,7 +133,14 @@
 #home-button {
   position: relative;
   left: 0.4%;
-  width: 9.2%;
+  width: 4.5%;
+  height: 5%;
+}
+
+#reset-button{
+  position: relative;
+  left: .5%;
+  width: 4.5%;
   height: 5%;
 }
 

@@ -1,5 +1,6 @@
 import {useState, useContext, useEffect} from 'react';
 import CottageIcon from "@mui/icons-material/Cottage";
+import RestartAltIcon from '@mui/icons-material/RestartAlt';
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import Button from "@mui/material/Button";
@@ -9,7 +10,7 @@ import Box from '@mui/material/Box';
 import { useNavigate, useParams } from "react-router-dom";
 import { GlobalStoreContext } from "../store/store";
 import apis from '../api/api';
-import DistrictData from './DistrictData';
+import DistrictData from './districtData';
 
 const State = (props) => {
   const navigate = useNavigate();
@@ -28,9 +29,19 @@ const State = (props) => {
     navigate('/')
     window.location.reload(false);
   }
+
+  function handleReset(){
+    window.location.reload();
+    
+  }
+
+  const clearToggleButton = () =>{
+    setAlignment(null);
+  }
   
   const handleChange = (event, newAlignment) => {
     setAlignment(newAlignment);
+    //store.deleteDistrictData();
     store.setStateMap(newAlignment);
   };
 
@@ -44,6 +55,16 @@ const State = (props) => {
           size="large"
         >
           <CottageIcon />
+        </Button>
+
+        <Button
+          id="reset-button"
+          onClick={handleReset}
+          variant="contained"
+          color="warning"
+          size="large"
+        >
+          <RestartAltIcon />
         </Button>
 
         <Box 
@@ -63,7 +84,7 @@ const State = (props) => {
           <Paper elevation={3}>{state}</Paper>
         </Box>
 
-        <VerticalTabs state={state}/>
+        <VerticalTabs state={state} clearToggleButton={clearToggleButton}/>
       </div>
       <div id="state-map-container">
       <ToggleButtonGroup
@@ -76,8 +97,9 @@ const State = (props) => {
         aria-label="Platform"
       >
         <ToggleButton sx={{textTransform:"none"}} value="Enacted Plan"><b>Enacted Plan</b></ToggleButton>
-        <ToggleButton sx={{textTransform:"none"}} value="mmd1"><b>Average {store.mmd1} Plan</b></ToggleButton>
-        <ToggleButton sx={{textTransform:"none"}} value="mmd2"><b>Average {store.mmd2} Plan</b></ToggleButton>
+        <ToggleButton sx={{textTransform:"none"}} value="smdRand"><b>Random SMD Plan</b></ToggleButton>
+        <ToggleButton sx={{textTransform:"none"}} value="mmdAvg1"><b>Average {store.mmd1} Plan</b></ToggleButton>
+        <ToggleButton sx={{textTransform:"none"}} value="mmdAvg2"><b>Average {store.mmd2} Plan</b></ToggleButton>
       </ToggleButtonGroup>
       </div>
 

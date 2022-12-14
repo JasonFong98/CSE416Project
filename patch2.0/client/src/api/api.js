@@ -14,12 +14,17 @@ export const getSMDBoxAndWhiskers = async (state) => await api.get(`/smd/boxAndW
 export const getMMDBoxAndWhiskers = async (state) => await api.get(`/mmd/boxAndWhiskers/${state}`);
 export const getSMDDistrictPlans = async (state) => await api.get(`/smd/districtPlans/${state}`);
 export const getEnsemble = async (state) => await api.get(`/ensemble/${state}`);
+
 export const getMMDAveragePlan = async (state, type) => await api.get(`/mmd/average/map/${state}/${type}`);
 export const getSMDExtremeDem = async (state) => await api.get(`/smd/extremeDem/map/${state}`);
 export const getSMDExtremeRep = async (state) => await api.get(`/smd/extremeRep/map/${state}`);
+export const getMMDExtremeDem = async (state) => await api.get(`/mmd/extremeRep/map/${state}/${type}`);
+export const getMMDExtremeRep = async (state) => await api.get(`/mmd/extremeDem/map/${state}/${type}`);
 export const getSMDLeastMajority = async (state) => await api.get(`/smd/leastM/map/${state}`);
 export const getSMDMostMajority = async (state) => await api.get(`/smd/mostM/map/${state}`);
 export const getSMDRandomPlan = async (state, value) => await api.get(`/smd/random/map/${state}/${value}`);
+export const getMMDMostMajorityMap = async (state, type) => await api.get(`/mmd/mostM/map/${state}/${type}`);
+export const getMMDLeastMajorityMap = async (state, type) => await api.get(`/mmd/leastM/map/${state}/${type}`);
 
 
 const apis = { 
@@ -35,7 +40,12 @@ const apis = {
   getEnsemble, 
   getMMDAveragePlan, 
   getSMDExtremeDem, 
-  getSMDExtremeRep
+  getSMDExtremeRep,
+  getSMDLeastMajority,
+  getSMDMostMajority,
+  getSMDRandomPlan,
+  getMMDMostMajorityMap,
+  getMMDLeastMajorityMap 
 };
 
 export default apis;

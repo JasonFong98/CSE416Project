@@ -49,7 +49,7 @@ function a11yProps(index) {
   };
 }
 
-export default function VerticalTabs(state) {
+export default function VerticalTabs(state, {clearToggleButton}) {
   const stateDict =  {"Ohio": "OH", "Virginia": "VA", "North Carolina": "NC"}
   const stateDistrictNum = {"Ohio": 16, "Virginia": 11, "North Carolina": 13}
   const [value, setValue] = React.useState(0);
@@ -210,7 +210,7 @@ export default function VerticalTabs(state) {
       </TabPanel>
 
       <TabPanel value={value} index={2}>
-          <SamplePlansMenu />
+          <SamplePlansMenu clearToggleButton={clearToggleButton}/>
       </TabPanel>
 
       <TabPanel value={value} index={3}>
