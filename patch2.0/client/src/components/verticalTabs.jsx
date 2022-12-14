@@ -202,7 +202,7 @@ export default function VerticalTabs(state) {
       </TabPanel>
 
       <TabPanel value={value} index={2}>
-          <SamplePlansMenu clearToggleButton={clearToggleButton}/>
+          <SamplePlansMenu state={state}/>
       </TabPanel>
 
       <TabPanel value={value} index={3}>
