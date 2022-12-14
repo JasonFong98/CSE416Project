@@ -11,14 +11,53 @@ export default function ComparePlans(data) {
     const [mmdOne, setmmdOne] = useState(data.mmdData[0].type);
     const [mmdTwo, setmmdTwo] = useState(data.mmdData[1].type);
     const [planAlignment, setPlanAlignment] = useState(mmdOne);
+    const [summary, setSummary] = useState({ 
+        "Splits" : data.averageMMDData[0].split,
+        "OppurtunityRepresentatives" : data.averageMMDData[0].numberOfMajorityMinority,
+        "RepublicanVoteShare" : (Number(data.averageMMDData[0].numberOfRepublican)/(Number(data.averageMMDData[0].numberOfDemocrat)+Number(data.averageMMDData[0].numberOfRepublican))*100).toString().substring(0,5),
+        "DemocraticVoteShare" : (Number(data.averageMMDData[0].numberOfDemocrat)/(Number(data.averageMMDData[0].numberOfDemocrat)+Number(data.averageMMDData[0].numberOfRepublican))*100).toString().substring(0,5),
+        "RepublicanSeatShare" : (Number(data.averageMMDData[0].split.split('|')[1])/(Number(data.averageMMDData[0].split.split('|')[0])+Number(data.averageMMDData[0].split.split('|')[1])))*100,
+        "DemocraticSeatShare" : (Number(data.averageMMDData[0].split.split('|')[0])/(Number(data.averageMMDData[0].split.split('|')[0])+Number(data.averageMMDData[0].split.split('|')[1])))*100,
+    });
+    console.log(summary)
     const handlePlanChange = (event, newPlanAlignment) => {
+        if (newPlanAlignment==mmdOne) {
+          setSummary({
+            "Splits" : data.averageMMDData[0].split,
+            "OppurtunityRepresentatives" : data.averageMMDData[0].numberOfMajorityMinority,
+            "RepublicanVoteShare" : (Number(data.averageMMDData[0].numberOfRepublican)/(Number(data.averageMMDData[0].numberOfDemocrat)+Number(data.averageMMDData[0].numberOfRepublican))*100).toString().substring(0,5),
+            "DemocraticVoteShare" : (Number(data.averageMMDData[0].numberOfDemocrat)/(Number(data.averageMMDData[0].numberOfDemocrat)+Number(data.averageMMDData[0].numberOfRepublican))*100).toString().substring(0,5),
+            "RepublicanSeatShare" : (Number(data.averageMMDData[0].split.split('|')[1])/(Number(data.averageMMDData[0].split.split('|')[0])+Number(data.averageMMDData[0].split.split('|')[1])))*100,
+            "DemocraticSeatShare" : (Number(data.averageMMDData[0].split.split('|')[0])/(Number(data.averageMMDData[0].split.split('|')[0])+Number(data.averageMMDData[0].split.split('|')[1])))*100,
+    })
+        }
+        else if(newPlanAlignment==mmdTwo) {
+          setSummary({
+          "Splits" : data.averageMMDData[1].split,
+          "OppurtunityRepresentatives" : data.averageMMDData[1].numberOfMajorityMinority,
+          "RepublicanVoteShare" : (Number(data.averageMMDData[1].numberOfRepublican)/(Number(data.averageMMDData[1].numberOfDemocrat)+Number(data.averageMMDData[1].numberOfRepublican))*100).toString().substring(0,5),
+          "DemocraticVoteShare" : (Number(data.averageMMDData[1].numberOfDemocrat)/(Number(data.averageMMDData[1].numberOfDemocrat)+Number(data.averageMMDData[1].numberOfRepublican))*100).toString().substring(0,5),
+          "RepublicanSeatShare" : (Number(data.averageMMDData[1].split.split('|')[1])/(Number(data.averageMMDData[1].split.split('|')[0])+Number(data.averageMMDData[1].split.split('|')[1])))*100,
+          "DemocraticSeatShare" : (Number(data.averageMMDData[1].split.split('|')[0])/(Number(data.averageMMDData[1].split.split('|')[0])+Number(data.averageMMDData[1].split.split('|')[1])))*100,
+      })
+        }
+        else {
+          setSummary({
+            "Splits" : null,
+            "OppurtunityRepresentatives" : null,
+            "RepublicanVoteShare" : null,
+            "DemocraticVoteShare" : null,
+            "RepublicanSeatShare" : null,
+            "DemocraticSeatShare" : null,
+          })
+        }
         setPlanAlignment(newPlanAlignment);
       };
 
     return (
     <div>
         <div id="smd-summary">
-          SMD Ensemble Summary
+            &nbsp;&nbsp;&nbsp;&nbsp;Enacted District Plan
         </div>
         <Box id="smd-table"
             sx={{
@@ -76,7 +115,7 @@ export default function ComparePlans(data) {
             </Paper>
         </Box>
         <div id="mmd-summary">
-            MMD Ensemble Summary
+        Average MMD District Plan
         </div>
         <Box id="mmd-table"
             sx={{
@@ -91,45 +130,30 @@ export default function ComparePlans(data) {
         >
             <Paper id="summary-block" elevation={2}>
             <div id="summary-names">
-                <p>Number of District Plans</p>
+                <p>Democratic/Republican Splits</p>
                 <hr/>
-                <p>Average Population per District</p>
+                <p>Oppurtunity Representatives</p>
                 <hr/>
-                <p>Average White Population per District</p>
+                <p>Republican Vote Share</p>
                 <hr/>
-                <p>Average Black/African Population per District</p>
+                <p>Democratic Vote Share</p>
                 <hr/>
-                <p>Average Asian Population per District</p>
+                <p>Republican Seat Share</p>
                 <hr/>
-                <p>Average Latino Population per District</p>
-                <hr/>
-                <p>Average Majority-minority Representatives per Plan</p>
-                <hr/>
-                <p>Average Republican/Democratic Split</p>
-                <hr/>
-                <p>Average Polsby-popper Value</p>
+                <p>Democratic Seat Share</p>
             </div>
             <div id="summary-data">
-                <p>1</p>
+                <p>{summary.Splits}</p>
                 <hr id="line"/>
-                <p>1</p>
+                <p>{summary.OppurtunityRepresentatives}</p>
                 <hr id="line"/>
-                <p>1</p>
+                <p>{summary.RepublicanVoteShare}%</p>
                 <hr id="line"/>
-                <p>1</p>
+                <p>{summary.DemocraticVoteShare}%</p>
                 <hr id="line"/>
+                <p>{summary.RepublicanSeatShare}%</p>
                 <hr id="line"/>
-                <p>1</p>
-                <hr id="line"/>
-                <p>1</p>
-                <hr id="line"/>
-                <hr id="line"/>
-                <p>1</p>
-                <hr id="line"/>
-                <hr id="line"/>
-                <p>1</p>
-                <hr id="line"/>
-                <p>1</p>
+                <p>{summary.DemocraticSeatShare}%</p>
             </div>
             </Paper>
         </Box>
