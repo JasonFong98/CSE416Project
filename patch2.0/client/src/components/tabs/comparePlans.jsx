@@ -27,7 +27,6 @@ export default function ComparePlans(data) {
         "RepublicanSeatShare" : ((Number(data.enactedSummaryData.split.split('|')[1])/(Number(data.enactedSummaryData.split.split('|')[0])+Number(data.enactedSummaryData.split.split('|')[1])))*100).toString().substring(0,5),
         "DemocraticSeatShare" : ((Number(data.enactedSummaryData.split.split('|')[0])/(Number(data.enactedSummaryData.split.split('|')[0])+Number(data.enactedSummaryData.split.split('|')[1])))*100).toString().substring(0,5),
     });
-    console.log(summary)
     const handlePlanChange = (event, newPlanAlignment) => {
         if (newPlanAlignment==mmdOne) {
           setSummary({
@@ -80,45 +79,30 @@ export default function ComparePlans(data) {
         >
             <Paper id="summary-block" elevation={2}>
             <div id="summary-names">
-                <p>Number of District Plans</p>
+                <p>Democratic/Republican Splits</p>
                 <hr/>
-                <p>Average Population per District</p>
+                <p>Oppurtunity Representatives</p>
                 <hr/>
-                <p>Average White Population per District</p>
+                <p>Republican Vote Share</p>
                 <hr/>
-                <p>Average Black/African Population per District</p>
+                <p>Democratic Vote Share</p>
                 <hr/>
-                <p>Average Asian Population per District</p>
+                <p>Republican Seat Share</p>
                 <hr/>
-                <p>Average Latino Population per District</p>
-                <hr/>
-                <p>Average Majority-minority Representatives per Plan</p>
-                <hr/>
-                <p>Average Republican/Democratic Split</p>
-                <hr/>
-                <p>Average Polsby-popper Value</p>
+                <p>Democratic Seat Share</p>
             </div>
             <div id="summary-data">
-                <p>1</p>
+                <p>{enactedSummary.Splits}</p>
                 <hr id="line"/>
-                <p>1</p>
+                <p>{enactedSummary.OppurtunityRepresentatives}</p>
                 <hr id="line"/>
-                <p>1</p>
+                <p>{enactedSummary.RepublicanVoteShare}%</p>
                 <hr id="line"/>
-                <p>1</p>
+                <p>{enactedSummary.DemocraticVoteShare}%</p>
                 <hr id="line"/>
+                <p>{enactedSummary.RepublicanSeatShare}%</p>
                 <hr id="line"/>
-                <p>1</p>
-                <hr id="line"/>
-                <p>1</p>
-                <hr id="line"/>
-                <hr id="line"/>
-                <p>1</p>
-                <hr id="line"/>
-                <hr id="line"/>
-                <p>1</p>
-                <hr id="line"/>
-                <p>1</p>
+                <p>{enactedSummary.DemocraticSeatShare}%</p>
             </div>
             </Paper>
         </Box>

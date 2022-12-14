@@ -146,7 +146,7 @@ export default function VerticalTabs(state, {clearToggleButton}) {
       setAverageMMDDate(res.data)
     });
     api.getEnactedSummary(stateDict[state.state]).then((res) => {
-      setEnactedSummaryData(res.mmdData)
+      setEnactedSummaryData(res.data)
     });
   }, []);
 
