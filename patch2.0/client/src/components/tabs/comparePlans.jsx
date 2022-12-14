@@ -16,8 +16,8 @@ export default function ComparePlans(data) {
         "OppurtunityRepresentatives" : data.averageMMDData[0].numberOfMajorityMinority,
         "RepublicanVoteShare" : (Number(data.averageMMDData[0].numberOfRepublican)/(Number(data.averageMMDData[0].numberOfDemocrat)+Number(data.averageMMDData[0].numberOfRepublican))*100).toString().substring(0,5),
         "DemocraticVoteShare" : (Number(data.averageMMDData[0].numberOfDemocrat)/(Number(data.averageMMDData[0].numberOfDemocrat)+Number(data.averageMMDData[0].numberOfRepublican))*100).toString().substring(0,5),
-        "RepublicanSeatShare" : (Number(data.averageMMDData[0].split.split('|')[1])/(Number(data.averageMMDData[0].split.split('|')[0])+Number(data.averageMMDData[0].split.split('|')[1])))*100,
-        "DemocraticSeatShare" : (Number(data.averageMMDData[0].split.split('|')[0])/(Number(data.averageMMDData[0].split.split('|')[0])+Number(data.averageMMDData[0].split.split('|')[1])))*100,
+        "RepublicanSeatShare" : ((Number(data.averageMMDData[0].split.split('|')[1])/(Number(data.averageMMDData[0].split.split('|')[0])+Number(data.averageMMDData[0].split.split('|')[1])))*100).toString().substring(0,5),
+        "DemocraticSeatShare" : ((Number(data.averageMMDData[0].split.split('|')[0])/(Number(data.averageMMDData[0].split.split('|')[0])+Number(data.averageMMDData[0].split.split('|')[1])))*100).toString().substring(0,5),
     });
     console.log(summary)
     const handlePlanChange = (event, newPlanAlignment) => {
@@ -27,8 +27,8 @@ export default function ComparePlans(data) {
             "OppurtunityRepresentatives" : data.averageMMDData[0].numberOfMajorityMinority,
             "RepublicanVoteShare" : (Number(data.averageMMDData[0].numberOfRepublican)/(Number(data.averageMMDData[0].numberOfDemocrat)+Number(data.averageMMDData[0].numberOfRepublican))*100).toString().substring(0,5),
             "DemocraticVoteShare" : (Number(data.averageMMDData[0].numberOfDemocrat)/(Number(data.averageMMDData[0].numberOfDemocrat)+Number(data.averageMMDData[0].numberOfRepublican))*100).toString().substring(0,5),
-            "RepublicanSeatShare" : (Number(data.averageMMDData[0].split.split('|')[1])/(Number(data.averageMMDData[0].split.split('|')[0])+Number(data.averageMMDData[0].split.split('|')[1])))*100,
-            "DemocraticSeatShare" : (Number(data.averageMMDData[0].split.split('|')[0])/(Number(data.averageMMDData[0].split.split('|')[0])+Number(data.averageMMDData[0].split.split('|')[1])))*100,
+            "RepublicanSeatShare" : ((Number(data.averageMMDData[0].split.split('|')[1])/(Number(data.averageMMDData[0].split.split('|')[0])+Number(data.averageMMDData[0].split.split('|')[1])))*100).toString().substring(0,5),
+            "DemocraticSeatShare" : ((Number(data.averageMMDData[0].split.split('|')[0])/(Number(data.averageMMDData[0].split.split('|')[0])+Number(data.averageMMDData[0].split.split('|')[1])))*100).toString().substring(0,5),
     })
         }
         else if(newPlanAlignment==mmdTwo) {
@@ -37,8 +37,8 @@ export default function ComparePlans(data) {
           "OppurtunityRepresentatives" : data.averageMMDData[1].numberOfMajorityMinority,
           "RepublicanVoteShare" : (Number(data.averageMMDData[1].numberOfRepublican)/(Number(data.averageMMDData[1].numberOfDemocrat)+Number(data.averageMMDData[1].numberOfRepublican))*100).toString().substring(0,5),
           "DemocraticVoteShare" : (Number(data.averageMMDData[1].numberOfDemocrat)/(Number(data.averageMMDData[1].numberOfDemocrat)+Number(data.averageMMDData[1].numberOfRepublican))*100).toString().substring(0,5),
-          "RepublicanSeatShare" : (Number(data.averageMMDData[1].split.split('|')[1])/(Number(data.averageMMDData[1].split.split('|')[0])+Number(data.averageMMDData[1].split.split('|')[1])))*100,
-          "DemocraticSeatShare" : (Number(data.averageMMDData[1].split.split('|')[0])/(Number(data.averageMMDData[1].split.split('|')[0])+Number(data.averageMMDData[1].split.split('|')[1])))*100,
+          "RepublicanSeatShare" : ((Number(data.averageMMDData[1].split.split('|')[1])/(Number(data.averageMMDData[1].split.split('|')[0])+Number(data.averageMMDData[1].split.split('|')[1])))*100).toString().substring(0,5),
+          "DemocraticSeatShare" : ((Number(data.averageMMDData[1].split.split('|')[0])/(Number(data.averageMMDData[1].split.split('|')[0])+Number(data.averageMMDData[1].split.split('|')[1])))*100).toString().substring(0,5),
       })
         }
         else {
