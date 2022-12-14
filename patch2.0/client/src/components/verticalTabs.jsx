@@ -60,7 +60,8 @@ export default function VerticalTabs(state, {clearToggleButton}) {
   const [MMDBWdata, setMMDBWdata] = React.useState({});
   const [MMDSummaryData, setMMDSummaryData] = React.useState();
   const [averageMMDData, setAverageMMDDate] = React.useState();
-  const {store}  = useContext(GlobalStoreContext);
+  const [enactedSummaryData, setEnactedSummaryData] = React.useState();
+  const {store}  = useContext(GlobalStoreContext); 
   React.useEffect(() => {
     api.getSMDBarGraph(stateDict[state.state]).then((res) => {
       const barGraphData = res.data;
@@ -144,6 +145,9 @@ export default function VerticalTabs(state, {clearToggleButton}) {
     api.getMMDAverageData(stateDict[state.state]).then((res) => {
       setAverageMMDDate(res.data)
     });
+    api.getEnactedSummary(stateDict[state.state]).then((res) => {
+      setEnactedSummaryData(res.mmdData)
+    });
   }, []);
 
   const handleChange = (event, newValue) => {
@@ -210,7 +214,7 @@ export default function VerticalTabs(state, {clearToggleButton}) {
       </TabPanel>
 
       <TabPanel value={value} index={5}>
-        <ComparePlans mmdData={MMDSummaryData} averageMMDData={averageMMDData}/>
+        <ComparePlans mmdData={MMDSummaryData} averageMMDData={averageMMDData} enactedSummaryData={enactedSummaryData}/>
       </TabPanel>
 
       <TabPanel value={value} index={6}>

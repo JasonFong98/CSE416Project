@@ -23,6 +23,7 @@ export const getSMDLeastMajority = async (state) => await api.get(`/smd/leastM/m
 export const getSMDMostMajority = async (state) => await api.get(`/smd/mostM/map/${state}`);
 export const getSMDRandomPlan = async (state, value) => await api.get(`/smd/random/map/${state}/${value}`);
 export const getMMDAverageData = async (state, type) => await api.get(`/mmd/average/${state}/${type}`);
+export const getEnactedSummary = async (state) => await api.get(`/smd/enactedPlan/${state}`);
 
 
 
@@ -46,6 +47,7 @@ const apis = {
   getSMDMostMajority,
   getSMDRandomPlan,
   getMMDAverageData,
+  getEnactedSummary,
 };
 
 export default apis;

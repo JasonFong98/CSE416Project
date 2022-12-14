@@ -19,6 +19,14 @@ export default function ComparePlans(data) {
         "RepublicanSeatShare" : ((Number(data.averageMMDData[0].split.split('|')[1])/(Number(data.averageMMDData[0].split.split('|')[0])+Number(data.averageMMDData[0].split.split('|')[1])))*100).toString().substring(0,5),
         "DemocraticSeatShare" : ((Number(data.averageMMDData[0].split.split('|')[0])/(Number(data.averageMMDData[0].split.split('|')[0])+Number(data.averageMMDData[0].split.split('|')[1])))*100).toString().substring(0,5),
     });
+    const [enactedSummary, setEnactedSummary] = useState({ 
+        "Splits" : data.enactedSummaryData.split,
+        "OppurtunityRepresentatives" : data.enactedSummaryData.numberOfMajorityMinority,
+        "RepublicanVoteShare" : (Number(data.enactedSummaryData.numberOfRepublican)/(Number(data.enactedSummaryData.numberOfDemocrat)+Number(data.enactedSummaryData.numberOfRepublican))*100).toString().substring(0,5),
+        "DemocraticVoteShare" : (Number(data.enactedSummaryData.numberOfDemocrat)/(Number(data.enactedSummaryData.numberOfDemocrat)+Number(data.enactedSummaryData.numberOfRepublican))*100).toString().substring(0,5),
+        "RepublicanSeatShare" : ((Number(data.enactedSummaryData.split.split('|')[1])/(Number(data.enactedSummaryData.split.split('|')[0])+Number(data.enactedSummaryData.split.split('|')[1])))*100).toString().substring(0,5),
+        "DemocraticSeatShare" : ((Number(data.enactedSummaryData.split.split('|')[0])/(Number(data.enactedSummaryData.split.split('|')[0])+Number(data.enactedSummaryData.split.split('|')[1])))*100).toString().substring(0,5),
+    });
     console.log(summary)
     const handlePlanChange = (event, newPlanAlignment) => {
         if (newPlanAlignment==mmdOne) {
