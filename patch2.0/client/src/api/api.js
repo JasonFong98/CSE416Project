@@ -38,7 +38,11 @@ const apis = {
   getMMDAveragePlan, 
   getSMDExtremeDem, 
   getSMDExtremeRep,
-  
+  getMMDExtremeDem,
+  getMMDExtremeRep,
+  getSMDLeastMajority,
+  getSMDMostMajority,
+  getSMDRandomPlan
 };
 
 export default apis;
