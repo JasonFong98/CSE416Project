@@ -19,7 +19,6 @@ const State = (props) => {
   const {store}  = useContext(GlobalStoreContext);
 
   useEffect(() => {
-    console.log(store);
     apis.getMMDBoxAndWhiskers(stateDict[state]).then((res) => {
       store.setMMDPlan(res.data[0][0].pattern, res.data[1][0].pattern);
     });

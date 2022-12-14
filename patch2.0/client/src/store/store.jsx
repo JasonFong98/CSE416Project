@@ -39,6 +39,9 @@ function GlobalStoreContextProvider(props){
 
             case GlobalStoreActionType.SET_DISTRICT_DATA:{
                 return setStore({
+                    geoJson: store.geoJson,
+                    mmd1: store.mmd1,
+                    mmd2: store.mmd2,
                     districtData: payload
                 });
             }
@@ -68,6 +71,10 @@ function GlobalStoreContextProvider(props){
             type: GlobalStoreActionType.SET_DISTRICT_DATA,
             payload: data
         });
+    }
+
+    store.deleteDistrictData = function(data){
+        
     }
 
     return (
