@@ -50,7 +50,7 @@ function a11yProps(index) {
   };
 }
 
-export default function VerticalTabs(state, {clearToggleButton}) {
+export default function VerticalTabs(state) {
   const stateDict =  {"Ohio": "OH", "Virginia": "VA", "North Carolina": "NC"}
   const stateDistrictNum = {"Ohio": 16, "Virginia": 11, "North Carolina": 13}
   const [value, setValue] = React.useState(0);

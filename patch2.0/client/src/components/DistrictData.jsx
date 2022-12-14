@@ -11,7 +11,6 @@ function DistrictData() {
         setData(store.districtData);
     },[store.districtData]);
 
-    console.log(data);
     if(data){
     return (
       <Paper

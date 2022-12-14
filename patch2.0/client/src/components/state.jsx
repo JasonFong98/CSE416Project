@@ -36,7 +36,7 @@ const State = (props) => {
   }
 
   const clearToggleButton = () =>{
-    setAlignment(null);
+    setAlignment("Display Map");
   }
   
   const handleChange = (event, newAlignment) => {

@@ -8,21 +8,21 @@ import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import { GlobalStoreContext } from "../../store/store";
 import CardPlans from './cardPlans';
-import { Card } from '@mui/material';
 
-export default function samplePlansMenu({clearToggleButton}) {
+export default function samplePlansMenu(props) {
   const [plan, setPlan] = React.useState("");
-  const [planAlignment, setPlanAlignment] = useState("DisplayMap");
+  const [planAlignment, setPlanAlignment] = useState("");
   const {store}  = useContext(GlobalStoreContext);
 
   const handleChange = (event) => {
     setPlan(event.target.value);
+    props.state.clearToggleButton();
+    setPlanAlignment("DisplayMap");
   };
 
   
   const handleMapChange = (event, newPlanAlignment) => {
     setPlanAlignment(newPlanAlignment);
-    clearToggleButton();
   };
 
 
@@ -40,21 +40,21 @@ export default function samplePlansMenu({clearToggleButton}) {
         <MenuItem value="">
           <em>None</em>
         </MenuItem>
-        <MenuItem value={1}>SMD Extreme Republican</MenuItem>
-        <MenuItem value={2}>SMD Extreme Democratic </MenuItem>
-        <MenuItem value={3}>SMD Random Plan</MenuItem>
-        <MenuItem value={4}>SMD Least # of Majority Minority District</MenuItem>
-        <MenuItem value={5}>SMD Most # of Majority Minority District</MenuItem>
-        <MenuItem value={6}>{store.mmd1} Extreme Republican</MenuItem>
-        <MenuItem value={7}>{store.mmd1} Extreme Democratic</MenuItem>
-        <MenuItem value={8}>{store.mmd1} Least # of Majority Minority District</MenuItem>
-        <MenuItem value={9}>{store.mmd1} Most # of Majority Minority District</MenuItem>
-        <MenuItem value={10}>{store.mmd1} Average Plan</MenuItem>
-        <MenuItem value={11}>{store.mmd2} Extreme Republican</MenuItem>
-        <MenuItem value={12}>{store.mmd2} Extreme Democratic</MenuItem>
-        <MenuItem value={13}>{store.mmd2} Least # of Majority Minority District</MenuItem>
-        <MenuItem value={14}>{store.mmd2} Most # of Majority Minority District</MenuItem>
-        <MenuItem value={15}>{store.mmd2} Average Plan</MenuItem>
+        <MenuItem value="smdExRep">SMD Extreme Republican</MenuItem>
+        <MenuItem value="smdExDem">SMD Extreme Democratic </MenuItem>
+        <MenuItem value="smdRand">SMD Random Plan</MenuItem>
+        <MenuItem value="smdLeastMaj">SMD Least # of Majority Minority District</MenuItem>
+        <MenuItem value="smdMostMaj">SMD Most # of Majority Minority District</MenuItem>
+        <MenuItem value="mmdExRep1">{store.mmd1} Extreme Republican</MenuItem>
+        <MenuItem value="mmdExDem1">{store.mmd1} Extreme Democratic</MenuItem>
+        <MenuItem value="mmdLeastMaj1">{store.mmd1} Least # of Majority Minority District</MenuItem>
+        <MenuItem value="mmdMostMaj1">{store.mmd1} Most # of Majority Minority District</MenuItem>
+        <MenuItem value="mmdAvg1">{store.mmd1} Average Plan</MenuItem>
+        <MenuItem value="mmdExRep2">{store.mmd2} Extreme Republican</MenuItem>
+        <MenuItem value="mmdExDem2">{store.mmd2} Extreme Democratic</MenuItem>
+        <MenuItem value="mmdLeastMaj2">{store.mmd2} Least # of Majority Minority District</MenuItem>
+        <MenuItem value="mmdMostMaj2">{store.mmd2} Most # of Majority Minority District</MenuItem>
+        <MenuItem value="mmdAvg2">{store.mmd2} Average Plan</MenuItem>
       </Select>
     </FormControl>
 
@@ -70,7 +70,7 @@ export default function samplePlansMenu({clearToggleButton}) {
         <ToggleButton value="DisplayMap"><b>Display Map</b></ToggleButton>
       </ToggleButtonGroup>
 
-      <CardPlans value={plan}/>
+      <CardPlans value={plan} state={props.state}/>
     </div>
   );
 }

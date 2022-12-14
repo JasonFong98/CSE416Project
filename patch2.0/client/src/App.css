@@ -183,8 +183,9 @@
 
 #paper-thirds{
   font-size: 14px;
-  padding: 1%;
+  padding: 2%;
   width: 33.33%;
+  text-align: center;
 }
 
 
