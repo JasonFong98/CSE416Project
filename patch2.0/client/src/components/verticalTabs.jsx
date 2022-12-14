@@ -12,6 +12,7 @@ import MMDSummary from "./tabs/ensembleSummary/MMDSummary";
 import SMDSummary from "./tabs/ensembleSummary/SMDSummary";
 import SamplePlansMenu from "./tabs/samplePlansMenu"
 import GeneralInfo from "./tabs/generalInfo";
+import ComparePlans from "./tabs/comparePlans";
 import { GlobalStoreContext } from "../store/store";
 
 import api from "../api/api"
@@ -58,6 +59,7 @@ export default function VerticalTabs(state, {clearToggleButton}) {
   const [enactedData, setEnactedData] = React.useState({});
   const [MMDBWdata, setMMDBWdata] = React.useState({});
   const [MMDSummaryData, setMMDSummaryData] = React.useState();
+  const [averageMMDData, setAverageMMDDate] = React.useState();
   const {store}  = useContext(GlobalStoreContext);
   React.useEffect(() => {
     api.getSMDBarGraph(stateDict[state.state]).then((res) => {
@@ -139,26 +141,10 @@ export default function VerticalTabs(state, {clearToggleButton}) {
     api.getMMDSummary(stateDict[state.state]).then((res) => {
       setMMDSummaryData(res.data)
     });
+    api.getMMDAverageData(stateDict[state.state]).then((res) => {
+      setAverageMMDDate(res.data)
+    });
   }, []);
-  //React.useEffect(() => {
-    //api.getPlots(stateDict[state.state]).then((res) => {
-      //const barGraphData = res.data.ensemble.repDemSplits;
-      //const boxWhiskerData=res.data.ensemble.boxAndWhiskers[0];
-      //console.log(barGraphData[0].numberOfPlans)
-     // setBWData({
-       // "one": [boxWhiskerData.min, boxWhiskerData.firstQ, boxWhiskerData.median, boxWhiskerData.thirdQ, boxWhiskerData.max]
-     // });
-     // setBGData({
-      //  "1/2": barGraphData[0].numberOfPlans,
-     //   "2/3": barGraphData[1].numberOfPlans,
-      //  "1/3": barGraphData[2].numberOfPlans,
-     //   "3/1": barGraphData[3].numberOfPlans,
-     //   "3/2": barGraphData[4].numberOfPlans,
-     //   "3/1": barGraphData[5].numberOfPlans
-     // });
-  //    console.log(BGdata)
-  //  });
- // }, []);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -188,6 +174,8 @@ export default function VerticalTabs(state, {clearToggleButton}) {
         <Tab sx={{textTransform:"none", fontWeight:"bold"}} label="Sample District Plans" {...a11yProps(2)} />
         <Tab sx={{textTransform:"none", fontWeight:"bold"}} label="Box & Whisker Plot" {...a11yProps(3)} />
         <Tab sx={{textTransform:"none", fontWeight:"bold"}} label="Political Split" {...a11yProps(4)} />
+        <Tab sx={{textTransform:"none", fontWeight:"bold"}} label="Compare Plans" {...a11yProps(5)} />
+        <Tab sx={{textTransform:"none", fontWeight:"bold"}} label="Sources" {...a11yProps(6)} />
       </Tabs>
 
       <TabPanel value={value} index={0}>
@@ -221,6 +209,22 @@ export default function VerticalTabs(state, {clearToggleButton}) {
         <BarGraph data={BGdata} />
       </TabPanel>
 
+      <TabPanel value={value} index={5}>
+        <ComparePlans mmdData={MMDSummaryData} averageMMDData={averageMMDData}/>
+      </TabPanel>
+
+      <TabPanel value={value} index={6}>
+        <div id="sources">
+          Sources:
+        </div>
+        <a href="url">https://ballotpedia.org/Main_Page</a>
+        <hr id="line"/>
+        <a href="url">https://www.census.gov/mycd/</a>
+        <hr id="line"/>
+        <a href="url">https://github.com/orgs/mggg-states/repositories?page=2&type=all</a>
+        <hr id="line"/>
+        <a href="url">https://redistrictingdatahub.org/</a>
+      </TabPanel>
 
     </Box>
   );

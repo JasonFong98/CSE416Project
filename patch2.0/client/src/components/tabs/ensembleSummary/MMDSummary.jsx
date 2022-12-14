@@ -11,7 +11,7 @@ export default function MMDSummary(data) {
   const [mmdTwo, setmmdTwo] = useState(data.mmdData[1].type);
   const [planAlignment, setPlanAlignment] = useState(mmdOne);
   const [summary, setSummary] = useState({ 
-    "plans": "10,000",
+    "plans": "5,000",
     "averagePopulation": data.mmdData[0].averagePopulation.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","), 
     "averageWhitePopulation": data.mmdData[0].averageWhitePopulation.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","),
     "averageAfricanPopulation": data.mmdData[0].averageAfricanPopulation.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","),
@@ -28,7 +28,7 @@ export default function MMDSummary(data) {
   const handlePlanChange = (event, newPlanAlignment) => {
     if (newPlanAlignment==mmdOne) {
       setSummary({
-        "plans": "10,000",
+        "plans": "5,000",
         "averagePopulation": data.mmdData[0].averagePopulation.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","), 
         "averageWhitePopulation": data.mmdData[0].averageWhitePopulation.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","),
         "averageAfricanPopulation": data.mmdData[0].averageAfricanPopulation.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","),
@@ -42,7 +42,7 @@ export default function MMDSummary(data) {
     }
     else if(newPlanAlignment==mmdTwo) {
       setSummary({
-        "plans": "10,000",
+        "plans": "5,000",
         "averagePopulation": data.mmdData[1].averagePopulation.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","), 
         "averageWhitePopulation": data.mmdData[1].averageWhitePopulation.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","),
         "averageAfricanPopulation": data.mmdData[1].averageAfricanPopulation.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","),
